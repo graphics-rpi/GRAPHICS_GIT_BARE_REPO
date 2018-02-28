@@ -1,0 +1,15 @@
+newmtl GLASS_CLEAR
+glass
+DR 0.392157 0.584314 0.929412
+SR 0 0 0
+DT 0 0 0
+ST 0 0 0
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl OffWhite
+lambertian
+DR 0.870588 0.870588 0.870588
+Pd 0.9 0.9 0.9
+endmtl
+

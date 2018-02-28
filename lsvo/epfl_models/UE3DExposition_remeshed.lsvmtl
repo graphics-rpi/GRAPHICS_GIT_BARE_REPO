@@ -1,0 +1,240 @@
+newmtl default
+lambertian
+DR 1 1 1
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl difmat_1
+glass
+DR 1 1 1
+SR 0 0 0
+DT 0 0 0
+ST 0.5 0.5 0.5
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl m_tal-aluminium
+lambertian
+DR 0.2745 0.2627 0.2627
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl material_1
+lambertian
+DR 1 1 1
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl material_2
+glass
+DR 1 1 1
+SR 0 0 0
+DT 0 0 0
+ST 0.8 0.8 0.8
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl menuiserie_m_tal
+lambertian
+DR 0.6196 0.6196 0.6196
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl peinture-01
+lambertian
+DR 0.8863 0.8863 0.8863
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl peinture-04
+lambertian
+DR 0.1412 0.1412 0.1412
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_1
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_10
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_11
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_12
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_13
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_14
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_15
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_16
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_17
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_18
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_19
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_2
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_20
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_21
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_22
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_23
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_24
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_3
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_4
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_5
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_6
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_7
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_8
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_glare_1_9
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_illuminance_1_1
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_illuminance_1_2
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_illuminance_1_3
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_illuminance_1_4
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_illuminance_1_5
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_illuminance_1_6
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl sensor_illuminance_1_7
+invisible
+sensor
+Pd 0.9 0.9 0.9
+endmtl
+

@@ -1,0 +1,44 @@
+# mtllib cube.lsvmtl
+
+v -1 -1 -1
+v -1 -1 1
+v -1 1 -1
+v -1 1 1
+v 1 -1 -1
+v 1 -1 1
+v 1 1 -1
+v 1 1 1
+
+v -3 -3 -3
+v -3 -3 3
+v -3 3 -3
+v -3 3 3
+v 3 -3 -3
+v 3 -3 3
+v 3 3 -3
+
+# usemtl RED
+f 1 2 3
+f 3 2 4
+f 3 4 8
+f 3 8 7
+f 8 4 2
+f 8 2 6
+f 2 1 6
+f 6 1 5
+f 3 7 5
+f 3 5 1
+f 7 8 5
+f 5 8 6
+
+# usemtl BLUE
+f 9 11 10
+f 11 12 10
+
+# usemtl GRAY
+f 9 10 14
+f 9 14 13
+
+# usemtl GREEN
+f 9 13 11
+f 11 13 15

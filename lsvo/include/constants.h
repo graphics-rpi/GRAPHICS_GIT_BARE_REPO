@@ -1,0 +1,9 @@
+#define NUM_NEIGHBORS 8
+
+enum SkyEnum
+{
+  CLEAR=0,
+  CLEARTURBID=1,
+  INTERMEDIATE=2,
+  OVERCAST=3
+};

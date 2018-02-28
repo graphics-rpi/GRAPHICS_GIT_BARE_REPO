@@ -1,0 +1,25 @@
+newmtl OffWhite
+lambertian
+DR 0.870588 0.870588 0.870588
+Pd 0 0 0
+endmtl
+
+newmtl INVISIBLE_SENSOR1
+invisible
+sensor
+endmtl
+
+newmtl GLASS_CLEAR
+glass
+DR 0.392157 0.584314 0.929412
+SR 0.33 0.33 0.33
+DT 0 0 0
+ST 0.5 0.5 0.5
+Pd 0 0 0
+endmtl
+
+newmtl INVISIBLE_SENSOR2
+invisible
+sensor
+endmtl
+

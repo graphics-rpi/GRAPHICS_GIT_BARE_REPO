@@ -1,0 +1,18 @@
+newmtl FrontColor
+lambertian
+DR 0.882353 0.882353 0.784314
+Pd 0 0 0
+endmtl
+
+newmtl _Cornsilk_
+lambertian
+DR 1 0.972549 0.862745
+Pd 0 0 0
+endmtl
+
+newmtl _LightSlateGray_
+lambertian
+DR 0.466667 0.533333 0.6
+Pd 0 0 0
+endmtl
+

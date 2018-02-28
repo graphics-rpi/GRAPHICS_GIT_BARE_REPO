@@ -1,0 +1,8 @@
+newmtl OffWhite
+Kd 0.9 0.9 0.9
+
+newmtl GLASS_CLEAR
+Kd 0 0 0
+Ks 0 0 0
+Td 0 0 0
+Ts 0.9 0.9 0.9

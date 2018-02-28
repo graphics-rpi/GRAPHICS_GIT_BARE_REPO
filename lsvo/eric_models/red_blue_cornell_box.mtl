@@ -1,0 +1,16 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2006 Google, Inc.
+
+newmtl white
+Kd 0.925490 0.925490 0.925490
+
+newmtl blue
+Kd 0.1 0.1 0.8
+
+newmtl GLASS_1
+Kd 0 0 0
+Ts 0.884314 0.884314 0.884314
+
+newmtl red
+Kd 0.8 0.1 0.1

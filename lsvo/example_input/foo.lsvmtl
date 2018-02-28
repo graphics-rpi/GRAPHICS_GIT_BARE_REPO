@@ -1,0 +1,100 @@
+newmtl EMITTER
+lambertian
+emitter
+diffuse_emitter
+DR 0.98 0.984 1
+Ke 1 1 1
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl EXTRA_floor
+lambertian
+extra
+DR 0.25 0.25 0.25
+Pd 0.95 0.95 0.95
+endmtl
+
+newmtl EXTRA_wall
+lambertian
+extra
+DR 0.25 0.25 0.25
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl FILLIN_ceiling
+lambertian
+fillin
+DR 0.98 0.984 1
+Pd 0 0 0
+endmtl
+
+newmtl FILLIN_wall_0
+lambertian
+fillin
+DR 0.3 0.3 0.35
+Pd 0 0 0
+endmtl
+
+newmtl GLASS_1
+glass
+DR 0 0 0
+SR 0 0 0
+DT 0 0 0
+ST 0.8 0.8 0.8
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl floor
+lambertian
+DR 0.184 0.18 0.216
+Pd 0.95 0.95 0.95
+endmtl
+
+newmtl wall_1
+lambertian
+DR 0.7 0.357451 0.330392
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl wall_2
+lambertian
+DR 0.226667 0.228824 0.357647
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl wall_3
+lambertian
+DR 0.226667 0.228824 0.357647
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl wall_4
+lambertian
+DR 0.226667 0.228824 0.357647
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl wall_5
+lambertian
+DR 0.334314 0.442353 0.582941
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl wall_6
+lambertian
+DR 0.226667 0.258824 0.357647
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl wall_7
+lambertian
+DR 0.7863 0.264706 0.221569
+Pd 0.9 0.9 0.9
+endmtl
+
+newmtl wall_8
+lambertian
+DR 0.226667 0.357647 0.228824
+Pd 0.9 0.9 0.9
+endmtl
+

@@ -1,0 +1,15 @@
+newmtl FrontColor
+lambertian
+DR 1 1 1
+Pd 0 0 0
+endmtl
+
+newmtl GLASS_lower
+glass
+DR 0.392157 0.584314 0.929412
+SR 0.33 0.33 0.33
+DT 0 0 0
+ST 1 1 1
+Pd 0 0 0
+endmtl
+

@@ -1,0 +1,21 @@
+Import('env')
+
+# objs = env.StaticObject(Glob('*.cpp') + Glob('*.cu'))
+objs = env.StaticObject(Glob('*.cpp'))
+ptxs = []
+for cuda in Glob('*.cu'):
+    if str(cuda) == 'triangle_mesh.cu':
+        # ptxs.append(env.PTX('cuda_compile_ptx_generated_triangle_mesh.cu.ptx', cuda))
+        pass
+    else:
+        ptxs.append(env.PTX(cuda))
+
+Depends(objs, ptxs)
+
+# cudaReduce = env.StaticObject([
+#         'rayTrace.cu',
+#         ])
+# AlwaysBuild(cudaReduce)
+
+main = env.Program('#main', objs)
+env.Install('#ptx', ptxs)

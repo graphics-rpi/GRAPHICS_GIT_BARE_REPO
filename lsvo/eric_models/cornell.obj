@@ -1,0 +1,45 @@
+mtllib cornell.mtl
+v -1 -1 -1
+v -1 -1  1
+v -1  1 -1
+v -1  1  1
+v  1 -1 -1
+v  1 -1  1
+v  1  1 -1
+v  1  1  1
+
+v -0.25 1 -0.25
+v  0.25 1 -0.25
+v -0.25 1  0.25
+v  0.25 1  0.25
+
+usemtl red
+f 1 2 3
+f 3 2 4
+
+usemtl green
+f 6 5 7
+f 6 7 8
+
+usemtl white
+# f 3 4 7
+# f 4 8 7
+f 3 7 5
+f 3 5 1
+f 6 1 5
+f 1 6 2
+f 2 6 4
+f 6 8 4
+
+f 3 9 10
+f 3 10 7
+f 7 10 12
+f 7 12 8
+f 8 12 11
+f 8 11 4
+f 4 11 9
+f 4 9 3
+
+usemtl diffuser
+f 10 9 11
+f 10 11 12

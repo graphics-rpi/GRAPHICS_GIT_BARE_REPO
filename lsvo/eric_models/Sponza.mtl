@@ -1,0 +1,63 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 16.06.2010 14:44:38
+
+newmtl leaf
+Kd 0.588000 0.588000 0.588000
+
+newmtl vase_round
+Kd 0.588000 0.588000 0.588000
+
+newmtl Material__57
+Kd 0.588000 0.588000 0.588000
+
+newmtl Material__25
+Kd 0.588000 0.588000 0.588000
+
+newmtl 16___Default
+Kd 0.588000 0.588000 0.588000
+
+newmtl bricks
+Kd 0.588000 0.588000 0.588000
+
+newmtl arch
+Kd 0.588000 0.588000 0.588000
+
+newmtl ceiling
+Kd 0.588000 0.588000 0.588000
+
+newmtl column_a
+Kd 0.588000 0.588000 0.588000
+
+newmtl floor
+Kd 0.588000 0.588000 0.588000
+
+newmtl column_c
+Kd 0.588000 0.588000 0.588000
+
+newmtl details
+Kd 0.588000 0.588000 0.588000
+
+newmtl column_b
+Kd 0.588000 0.588000 0.588000
+
+newmtl Material__47
+Kd 0.588000 0.588000 0.588000
+
+newmtl flagpole
+Kd 0.588000 0.588000 0.588000
+
+newmtl fabric
+Kd 0.588000 0.588000 0.588000
+
+newmtl chain
+Kd 0.588000 0.588000 0.588000
+
+newmtl vase_hanging
+Kd 0.588000 0.588000 0.588000
+
+newmtl vase
+Kd 0.588000 0.588000 0.588000
+
+newmtl roof
+Kd 0 0 0
+Ts 1 1 1

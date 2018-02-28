@@ -1,0 +1,11 @@
+newmtl red
+Kd 0.95 0.01 0.01
+
+newmtl green
+Kd 0.01 0.95 0.01
+
+newmtl white
+Kd 0.6 0.6 0.6
+
+newmtl diffuser
+Td 1 1 1

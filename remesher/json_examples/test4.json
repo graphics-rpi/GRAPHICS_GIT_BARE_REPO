@@ -1,0 +1,79 @@
+{
+	"model_id": "test4",
+	"model_name": "rectangle room north window",
+	"owner": "eric",
+	"north": 3.1416,
+	"scale": 106.4,
+	"items": [
+		{
+			"type": "linesegment",
+			"points": [
+				{
+					"x": 101,
+					"y": 125
+				},
+				{
+					"x": 95,
+					"y": 352
+				}
+			],
+			"windows": [
+			]
+		},
+		{
+			"type": "linesegment",
+			"points": [
+				{
+					"x": 117,
+					"y": 118
+				},
+				{
+					"x": 397.991,
+					"y": 123
+				}
+			],
+			"windows": [
+				[
+					{
+						"x": 171,
+						"y": 118
+					},
+					{
+						"x": 341.016,
+						"y": 121.026
+					}
+				]
+			]
+		},
+		{
+			"type": "linesegment",
+			"points": [
+				{
+					"x": 399,
+					"y": 124
+				},
+				{
+					"x": 400,
+					"y": 362.993
+				}
+			],
+			"windows": [
+			]
+		},
+		{
+			"type": "linesegment",
+			"points": [
+				{
+					"x": 101,
+					"y": 360
+				},
+				{
+					"x": 385,
+					"y": 358
+				}
+			],
+			"windows": [
+			]
+		}
+	]
+}

@@ -1,0 +1,33 @@
+#
+## Alias OBJ Material File
+# Exported from SketchUp, (c) 2000-2006 Google, Inc.
+
+newmtl skylights
+Kd 0 0 0
+Ts 1 1 1
+
+newmtl white_walls
+Kd 0.823529 0.823529 0.823529
+
+newmtl floor
+Kd 0.674510 0.647059 0.533333
+
+newmtl ceiling
+Kd 0.941176 0.941176 0.941176
+
+newmtl doors
+Kd 0.835294 0.639216 0.301961
+
+newmtl transom_windows
+Kd 0 0 0
+Ts 0.666667 0.800000 0.666667
+
+newmtl transom_windows_GAY
+Kd 0 0 0
+Ts 0.666667 0.800000 0.666667
+
+newmtl wood_shelves
+Kd 0.443137 0.254902 0.113725
+
+newmtl blocker
+Kd 0.941176 0.941176 0.941176

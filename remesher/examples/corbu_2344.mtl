@@ -1,0 +1,10 @@
+newmtl FrontColor
+Ka 0 0 0
+Kd 1 1 1
+Ks 0.33 0.33 0.33
+
+newmtl GLASS_lower
+Ka 0 0 0
+Kd 0.392157 0.584314 0.929412
+Ks 0.33 0.33 0.33
+
