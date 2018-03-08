@@ -1,0 +1,2 @@
+mpi_renderer: main.cpp projector_renderer.cpp Mesh.cpp
+	mpicxx main.cpp projector_renderer.cpp Mesh.cpp -O3 -I/usr/local/include/boost-1_39 --std=c++0x -I../common/ -L../common/ -lboost_thread -lboost_regex -DCONTRAPTION -lX11 -lGL -lGLU -lGLEW  -lXmu -lXi -lXrandr -lglut -lSDL -o mpi_renderer -DCOMPRESSED_TEX -lz -DWRITE_FILE

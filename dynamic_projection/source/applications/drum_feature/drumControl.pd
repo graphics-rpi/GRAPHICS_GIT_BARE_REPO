@@ -1,0 +1,105 @@
+#N canvas 505 350 639 681 10;
+#X obj 109 157 udpreceive 7000;
+#X obj 109 189 unpackOSC;
+#N canvas 567 359 923 542 distortion 0;
+#X obj 100 51 inlet;
+#X obj 55 402 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 209 403 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 359 404 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 52 443 ctlout 3 1;
+#X obj 206 444 ctlout 3 2;
+#X obj 356 445 ctlout 3 3;
+#X obj 100 97 route 1 2 3;
+#X connect 0 0 7 0;
+#X connect 1 0 4 0;
+#X connect 2 0 5 0;
+#X connect 3 0 6 0;
+#X connect 7 0 1 0;
+#X connect 7 1 2 0;
+#X connect 7 2 3 0;
+#X restore 232 426 pd distortion;
+#N canvas 4 351 923 542 mod 0;
+#X obj 100 51 inlet;
+#X obj 55 402 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 209 403 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 359 404 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 514 402 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 100 97 route 1 2 3 4;
+#X obj 52 443 ctlout 5 1;
+#X obj 206 443 ctlout 5 2;
+#X obj 356 445 ctlout 5 3;
+#X obj 511 443 ctlout 5 4;
+#X connect 0 0 5 0;
+#X connect 1 0 6 0;
+#X connect 2 0 7 0;
+#X connect 3 0 8 0;
+#X connect 4 0 9 0;
+#X connect 5 0 1 0;
+#X connect 5 1 2 0;
+#X connect 5 2 3 0;
+#X connect 5 3 4 0;
+#X restore 329 427 pd mod;
+#N canvas 294 346 923 542 eq 0;
+#X obj 100 51 inlet;
+#X obj 55 402 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 209 403 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 359 404 hsl 128 15 0 128 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 100 97 route 1 2 3;
+#X obj 52 443 ctlout 7 1;
+#X obj 205 443 ctlout 7 2;
+#X obj 355 445 ctlout 7 3;
+#X connect 0 0 4 0;
+#X connect 1 0 5 0;
+#X connect 2 0 6 0;
+#X connect 3 0 7 0;
+#X connect 4 0 1 0;
+#X connect 4 1 2 0;
+#X connect 4 2 3 0;
+#X restore 392 427 pd eq;
+#N canvas 254 306 923 542 beats 0;
+#X obj 100 51 inlet;
+#X obj 52 443 ctlout 1 1;
+#X obj 55 402 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 209 403 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 359 404 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 510 404 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 655 403 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
+-1 -1 0 1;
+#X obj 206 444 ctlout 1 2;
+#X obj 356 445 ctlout 1 3;
+#X obj 510 446 ctlout 1 4;
+#X obj 671 445 ctlout 1 5;
+#X obj 100 97 route 1 2 3 4 5;
+#X connect 0 0 11 0;
+#X connect 2 0 1 0;
+#X connect 3 0 7 0;
+#X connect 4 0 8 0;
+#X connect 5 0 9 0;
+#X connect 6 0 10 0;
+#X connect 11 0 2 0;
+#X connect 11 1 3 0;
+#X connect 11 2 4 0;
+#X connect 11 3 5 0;
+#X connect 11 4 6 0;
+#X restore 147 427 pd beats;
+#X obj 125 242 route /Beat /Dist. /Mod /EQ;
+#X connect 0 0 1 0;
+#X connect 1 0 6 0;
+#X connect 6 0 5 0;
+#X connect 6 1 2 0;
+#X connect 6 2 3 0;
+#X connect 6 3 4 0;

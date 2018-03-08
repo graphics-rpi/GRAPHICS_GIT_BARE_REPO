@@ -1,0 +1,9 @@
+SUBSYSTEMS=="input", ATTRS{name}=="2.4GHZ RF ONLY  MOUSE", NAME="m2"
+
+SUBSYSTEMS=="input", ATTRS{name}=="MOSART Semi. 2.4G Keyboard Mouse", NAME="m3"
+
+SUBSYSTEMS=="input", ATTRS{name}=="Genius 2.4G Wireless Mouse", NAME="m4"
+
+SUBSYSTEMS=="input", ATTRS{name}=="Microsoft Microsoft 3-Button Mouse with IntelliEye(TM)", NAME="m5"
+
+SUBSYSTEMS=="input", ATTRS{name}=="Dell Dell USB Mouse", NAME="m6"

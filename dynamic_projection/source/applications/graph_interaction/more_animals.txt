@@ -1,0 +1,99 @@
+sponge        0 animals   1 invertebrates 2 porifera
+coral         0 animals   1 invertebrates 2 cnidaria
+jellyfish     0 animals   1 invertebrates 2 cnidaria
+flatworm      0 animals   1 invertebrates 2 platyhelminthes
+roundworm     0 animals   1 invertebrates 2 nematodes
+earthworm     0 animals   1 invertebrates 2 annelids
+starfish      0 animals   1 invertebrates 2 echinoderms
+sea_cucumber  0 animals   1 invertebrates 2 echinoderms
+sea_urchin    0 animals   1 invertebrates 2 echinoderms
+snail         0 animals   1 invertebrates 2 molluscs
+oyster        0 animals   1 invertebrates 2 molluscs
+octopus       0 animals   1 invertebrates 2 molluscs
+squid         0 animals   1 invertebrates 2 molluscs
+lobster       0 animals   1 invertebrates 2 arthropods  3 crustaceans
+crab          0 animals   1 invertebrates 2 arthropods  3 crustaceans
+shrimp        0 animals   1 invertebrates 2 arthropods  3 crustaceans
+barnacle      0 animals   1 invertebrates 2 arthropods  3 crustaceans
+spider        0 animals   1 invertebrates 2 arthropods  3 arachnids
+scorpion      0 animals   1 invertebrates 2 arthropods  3 arachnids
+centipede     0 animals   1 invertebrates 2 arthropods  3 chilopods
+millipede     0 animals   1 invertebrates 2 arthropods  3 diplopods
+beetle        0 animals   1 invertebrates 2 arthropods  3 insects
+butterfly     0 animals   1 invertebrates 2 arthropods  3 insects
+wasp          0 animals   1 invertebrates 2 arthropods  3 insects
+ant           0 animals   1 invertebrates 2 arthropods  3 insects
+termite       0 animals   1 invertebrates 2 arthropods  3 insects
+fly           0 animals   1 invertebrates 2 arthropods  3 insects
+mosquito      0 animals   1 invertebrates 2 arthropods  3 insects
+lamprey       0 animals   2 vertebrates   3 fish        4 agnatha
+shark         0 animals   2 vertebrates   3 fish        4 chondrichthyes
+ray           0 animals   2 vertebrates   3 fish        4 chondrichthyes
+x-ray_fish    0 animals   2 vertebrates   3 fish        4 osteichthyes
+tuna          0 animals   2 vertebrates   3 fish        4 osteichthyes
+salmon        0 animals   2 vertebrates   3 fish        4 osteichthyes
+frog          0 animals   2 vertebrates   3 amphibians
+salamander    0 animals   2 vertebrates   3 amphibians
+caecilian     0 animals   2 vertebrates   3 amphibians
+iguana        0 animals   2 vertebrates   3 reptiles
+snake         0 animals   2 vertebrates   3 reptiles
+alligator     0 animals   2 vertebrates   3 reptiles
+turtle        0 animals   2 vertebrates   3 reptiles
+Komodo_dragon 0 animals   2 vertebrates   3 reptiles
+velociraptor  0 animals   2 vertebrates   3 reptiles
+ostrich       0 animals   2 vertebrates   3 birds
+penguin       0 animals   2 vertebrates   3 birds
+quail         0 animals   2 vertebrates   3 birds
+vulture       0 animals   2 vertebrates   3 birds
+falcon        0 animals   2 vertebrates   3 birds
+nuthatch      0 animals   2 vertebrates   3 birds
+flamingo      0 animals   2 vertebrates   3 birds
+owl           0 animals   2 vertebrates   3 birds
+hummingbird   0 animals   2 vertebrates   3 birds
+platypus      0 animals   2 vertebrates   3 mammals    4  monotremes
+kangaroo      0 animals   2 vertebrates   3 mammals    4  marsupials
+koala         0 animals   2 vertebrates   3 mammals    4  marsupials
+bat           0 animals   2 vertebrates   3 mammals    4  chiroptera
+mole          0 animals   2 vertebrates   3 mammals    4  insectivores
+shrew         0 animals   2 vertebrates   3 mammals    4  insectivores
+sloth         0 animals   2 vertebrates   3 mammals    4  edentates
+anteater      0 animals   2 vertebrates   3 mammals    4  edentates
+armadillo     0 animals   2 vertebrates   3 mammals    4  edentates
+rabbit        0 animals   2 vertebrates   3 mammals    4  lagamorphs
+pika          0 animals   2 vertebrates   3 mammals    4  lagamorphs
+rat           0 animals   2 vertebrates   3 mammals    4  rodents
+squirrel      0 animals   2 vertebrates   3 mammals    4  rodents
+porcupine     0 animals   2 vertebrates   3 mammals    4  rodents
+beaver        0 animals   2 vertebrates   3 mammals    4  rodents
+capybara      0 animals   2 vertebrates   3 mammals    4  rodents
+bear          0 animals   2 vertebrates   3 mammals    4  carnivores
+jaguar        0 animals   2 vertebrates   3 mammals    4  carnivores
+raccoon       0 animals   2 vertebrates   3 mammals    4  carnivores
+tiger         0 animals   2 vertebrates   3 mammals    4  carnivores
+fox           0 animals   2 vertebrates   3 mammals    4  carnivores
+dog           0 animals   2 vertebrates   3 mammals    4  carnivores
+otter         0 animals   2 vertebrates   3 mammals    4  carnivores
+weasel        0 animals   2 vertebrates   3 mammals    4  carnivores
+wolverine     0 animals   2 vertebrates   3 mammals    4  carnivores
+walrus        0 animals   2 vertebrates   3 mammals    4  pinnipeds
+seal          0 animals   2 vertebrates   3 mammals    4  pinnipeds
+dolphin       0 animals   2 vertebrates   3 mammals    4  cetaceans
+whale         0 animals   2 vertebrates   3 mammals    4  cetaceans
+elephant      0 animals   2 vertebrates   3 mammals    4  proboscids
+manatee       0 animals   2 vertebrates   3 mammals    4  sirenia
+cow           0 animals   2 vertebrates   3 mammals    4  even-toed_ungulates
+goat          0 animals   2 vertebrates   3 mammals    4  even-toed_ungulates
+hippopotamus  0 animals   2 vertebrates   3 mammals    4  even-toed_ungulates
+camel         0 animals   2 vertebrates   3 mammals    4  even-toed_ungulates
+giraffe       0 animals   2 vertebrates   3 mammals    4  even-toed_ungulates
+okapi         0 animals   2 vertebrates   3 mammals    4  even-toed_ungulates
+moose         0 animals   2 vertebrates   3 mammals    4  even-toed_ungulates
+tapir         0 animals   2 vertebrates   3 mammals    4  odd-toed_ungulates
+rhinoceros    0 animals   2 vertebrates   3 mammals    4  odd-toed_ungulates
+horse         0 animals   2 vertebrates   3 mammals    4  odd-toed_ungulates
+zebra         0 animals   2 vertebrates   3 mammals    4  odd-toed_ungulates
+unicorn       0 animals   2 vertebrates   3 mammals    4  odd-toed_ungulates
+monkey        0 animals   2 vertebrates   3 mammals    4  primates
+gorilla       0 animals   2 vertebrates   3 mammals    4  primates
+baboon        0 animals   2 vertebrates   3 mammals    4  primates
+lemur         0 animals   2 vertebrates   3 mammals    4  primates

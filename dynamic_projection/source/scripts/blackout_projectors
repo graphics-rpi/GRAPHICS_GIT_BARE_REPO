@@ -1,0 +1,16 @@
+#!/bin/bash
+
+color=black
+if [ -n "$1" ]
+then
+    color=$1
+fi
+
+xsetroot -display torch:1.0 -solid $color
+xsetroot -display torch:1.1 -solid $color
+xsetroot -display torch:0.0 -solid $color
+xsetroot -display torch:0.1 -solid $color
+xsetroot -display chainsaw:1.0 -solid $color
+xsetroot -display chainsaw:1.1 -solid $color
+xsetroot -display chainsaw:0.0 -solid $color
+xsetroot -display chainsaw:0.1 -solid $color

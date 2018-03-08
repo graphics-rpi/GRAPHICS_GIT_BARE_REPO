@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+The top-level auxiliary file: writeup.aux
+The style file: acmsiggraph.bst
+Database file #1: writeup.bib
+Warning--empty organization in f86
+Warning--empty booktitle in kr96
+Warning--empty organization in kr96
+Warning--empty organization in sb92
+You've used 5 entries,
+            2748 wiz_defined-function locations,
+            624 strings with 4944 characters,
+and the built_in function-call counts, 1889 in all, are:
+= -- 194
+> -- 63
+< -- 0
++ -- 20
+- -- 24
+* -- 142
+:= -- 316
+add.period$ -- 19
+call.type$ -- 5
+change.case$ -- 28
+chr.to.int$ -- 5
+cite$ -- 9
+duplicate$ -- 73
+empty$ -- 163
+format.name$ -- 27
+if$ -- 384
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 4
+newline$ -- 32
+num.names$ -- 15
+pop$ -- 32
+preamble$ -- 1
+purify$ -- 23
+quote$ -- 0
+skip$ -- 48
+stack$ -- 0
+substring$ -- 102
+swap$ -- 14
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 40
+warning$ -- 4
+while$ -- 23
+width$ -- 7
+write$ -- 71
+(There were 4 warnings)

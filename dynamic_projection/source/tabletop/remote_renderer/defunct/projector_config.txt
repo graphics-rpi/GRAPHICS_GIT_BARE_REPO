@@ -1,0 +1,7 @@
+#hostname xserver xscreen display_name
+torch 0 1 /home/grfx/Checkout/archdisplay/projector_A.glcam
+torch 1 0 /home/grfx/Checkout/archdisplay/projector_B.glcam
+torch 1 1 /home/grfx/Checkout/archdisplay/projector_C.glcam
+chainsaw 0 1 /home/grfx/Checkout/archdisplay/projector_D.glcam
+chainsaw 1 0 /home/grfx/Checkout/archdisplay/projector_E.glcam
+chainsaw 1 1 /home/grfx/Checkout/archdisplay/projector_F.glcam

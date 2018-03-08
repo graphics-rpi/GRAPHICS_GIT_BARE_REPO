@@ -1,0 +1,630 @@
+\begin{thebibliography}{100}
+
+\bibitem{SENATE_REPORT}
+R.~Seed, P.~Nicholson, R.~Dalrymple, J.~Battjes, R.~Bea, G.~Boutwell, J.~Bray,
+  B.~D. Collins, L.~Harder, J.~Headland, M.~Inamine, R.~Kayen, R.~Kuhr, J.~M.
+  Pestana, R.~Sanders, F.~Silva-Tulla, R.~Storesund, S.~Tanaka, J.~Wartman,
+  T.~F. Wolff, L.~Wooten, and T.~Zimmie, ``{Preliminary Report on the
+  Performance of the New Orleans Levee Systems in Hurricane Katrina},'' August
+  2005.
+\newblock Internet:
+  \url{http://www.berkeley.edu/news/media/releases/2005/11/leveereport_prelim.pdf}
+  [July 28, 2012].
+
+\bibitem{Schnitter}
+N.~Schnitter, {\em A History of Dams: the useful pyramids}.
+\newblock Lisse, The Netherlands: A.A. Balkema, 1994.
+
+\bibitem{FloodDamageData}
+{University Corporation for Atmospheric Research}, ``Flood damage in the united
+  states,'' 2003.
+\newblock Internet: \url{http://flooddamagedata.org/} [July 28, 2012].
+
+\bibitem{elevationDataEffects}
+H.~Walker, J.~M.~L. Jr., and J.~Kim, ``The effects of elevation data
+  representation on mesoscale atmospheric model simulations,'' in {\em
+  International conference/workshop on integrating GIS and environmental
+  modeling}, 1996.
+
+\bibitem{inanc-phd}
+M.~Inanc, {\em Compressing Terrain Elevation Datasets}.
+\newblock PhD thesis, Rensselaer Polytechnic Institute, Troy, NY, USA, 2008.
+
+\bibitem{Lau-CAGIS}
+T.~Y. Lau and W.~R. Franklin, ``Completing framentary river networks via
+  induced terrain,'' in {\em Cartography and Geographic Information Science},
+  vol.~38, pp.~162--174, April 2011.
+
+\bibitem{nyquist}
+H.~Nyquist, ``{Certain topics in telegraph transmission theory},'' {\em
+  Proceedings of the IEEE}, vol.~90, no.~2, pp.~280--305, 2002.
+
+\bibitem{gao:resolution}
+J.~Gao, ``Resolution and accuracy of terrain representation by grid {DEMs} at a
+  micro-scale.,'' {\em International Journal of Geographical Information
+  Science}, pp.~199--212, 1997.
+
+\bibitem{Abdelguerfi-HierTINs}
+M.~Abdelguerfi, C.~Wynne, E.~Cooper, and L.~Roy, ``Representation of {3-D}
+  elevation in terrain databases using hierarchical triangulated irregular
+  networks: a comparative analysis,'' {\em International Journal of
+  Geographical Information Science}, vol.~12, no.~8, pp.~853--873, 1998.
+
+\bibitem{DeFloriani-HTINs}
+L.~De~Floriani and E.~Puppo, ``Hierarchical triangulation for multiresolution
+  surface description,'' {\em ACM Transactions on Graphics}, vol.~14,
+  pp.~363--411, October 1995.
+
+\bibitem{BartholdiAndGoldsman-HierTINs}
+{J.J. Bartholdi III} and P.~Goldsman, ``Multiresolution indexing of
+  triangulated irregular networks,'' {\em IEEE Transactions on Visualization
+  and Computer Graphics}, vol.~10, pp.~484 --495, July 2004.
+
+\bibitem{Velho-HierTINs}
+L.~Velho, L.~H. de~Figueiredo, and J.~Gomes, ``Hierarchical generalized
+  triangle strips,'' {\em The Visual Computer}, vol.~15, pp.~21--35, 1999.
+
+\bibitem{Agarwal:1994:SAG:314464.314475}
+P.~K. Agarwal and S.~Suri, ``Surface approximation and geometric partitions,''
+  in {\em Proceedings of the Fifth Annual ACM-SIAM Symposium on Discrete
+  Algorithms}, SODA '94, pp.~24--33, Society for Industrial and Applied
+  Mathematics, 1994.
+
+\bibitem{Scarlatos:1990:HTU:949531.949559}
+L.~Scarlatos and T.~Pavlidis, ``Hierarchical triangulation using terrain
+  features,'' in {\em Proceedings of the 1st Conference on Visualization '90},
+  VIS '90, pp.~168--175, IEEE Computer Society Press, 1990.
+
+\bibitem{Cignoni97representationand}
+P.~Cignoni, E.~Puppo, and R.~Scopigno, ``Representation and visualization of
+  terrain surfaces at variable resolution,'' in {\em The Visual Computer},
+  vol.~13, pp.~199--217, 1997.
+
+\bibitem{KellyAndBaru_GPLATES}
+G.~R. Keller and C.~Baru, {\em Next-generation plate-tectonic reconstructions
+  using GPlates}.
+\newblock Cambridge, United Kingdom: Cambridge University Press, 2011.
+
+\bibitem{Baumann:1999:HHD:792758.793044}
+K.~Baumann, J.~Doellner, K.~Hinrichs, and O.~Kersting, ``A hybrid, hierarchical
+  data structure for real-time terrain visualization,'' in {\em Proceedings of
+  the International Conference on Computer Graphics}, pp.~85--92, 1999.
+
+\bibitem{Farin:2001:CSC:501891}
+G.~Farin, {\em Curves and surfaces for CAGD: a practical guide}.
+\newblock San Francisco, CA, USA: Morgan Kaufmann Publishers Inc., 5th~ed.,
+  2002.
+
+\bibitem{Faux:1979:CGD:578513}
+I.~D. Faux and M.~J. Pratt, {\em Computational Geometry for Design and
+  Manufacture}.
+\newblock New York, NY, USA: Halsted Press, 1979.
+
+\bibitem{Bertram:2003:ASS:769922.769942}
+M.~Bertram, X.~Tricoche, and H.~Hagen, ``Adaptive smooth scattered-data
+  approximation for large-scale terrain visualization,'' in {\em Proceedings of
+  the Symposium on Data Visualisation 2003}, VISSYM '03, pp.~177--184, 2003.
+
+\bibitem{Nobre_Cuartas_Hodnett_Rennó_Rodrigues_Silveira_Waterloo_Saleska_2011}
+A.~D. Nobre, L.~A. Cuartas, M.~Hodnett, C.~D. Renno, G.~Rodrigues, A.~Silveira,
+  M.~Waterloo, and S.~Saleska, ``Height above the nearest drainage: a
+  hydrologically relevant new terrain model,'' {\em Journal of Hydrology},
+  vol.~404, no.~1-2, pp.~13--29, 2011.
+
+\bibitem{Benes-LayeredDataRep}
+B.~Benes and R.~Forsbach, ``Layered data representation for visual simulation
+  of terrain erosion,'' in {\em Proceedings of the 17th Spring Conference on
+  Computer Graphics}, April 2001.
+
+\bibitem{argwala-Volume}
+A.~Agarwala, {\em Volumetric Surface Sculpting}.
+\newblock PhD thesis, Massachusetts Institute of Technology, 1999.
+
+\bibitem{OCALLAGHAN-Extraction}
+J.~F. O'Callaghan and D.~M. Mark, ``The extraction of drainage networks from
+  digital elevation data.,'' {\em Computer Vision, Graphics, and Image
+  Processing}, pp.~323--344, 1984.
+
+\bibitem{band86}
+L.~Band, ``Topographic partition of watersheds with digital elevation models,''
+  {\em Water Resources Research}, vol.~22, pp.~15--24, January 1986.
+
+\bibitem{YANG-geomorphic}
+D.~Yang, S.~Herath, and K.~Musiake, ``Analysis of geomorphologic properties
+  extracted from {DEMs} for hydrologic modeling,'' {\em Annual Journal of
+  Hydraulic Engineering}, vol.~41, 1997.
+
+\bibitem{MONTGOMERY-1993}
+D.~R. Montgomery, ``Channel network source representation using digital
+  elevation models,'' {\em Water Resources Research}, vol.~29, pp.~3925--3934,
+  December 1993.
+
+\bibitem{Turcotte_Fortin_Rousseau_Massicotte_Villeneuve_2001}
+R.~Turcotte, J.~Fortin, A.~Rousseau, S.~Massicotte, and J.~Villeneuve,
+  ``Determination of the drainage structure of a watershed using a digital
+  elevation model and a digital river and lake network,'' {\em Journal of
+  Hydrology}, vol.~240, no.~3-4, pp.~225--242, 2001.
+
+\bibitem{Bruno2007}
+B.~Lashermes, E.~Foufoula-Georgiou, and W.~E. Dietrich, ``{Channel network
+  extraction from high resolution topography using wavelets},'' {\em
+  Geophysical Research Letters}, vol.~34, p.~L23S04, October 2007.
+
+\bibitem{PhysRevLett.68.205}
+S.~Kramer and M.~Marder, ``Evolution of river networks,'' {\em Phys. Rev.
+  Lett.}, vol.~68, pp.~205--208, January 1992.
+
+\bibitem{Soille_carvingand}
+P.~Soille, J.~Vogt, and R.~Colombo, ``Carving and adaptive drainage enforcement
+  of grid digital elevation models,'' {\em Water Resources Research}, vol.~39,
+  pp.~SWC 10 1--13, 2003.
+
+\bibitem{conf/wscg/Pedrini01}
+H.~Pedrini, ``An improved refinement and decimation method for adaptive terrain
+  surface approximation,'' in {\em WSCG}, pp.~103--109, 2001.
+
+\bibitem{Dyn02adaptivethinning}
+N.~Dyn, M.~S. Floater, and A.~Iske, ``Adaptive thinning for bivariate scattered
+  data,'' {\em Journal of Computational and Applied Mathematics}, vol.~145,
+  pp.~505--517, 2002.
+
+\bibitem{1e218e70004511dab4d5000ea68e967b}
+J.~Kolar, ``Representation of geographic terrain surface using global
+  indexing,'' in {\em Proceedings of the 12th International Conference on
+  Geoinformatics Geospatial Information Research: Bridging the Pacific and
+  Atlantic} (S.~Brandt, ed.), pp.~321--329, 2004.
+
+\bibitem{Xie_approximatingterrain}
+Z.~Xie, M.~A. Andrade, O.~Franklin, B.~Cutler, M.~Inanc, D.~M. Tracy, and
+  J.~Muckell, ``Approximating terrain with over-determined laplacian {PDEs},''
+  in {\em 17th Fall Workshop on Computational Geometry}, November 2006.
+
+\bibitem{Pradhan_gisterrain}
+B.~Pradhan, S.~Mansor, A.~R. Ramli, A.~Rashid, and B.~M. Sharif, ``{GIS}
+  terrain data compression using lifting scheme: A new dimension,'' in {\em
+  International Journal of the Computer, the Internet and Management},
+  pp.~9--19, 2007.
+
+\bibitem{Kim_ageometric}
+S.-S. Kim, M.-G. Cho, and H.~gue Cho, ``A geometric compression algorithm for
+  massive terrain data using {Delaunay} triangulation,'' in {\em International
+  Conferences in Central Europe on Computer Graphics, Visualization and
+  Computer Vision}, pp.~124--131, February 1999.
+
+\bibitem{Grazzini05n.:extraction}
+J.~Grazzini and N.~Chrysoulakis, ``Extraction of surface properties from a high
+  accuracy dem using multiscale remote sensing techniques,'' in {\em
+  Proceedings of the 19th Conference on Informatics for Environmental
+  Protection}, pp.~352--356, 2005.
+
+\bibitem{Penn92}
+W.~B. Pennebaker and J.~L. Mitchell, {\em JPEG Still Image Data Compression
+  Standard}.
+\newblock New York, NY, USA: Van Nostrand Reinhold, 1992.
+
+\bibitem{Taubman:2001:JIC:559856}
+D.~S. Taubman and M.~W. Marcellin, {\em JPEG 2000: Image Compression
+  Fundamentals, Standards and Practice}.
+\newblock Norwell, MA, USA: Kluwer Academic Publishers, 2001.
+
+\bibitem{316738}
+J.~Miano, {\em Compressed image file formats: JPEG, PNG, GIF, XBM, BMP}.
+\newblock New York, NY, USA: ACM Press/Addison-Wesley Publishing Co., 1999.
+
+\bibitem{Kyrki99jbigimage}
+V.~Kyrki, ``{JBIG} image compression standard,'' 1999.
+
+\bibitem{Zukoski:2006:NAM:1356588.1356594}
+M.~J. Zukoski, T.~Boult, and T.~Iyriboz, ``A novel approach to medical image
+  compression,'' {\em International Journal of Bioinformatics Research and
+  Applications}, vol.~2, pp.~89--103, March 2006.
+
+\bibitem{Raj:2007:NAM:1335117.1335447}
+V.~N.~P. Raj and T.~Venkateswarlu, ``A novel approach to medical image
+  compression using sequential {3D DCT},'' in {\em Proceedings of the
+  International Conference on Computational Intelligence and Multimedia
+  Applications}, vol.~3 of {\em ICCIMA '07}, pp.~146--152, 2007.
+
+\bibitem{wrf-autocarto-2006}
+W.~R. Franklin, M.~Inanc, and Z.~Xie, ``Two novel surface representation
+  techniques,'' in {\em Autocarto}, (Vancouver Washington), Cartography and
+  Geographic Information Society, June 2006.
+
+\bibitem{hess-15-667-2011}
+M.~Metz, H.~Mitasova, and R.~S. Harmon, ``Efficient extraction of drainage
+  networks from massive, radar-based elevation models with least cost path
+  search,'' {\em Hydrology and Earth System Sciences}, vol.~15, no.~2,
+  pp.~667--678, 2011.
+
+\bibitem{Tarboton-OnExtraction}
+D.~G. Tarboton, R.~L. Bras, and I.~Rodriguez-Iturbe, ``On the extraction of
+  channel networks from digital elevation data,'' vol.~5, pp.~81--100, 1991.
+
+\bibitem{Stookey08parallelodetlap}
+J.~Stookey, Z.~Xie, B.~Cutler, W.~R. Franklin, D.~Tracy, and M.~V.~A. Andrade,
+  ``Parallel {ODETLAP} for terrain compression and reconstruction,'' in {\em
+  Proceedings of the 16th ACM SIGSPATIAL International Conference on Advances
+  in Geographic Information Systems}, pp.~17:1--17:9, 2008.
+
+\bibitem{ESP:ESP3290120107}
+L.~W. Zevenbergen and C.~R. Thorne, ``Quantitative analysis of land surface
+  topography,'' {\em Earth Surface Processes and Landforms}, vol.~12, no.~1,
+  pp.~47--56, 1987.
+
+\bibitem{Tracy:2009:PPS:1751402}
+D.~M. Tracy, {\em Path planning and slope representation on compressed
+  terrain}.
+\newblock PhD thesis, Rensselaer Polytechnic Institute, Troy, NY, USA, 2009.
+
+\bibitem{citeulike:1146653}
+M.~P. Dubuisson and A.~K. Jain, ``{A modified Hausdorff distance for object
+  matching},'' in {\em Proceedings of 12th International Conference on Pattern
+  Recognition}, vol.~1, pp.~566--568, IEEE Comput. Soc. Press, 1994.
+
+\bibitem{Muckell:2009:EHP:1517463.1517470}
+J.~Muckell, C.~Stuetzle, M.~Andrade, W.~R. Franklin, and B.~Cutler,
+  ``Evaluating hydrology preservation of simplified terrain representations,''
+  {\em SIGSPATIAL Special}, vol.~1, pp.~51--56, March 2009.
+
+\bibitem{Freeman:1974:CPL:356625.356627}
+H.~Freeman, ``Computer processing of line-drawing images,'' {\em ACM
+  Compututing Surveys}, vol.~6, pp.~57--97, March 1974.
+
+\bibitem{Ramar72:Polygonalapproximation}
+U.~Ramer, ``{An iterative procedure for the polygonal approximation of plane
+  curves},'' {\em Computer Graphics and Image Processing}, vol.~1,
+  pp.~244--256, November 1972.
+
+\bibitem{7z-Pavlov}
+I.~Pavlov, ``7-zip.''
+\newblock Internet: \url{http://www.7-zip.org} [July 31, 2012].
+
+\bibitem{Rubner:2000:EMD:365875.365881}
+Y.~Rubner, C.~Tomasi, and L.~J. Guibas, ``The earth mover's distance as a
+  metric for image retrieval,'' {\em International Journal of Computer Vision},
+  vol.~40, pp.~99--121, November 2000.
+
+\bibitem{stanislawski-pruning}
+L.~V. Stanislawski and S.~Savino, ``Pruning of hydrographic networks: A
+  comparison of two approaches,'' in {\em 14th ICA/ISPRS Workshop on
+  Generalisation and Multiple Representation}, 2011.
+
+\bibitem{citeulike:5493394}
+L.~V. Stanislawski, ``Feature pruning by upstream drainage area to support
+  automated generalization of the united states national hydrography dataset,''
+  {\em Computers, Environment and Urban Systems}, vol.~33, pp.~325--333,
+  September 2009.
+
+\bibitem{Ling:2007:EEM:1263143.1263456}
+H.~Ling and K.~Okada, ``An efficient earth mover's distance algorithm for
+  robust histogram comparison,'' {\em IEEE Transactions on Pattern Analysis and
+  Machine Intelligence}, vol.~29, pp.~840--853, May 2007.
+
+\bibitem{Perlin:1985:IS:325165.325247}
+K.~Perlin, ``An image synthesizer,'' {\em Proceedings of the 12th Annual
+  Conference on Computer Graphics and Interactive Techniques}, vol.~19,
+  pp.~287--296, July 1985.
+
+\bibitem{Smelik09asurvey}
+R.~M. Smelik, K.~J.~D. Kraker, S.~A. Groenewegen, T.~Tutenel, and R.~Bidarra,
+  ``A survey of procedural methods for terrain modelling,'' in {\em Proceedings
+  of the CASA Workshop on 3D Advanced Media In Gaming And Simulation}, June
+  2009.
+
+\bibitem{Stachniak_Stuerzlinger_2005}
+S.~Stachniak and W.~Stuerzlinger, ``An algorithm for automated fractal terrain
+  deformation,'' in {\em Proceedings of Computer Graphics and Artificial
+  Intelligence}, vol.~1, pp.~64--76, 2005.
+
+\bibitem{Ong:2005:TGU:1068009.1068241}
+T.~J. Ong, R.~Saunders, J.~Keyser, and J.~J. Leggett, ``Terrain generation
+  using genetic algorithms,'' in {\em Proceedings of the 2005 Conference on
+  Genetic and Evolutionary Computation}, pp.~1463--1470, 2005.
+
+\bibitem{5585913}
+P.~Walsh and P.~Gade, ``Terrain generation using an interactive genetic
+  algorithm,'' in {\em IEEE Congress on Evolutionary Computation}, pp.~1 --7,
+  July 2010.
+
+\bibitem{FradeVC09}
+M.~Frade, F.~F. de~Vega, and C.~Cotta, ``Breeding terrains with genetic terrain
+  programming: The evolution of terrain generators,'' {\em International
+  Journal of Computer Games Technology}, vol.~2009, 2009.
+
+\bibitem{Doran2010Terrain}
+J.~Doran and I.~Parberry, ``Controlled procedural terrain generation using
+  software agents,'' {\em IEEE Transactions on Computational Intelligence and
+  AI in Games}, vol.~2, no.~2, pp.~111--119, 2010.
+
+\bibitem{Simms-TortoisesAndHares}
+M.~J. Simms, ``Tortoises and hares: Dissolution, erosion and isostacy in
+  landscape evolution,'' {\em Earth Surface Processes and Landforms}, vol.~29,
+  pp.~477--494, February 2004.
+
+\bibitem{Foley-IntegratedBiosphere}
+J.~A. Foley, I.~C. Prentice, N.~Ramankutty, S.~Levis, D.~Pollard, S.~Sitch, and
+  A.~Haxeltine, ``An integrated biosphere model of land surface processes,
+  terrestrial carbon balance, and vegetation dynamics,'' {\em Global
+  Biogeochemistry Cycles}, vol.~10, pp.~603--628, 1996.
+
+\bibitem{Delire-EvaluatingPerformance}
+C.~Delire and J.~A. Foley, ``Evaluating the performance of a land
+  surface/ecosystem model with biophysical measurements from contrasting
+  environments,'' {\em Journal of Geophysical Research}, vol.~104, no.~16,
+  pp.~895--909, 1999.
+
+\bibitem{Dieter-TerrestrialVegetation}
+D.~Gerten, S.~Schaphoff, U.~Haberlandt, W.~Lucht, and S.~Sitch, ``Terrestrial
+  vegetation and water balance--hydrological evaluation of a dynamic global
+  vegetation model,'' {\em Journal of Hydrology}, vol.~286, pp.~249--270,
+  January 2004.
+
+\bibitem{Moiling-DistributedRunoff}
+C.~C. Moiling, J.~C. Strikwerda, J.~M. Norman, C.~A. Rodgers, R.~Wayne, C.~L.
+  Morgan, G.~R. Diak, and J.~R. Mecikalski, ``Distributed runoff formulation
+  designed for a precision agricultural-landscape modeling system,'' {\em
+  Journal of the American Water Resources Association}, vol.~41, no.~6,
+  pp.~1289--1313, 2005.
+
+\bibitem{Bonilla-TestingGridBasedSoil}
+C.~A. Bonilla, J.~M. Norman, C.~C. Molling, K.~G. Karthikeyan, and P.~S.
+  Miller, ``Testing a grid-based soil erosion model across topographically
+  complex landscapes,'' {\em Soil Science Society of America Journal}, vol.~72,
+  pp.~1745--1755, 2008.
+
+\bibitem{Hanson-PhysicalModeling}
+G.~J. Hanson, K.~R. Cook, and S.~L. Hunt, ``Physical modeling of overtopping
+  erosion and breach formation of cohesive embankments,'' {\em Transactions of
+  the ASAE}, vol.~48, pp.~1783--1794, September 2005.
+
+\bibitem{Wang-ModelingTheHydraulics}
+P.~Wang and R.~Kahawita, ``Modeling the hydraulics and erosion process in
+  breach formation due to overtopping,'' in {\em Sedimentation and Sediment
+  Transport, Proceedings}, May 2003.
+
+\bibitem{Wang-EmbankmentOvertopping}
+P.~Wang, R.~Kahawita, A.~Moktari, T.~M. Phat, and T.~T.Quach, ``Modeling breach
+  formation in embankments due to overtopping,'' {\em Transactions of the
+  International Congress on Large Dams}, vol.~22, pp.~377--396, June 2006.
+
+\bibitem{Rawls-EstimatingHydraulics}
+W.~J. Rawls, L.~R. Ahuja, and D.~L. Brakensiek, ``Estimating soil hydraulic
+  properties from soils data,'' {\em Workshop on Indirect Methods for
+  Estimating the Hydraulic Properties of Unsaturated Soils}, pp.~329--341,
+  1992.
+
+\bibitem{Hanson-JetIndex}
+G.~J. Hanson, ``Development of a jet index to characterize erosion resistance
+  of soils in earthen spillways,'' {\em Transactions of the ASAE}, vol.~34,
+  no.~5, pp.~2015--2020, 1991.
+
+\bibitem{Annandale-Erodibility}
+G.~W. Annandale, ``Erodibility,'' {\em Journal of Hydraulic Research}, vol.~33,
+  no.~4, pp.~471--494, 1995.
+
+\bibitem{Temple-HeadcutAdvance}
+D.~M. Temple and J.~S. Moore, ``Headcut advance prediction for earth
+  spillways,'' {\em Transactions, ASAE}, vol.~40, no.~3, pp.~557 -- 562, 1997.
+
+\bibitem{Moore-FieldProcedures}
+J.~S. Moore, ``Field procedures guide for the headcut erodibility index,'' {\em
+  Transactions of the ASAE}, vol.~40, no.~2, pp.~325--336, 1997.
+
+\bibitem{Brandimarte-StochasticFlow}
+L.~Brandimarte, A.~Montanari, J.-L. Briaud, and P.~D'Odorico, ``Stochastic flow
+  analysis for predicting river scour on cohesive soils,'' {\em Journal of
+  Hydraulic Engineering}, vol.~132, no.~5, pp.~493--500, 2006.
+
+\bibitem{Wan-InvestigationOfErosionRate}
+C.~F. Wan and R.~Fell, ``Investigation of rate of erosion of soils in
+  embankment dams,'' {\em Journal of Geotechnical and Geoenvironmental
+  Engineering}, vol.~130, no.~4, pp.~373--380, 2004.
+
+\bibitem{Briaud-ErosionByOvertopping}
+J.~L. Briaud, H.-C. Chen, A.~V. Govindasamy, and R.~Storesund, ``Levee erosion
+  by overtopping in {New Orleans} during the {Katrina Hurricane},'' {\em
+  Journal of Geotechnical and Geoenvironmental Engineering}, vol.~134, no.~618,
+  2008.
+
+\bibitem{Briaud-CaseHistories}
+J.~L. Briaud, ``Case histories in soil and rock erosion: {Woodrow Wilson
+  Bridge, Brazos River Meander, Normandy Cliffs, and New Orleans Levees},''
+  {\em Journal of Geotechnical and Geoenvironmental Engineering}, vol.~134,
+  pp.~1425--1447, October 2008.
+
+\bibitem{Musgrave-SynthesisAndRendering}
+F.~K. Musgrave, C.~E. Kolb, and R.~S. Mace, ``The synthesis and rendering of
+  eroded fractal terrains,'' in {\em Proceedings of the 16th Annual Conference
+  on Computer Graphics and Interactive Techniques}, pp.~41--50, July 1989.
+
+\bibitem{Kelley-TerrainSimulation}
+A.~D. Kelley, M.~C. Malin, and G.~M. Nielson, ``Terrain simulation using a
+  model of stream erosion,'' in {\em Proceedings of the 15th Annual Conference
+  on Computer Graphics and Interactive Techniques}, pp.~263--268, 1988.
+
+\bibitem{Hammel-FractalMountainsRivers}
+P.~Prusinkiewicz and M.~Hammel, ``A fractal model of mountains with rivers,''
+  in {\em Proceedings of Graphics Interface 93}, pp.~174--180, 1993.
+
+\bibitem{Nagashima-ErodedValleyGeneration}
+K.~Nagashima, ``Computer generation of eroded valley and mountain terrains,''
+  {\em The Visual Computer}, vol.~13, no.~9, pp.~456--464, 1998.
+
+\bibitem{Li-ModelingSoilDynamics}
+X.~Li and J.~M. Moshell, ``Modeling soil: Realtime dynamic models for soil
+  slippage and manipulation,'' in {\em Computer Graphics Proceedings, Annual
+  Conference Series}, pp.~361--368, 1993.
+
+\bibitem{Chiba-VelocityFields}
+N.~Chiba, K.~Muraoka, and K.~Fujita, ``An erosion model based on velocity
+  fields for the visual simulation of mountain scenery,'' {\em The Journal of
+  Visualization and Computer Animation}, vol.~9, no.~4, pp.~185--194, 1998.
+
+\bibitem{Wang-ErosionProtection}
+X.~Wang, S.~Li, Y.~Sun, and X.~Meng, ``Application of visual simulation
+  technology to a soil erosion protection project,'' {\em Landscape and Urban
+  Planning}, vol.~84, pp.~52--61, 2008.
+
+\bibitem{Dorsey-FlowAndChanges}
+J.~D. Massachusetts, J.~Dorsey, H.~K. Pedersen, and P.~Hanrahan, ``Flow and
+  changes in appearance,'' in {\em Proceedings of the 23rd Annual Conference on
+  Computer Graphics and Interactive Techniques}, pp.~411--420, 1996.
+
+\bibitem{Neidhold-Interactive}
+B.~Neidhold, M.~Wacker, and O.~Deussen, ``Interactive physically based fluid
+  and erosion simulation,'' in {\em Eurographics Workshop on Natural
+  Phenomena}, pp.~25--32, August 2005.
+
+\bibitem{Benes-SimulationHydraulicErosion}
+B.~Benes and R.~Forsbach, ``Visual simulation of hydraulic erosion,'' {\em
+  Journal of WSCG}, vol.~1, pp.~79--86, 2002.
+
+\bibitem{Benes-HydraulicErosion}
+B.~Benes, V.~Tesinsky, J.~Hornys, and S.~K. Bhatia, ``Hydraulic erosion,'' {\em
+  Computer Animation and Virtual Worlds}, vol.~17, no.~2, pp.~99--108, 2006.
+
+\bibitem{Benes-ShallowWaterSimulation}
+B.~Benes, ``Hydraulic erosion by shallow water simulation,'' {\em {The 4th
+  Workshop on Virtual Reality Interaction and Physical Simulation}},
+  pp.~43--50, 2007.
+
+\bibitem{Benes-SmoothedParticles}
+P.~Kristof, B.~Benes, J.~Krivanek, and O.~St'ava, ``Hydraulic erosion using
+  smoothed particle hydrodynamics,'' {\em Computer Graphics Forum}, vol.~28,
+  no.~2, pp.~219--228, 2009.
+
+\bibitem{Valette-SoDA}
+G.~Valette, S.~Prevost, L.~Lucas, and J.~Leonard, ``{SoDA} project: A
+  simulation of soil surface degradation by rainfall,'' {\em Computers \&
+  Graphics}, vol.~30, pp.~494--506, August 2006.
+
+\bibitem{Kamalzare-ValidationOfErosionModeling}
+M.~Kamalzare, C.~Stuetzle, Z.~Chen, T.~F. Zimmie, B.~Cutler, and W.~R.
+  Franklin, ``Validation of erosion modeling: Physical and numerical,'' in {\em
+  GeoCongress}, March 2012.
+
+\bibitem{gross_icse_2010}
+J.~A. Gross, C.~S. Stuetzle, Z.~Chen, B.~Cutler, W.~R. Franklin, and T.~Zimmie,
+  ``Simulating levee erosion with physical modeling validation,'' in {\em The
+  5th International Conference on Scour and Erosion}, November 2010.
+
+\bibitem{DAMBRK_REPORT}
+D.~L. Fred, ``{DAMBRK: The NWS} dam-break flood forcasting model,'' {\em
+  National Weather Service, Office of Hydrology, Silver Spring, Md}, 1984.
+
+\bibitem{chen-geo-frontiers-2011}
+Z.~Chen, C.~S. Stuetzle, B.~M. Cutler, J.~A. Gross, W.~R. Franklin, and T.~F.
+  Zimmie, ``Analyses, simulations and physical modeling validation of levee and
+  embankment erosion,'' in {\em Geo Frontiers}, 2011.
+
+\bibitem{Muller-Particle}
+M.~M\"{u}ller, D.~Charypar, and M.~Gross, ``Particle-based fluid simulation for
+  interactive applications,'' in {\em ACM SIGGRAPH/Eurographics Symposium on
+  Computer Animation}, pp.~154--159, 2003.
+
+\bibitem{amada-particles}
+T.~Amada, ``Real-time particle-based fluid simulation with rigid body
+  interaction,'' in {\em Game Programming Gems 6} (M.~Dickheiser, ed.),
+  pp.~189--205, Independence, KY, USA: Charles River Media, 2006.
+
+\bibitem{Zimmie1995}
+T.~F. Zimmie, ``Geo-environmental research using centrifuges,'' in {\em The
+  Encyclopedia of Environmental Control Technology}, vol.~9, pp.~335--366,
+  1995.
+
+\bibitem{Chen:2010:QAS:1869790.1869867}
+Z.~Chen, C.~Stuetzle, B.~Cutler, J.~Gross, W.~R. Franklin, and T.~Zimmie,
+  ``Quantitative analysis of simulated erosion for different soils,'' in {\em
+  Proceedings of the 18th SIGSPATIAL International Conference on Advances in
+  Geographic Information Systems}, pp.~482--485, 2010.
+
+\bibitem{Pavlovych:2008:ESC:1462027.1462035}
+A.~Pavlovych and W.~Stuerzlinger, ``Effect of screen configuration and
+  interaction devices in shared display groupware,'' in {\em Proceeding of the
+  3rd ACM International Workshop on Human-Centered Computing}, pp.~49--56,
+  2008.
+
+\bibitem{olsen2001}
+D.~R. Olsen and T.~S. Nielsen, ``{Laser pointer interaction},'' in {\em
+  Computer Human Interaction}, pp.~17--22, 2001.
+
+\bibitem{Oh02laserpointers}
+J.-Y. Oh and W.~Stuerzlinger, ``Laser pointers as collaborative pointing
+  devices,'' in {\em Graphics Interface}, 2002.
+
+\bibitem{Davis00lumipoint:multi-user}
+J.~Davis and X.~Chen, ``Lumipoint: Multi-user laser-based interaction on large
+  tiled displays,'' {\em Displays}, vol.~23, 2000.
+
+\bibitem{Ahlborn:2005:PSL:1101616.1101637}
+B.~A. Ahlborn, D.~Thompson, O.~Kreylos, B.~Hamann, and O.~G. Staadt, ``A
+  practical system for laser pointer interaction on large displays,'' in {\em
+  Proceedings of the ACM Symposium on Virtual Reality Software and Technology},
+  pp.~106--109, 2005.
+
+\bibitem{Qin:2010:SLP:1842993.1843022}
+Y.~Qin, Y.~Shi, H.~Jiang, and C.~Yu, ``Structured laser pointer: enabling
+  wrist-rolling movements as a new interactive dimension,'' in {\em Proceedings
+  of the International Conference on Advanced Visual Interfaces}, pp.~163--166,
+  2010.
+
+\bibitem{angelini:multi-user}
+L.~Angelini, M.~Caon, S.~Carrino, O.~A. Khaled, and E.~Mugellini, ``Multi-user
+  pointing and gesture interaction for large screen using infrared emitters and
+  accelerometers.,'' in {\em Human Computer Interaction}, pp.~185--193, 2011.
+
+\bibitem{Cheng:2003:DIL:857080.857088}
+K.~Cheng and K.~Pulo, ``Direct interaction with large-scale display systems
+  using infrared laser tracking devices,'' in {\em Proceedings of the
+  Asia-Pacific Symposium on Information Visualisation}, pp.~67--74, 2003.
+
+\bibitem{Vogt:2004:ECG:1009379.1009663}
+F.~Vogt, J.~Wong, B.~A. Po, R.~Argue, S.~S. Fels, and K.~S. Booth, ``Exploring
+  collaboration with group pointer interaction,'' in {\em Proceedings of the
+  Computer Graphics International}, pp.~636--639, 2004.
+
+\bibitem{Vogt03trackingmultiple}
+F.~Vogt, J.~Wong, S.~Fels, and D.~Cavens, ``Tracking multiple laser pointers
+  for large screen interaction,'' in {\em Extended Abstracts UIST}, pp.~95--96,
+  2003.
+
+\bibitem{Pavlovych04laserpointers}
+A.~Pavlovych and W.~Stuerzlinger, ``Laser pointers as interaction devices for
+  collaborative pervasive computing,'' tech. rep., Center for Parallel
+  Computing, 2004.
+
+\bibitem{delaOChavez:2008:INL:1387269.1387276}
+F.~de~la O~Ch\'{a}vez, F.~Fern\'{a}ndez~de Vega, G.~Olague, and
+  J.~Llano~Montero, ``An independent and non-intrusive laser pointer
+  environment control device system,'' in {\em Proceedings of the 5th
+  International Conference on Pervasive Services}, pp.~37--46, 2008.
+
+\bibitem{BiUpen}
+X.~Bi, Y.~Shi, X.~Chen, and P.~Xiang in {\em Proceedings of the 13th Annual ACM
+  International Conference on Multimedia}, pp.~1049--1050, 2005.
+
+\bibitem{Shizuki:2006:LPI:1133265.1133284}
+B.~Shizuki, T.~Hisamatsu, S.~Takahashi, and J.~Tanaka, ``Laser pointer
+  interaction techniques using peripheral areas of screens,'' in {\em
+  Proceedings of the Working Conference on Advanced Visual Interfaces},
+  pp.~95--98, 2006.
+
+\bibitem{kuhn}
+H.~W. Kuhn, ``The hungarian method for the assignment problem,'' {\em Naval
+  Research Logistics Quarterly}, vol.~2, pp.~83--97, 1955.
+
+\bibitem{munkres}
+J.~Munkres, ``Algorithms for the assignment and transportation problems,'' {\em
+  Journal of the Society for Industrial and Applied Mathematics}, vol.~5,
+  pp.~32--38, March 1957.
+
+\bibitem{munkres_implementation}
+J.~Weaver, ``Kuhn-munkres (hungarian) algorithm in c++,'' 2010.
+\newblock Internet: \url{https://github.com/saebyn/munkres-cpp} [July 28th,
+  2012].
+
+\bibitem{Kalman}
+R.~Kalman, ``A new approach to linear filtering and prediction problems,'' {\em
+  Journal of Basic Engineering}, vol.~82, no.~1, pp.~35--45, 1960.
+
+\end{thebibliography}

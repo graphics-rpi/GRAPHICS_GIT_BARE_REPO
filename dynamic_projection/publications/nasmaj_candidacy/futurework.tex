@@ -1,0 +1,116 @@
+\chapter{Future Work}
+
+\fbox{This chapter is still in draft form}
+
+I plan to continue my work predominantly in three related areas: user studies, a \emph{contraption window}, and in advanced visualizations on the tabletop.  All three of these areas are large in scope and I will refine this direction once some additional prototyping is done.
+
+
+\section{User Studies}
+A variety of user studies are possible with our current system.  As development continues, undoubtedly there will be more user studies which become applicable.  I propose a study which could be done would involve comparing the three dimensional interface for our system with a simpler interface that still allows lighting to be viewed.  One way to do this would be a simple 2-D interface which allows the height of walls to be specified.  A two-dimensional interface could be created which has buttons for creating curved walls and straight walls.  This interface would allow walls to be dragged.  Similarly in order to adjust the size, corners of the wall could just be pulled.  Flash could be a good tool to use to design this interface.  I believe in order for this to be an effective user study, the two-dimensional interface would need to be well designed: it should take advantage of the abilities of a 2-dimensional interface does well as opposed to simply being a simulated table top.  This would allow us to receive feedback on how a 2-D interface compares with the virtual heliodon and not simply how much the physicality of the system adds to an identical system.  
+
+Alternately, we could have two versions of the 2-D interface, one with limited functionality i.e. only has a limited number of walls to choose from and one that takes advantage of Flash: walls could be adjusted, created etc.  The purpose of this more limited interface would be to resemble the tabletop interactions as accurately as possible without having the tangible aspect.  We could then compare this limited 2-D interface with this full 2-D interface, with the virtual heliodon in a user study.  Because the system is modular, we should be able to use the same pipeline of software to provide daylighting images without much additional code besides the interfaces themselves.  This 2-D interface could send the design to a server which would then send back a few perspectives of the scene to a web-site or specified e-mail address.  For this user study we could develop this interface, do some initial testing and then run a user study where people are asked to try using each method of input first and see which they prefer.  
+
+While validating, an important piece of analysis that should be done is determining a measure of significance.  This would be done best using ANOVA, analysis of variance.  Analysis This procedure would allow us to give the likelihood that different populations have different means and that variation in data is not simply due to  a small sample size \cite{StatsBook}.  Based on the variation within each group compared to the variation in the entire population this test can be done.  Using ANOVA instead of other tests allows us to see which variables in our system may be significant when we are testing against more than one independent variable.
+
+
+\section{Summary}
+Many new and exciting enhancements are still possible for the Tabletop Virtual Heliodon System.  These include a smartphone displaying option, and advanced visualizations which communicate useful compiled lighting information about a scene.  For each new enhancement user studies should be run to confirm that the enhancement is useful.  My involvement will be in these areas as well as any future directions for this system proposed and validated by user studies.
+
+\begin{comment}
+\section{Other Related Research Areas}
+Other open problems relating to the system are as follows.  Some are currently being investigated by other researchers in the lab.
+
+\subsection{Color Calibration}
+As we are using different models of projectors in our set-up as well as having a problem of projectors aging differently, there is noticeable differences in the the colors coming from projectors.  For example, if you project white from all projectors, there is a noticeable green tinge to one, red tinge to other, etc.  We have used some temporary solutions, such as measuring each color channel of the projectors and trying to compensate that way as well as just adjusting color using the projector menu.  Ideally this would be an automated process which could be run every week or so with effectively no human intervention.
+
+\subsection{Projection Correction}
+After interacting with the system for a session or two, it becomes apparent that the primitives we use are not perfectly straight walls and they are not at perfect right angles with the ground.  The system could auto-correct the projection if it were taking images while projecting.  The camera could detect where light was spilling across boundaries or not being projected enough and find a more accurate geometry.
+\end{comment}
+
+\begin{comment}
+put somewhere
+The Virtual Heliodon \cite{DBLP:conf/vr/ShengYYC09} obviously directly extends many of these.  Many projectors are used for one combined display.  Tokens are projected on that don't require the proximity of RFID tags.  The one paper in this section which could help as the Virtual Heliodon goes forward is that of gesturing.  Gesturing is not yet build into the system and could be a very useful addition.
+\end{comment}
+
+%\subsection{Large-Scale data visualization using parallel data streaming}
+%in binder B
+%\subsection{sort-first, distributed memory parallel visualization and rendering.}
+%in binder B
+
+%\section{User Studies}
+%\subsection{Let your users do the testing: a comparison of three remote asynchronous usability testing methods}
+
+\begin{comment}
+\subsection{Software Design Patterns for Information Visualization}--Include this?  detailing the design patterns in the research qualifier is probably too much.
+%in binder A
+In visualization, one of the common challenges is that there is very little that ends up being shared across projects.  Often visualization developers migrate between tools or each build their own system to compensate for it.  Heer and Arawala address this by proposing 12 design patterns that can be followed to develop Visualization tools.  When developing visualization software it would be worthwhile to keep these patterns in mind and in so doing use these patterns as only guidelines, not as constraints.  By doing this it will likely avoid the situation of having to 'reinvent the wheel'
+
+
+
+Papers to add
+%in Binder A
+Seamless Merging of Hypertext and Algorithm Animation
+%Useful paper for Jeopardy vis possibly?  Probably not as useful for the research qualifier focus
+
+Algorithm Visualization: A report on the state of the field
+% same as above
+
+Do tangible Interfaces enhance Learning?
+Illuminating Light: an optical design tool with a luminous-tangible interface
+
+
+%in binder B
+Coming to grips with objects we grasp
+
+
+%binder 1
+
+
+
+
+
+\end{comment}
+
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
+\begin{comment}
+\section{Lighting}
+ 
+\subsection{Modeling the Interaction of Light between Diffuse surfaces}
+
+
+This paper first introduced the radiosity algorithm.  The radiosity algorithm is a view independent approximation of the diffuse light within a closed space.  Two terms defined in this paper are enclosures and form factors.  Enclosures are such that all the illumination comes from the surfaces within a set of closed surfaces.  A form factor is the fraction of light leaving one surface that hits a second surface.
+
+The radiosity algorithm is very effective assuming all of its assumptions are met as in the case of the Figures of the Cornell box.\cite{1358645}  Color bleeding is estimated particularly well.  It is limited by the fact it only computes indirect illumination and it used the assumption of diffuse surfaces.  \cite{1375759}.
+
+\subsection{An Efficient Radiosity Approach for Realistic Image Synthesis}
+
+This paper introduces the idea of hierarchical radiosity.  It still is O(n*n) but can get a higher resolution solution in places with a high intensity gradient.  In places where there is a high intensity gradient, adaptive subdivision is used iteratively until each patch is within a given threshold.  These elements as they're called allow for more accurate lighting on a fine scale where they are used and can also get a more accurate form factor for the patch when summed together back for the original patch.  Because, this is only being done where there is a large gradient the overall computation time should be on the same order as normal radiosity.
+
+\subsection{A Rapid Hierarchical Radiosity Algorithm}
+
+Note: go look at 
+Hanrahan further improves hierarchical radiosity by dividing the scene into more levels.  First there are patches which are divided into polygons (which are the top level of Cohen's hierarchy.  The polygons are then once again divided into elements.  By using this structure. the form factor matrix is reduced from size O(n*n) to simply O(n).  
+Much of the speedup is based upon work that has been done on the N-Body problem.  Similarly to the N-Body problem (of particles exerting forces), form factors decrease at a rate of 1/r\^2 where r is the distance between patches.  Because of the same relationship must of the work was easily extensible.
+In addition, because larger patches are often used in order to maintain the same accuracy visibility also had to be addressed. Testing both for directions of faces in relation to one another and percentage of the face not occluded were performed.
+
+
+\subsection{Interactive Global Illumination in Dynamic Environments using Commodity Graphics Hardware}
+
+This paper introduced the idea of using Cube maps to approximate global illumination.  Rather than storing mass amounts of data they also use spherical harmonic coordinates to store the captured radiance.  The effect of this is that is possible to now not only calculate direct illumination on the GPU, but indirect as well.  Overall they only achieve an 8 times speedup but this is largely due to a communication bottleneck.  This is also done using a Radeon 9700 so it is quite possible today's graphics cards could offer a much greater speedup.
+
+\subsection{Face Cluster Radiosity}
+
+Face Cluster Radiosity offers an even further extension of Hierarchical radiosity.  The first level is a volume cluster.  Beneath this is a face cluster.  Next is the normal polygons and finally the polygon can be further subdivided.  Based upon the data structures they use the radiosity solution can be calculated in sub-linear time with regard to the number of polygons.  Preprocessing however takes much much longer.  This makes this approach good if it will be being used in an animation in which the geometry will remain the same but if geometry is changing the pre-processing will make the algorithm much less effective.  Perhaps if in the future this is combined with an intelligent way of only recomputing form factors that have changed dramatically, it will be useful in dynamic scenes as well.
+
+\section{GPU algorithms}
+
+\subsection{GPU Algorithms for Radiosity and Subsurface Scattering}
+
+This paper discusses GPU algorithms in relation to two graphics problems: radiosity and subsurface scattering.  The radiosity method they implemented fully on the GP ended up performing very similar to existing methods on the CPU.  The subsurface scattering, however; performed much better.  Using a multidimensional mesh atlas they are able to attain 61 fps using just the GPU (go back and add more details to this summary).
+\end{comment}

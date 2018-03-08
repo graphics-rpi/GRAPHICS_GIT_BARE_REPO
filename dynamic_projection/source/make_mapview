@@ -1,0 +1,7 @@
+#!/bin/bash
+
+pushd ../../synenv/visualizations/MapView;cmake .;colormake;success=$?;popd;ln -sf ../../synenv/visualizations/MapView/bin/mapview mapview
+
+if [ "$success" = "0" ]; then
+  ./mapview --not_full_screen --no_refresh
+fi

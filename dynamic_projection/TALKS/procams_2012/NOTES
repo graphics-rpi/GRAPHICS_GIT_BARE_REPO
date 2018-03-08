@@ -1,0 +1,32 @@
+
+So I'd like to start off by explaining the motivation and thought process that started this project. Unsurpisingly, it comes from my love of video games.
+
+Video games allow you to play with a virtual world. They are interactive, responding to the player
+
+Video games allow the player to interact with a virtual world, which can make for a powerful experience. They respond to the player's actions in real time. They can be very complex. For example, games like Civilization V or Starcraft 2 incorporate detailed simulations with hundreds of things happening at once, and they present all this in a way that is immersive, using outstanding graphics and visuals to create a compelling world.
+
+But they do have their problems. Notably, the typical interface for a video game is a console controller or mouse and keyboard setup, which can be alienating to "nongamers." Recently there have been some initiatives in the industry to correct this problem, like the Nintendo Wii or Xbox Kinect, which are trying to incorporate more natural, motion-based controls.
+
+On the other hand we have tabletop games, which of couse have been around much longer than video games. In some ways, tabletop games are much more accessible than video games because they are physically tangible. No matter how complex the game, at the base level the player's actions are simple physical tasks, like drawing cards, rolling dice, and moving pieces on a board.
+
+However tabletop games also have their limits. Unlike a video game, which can perform tasks automatically, a board game relies on the players to moderate everything, and this limits the complexity of the interactions. If a game is too complex, bookkeeping can prove tedious and time consuming, and it becomes easy to make mistakes and accidentally break the rules.
+
+
+1-6 Intro/Motivation/Goals              
+7 Related Work                          0:30
+8 Outline
+9-12 ARmy Rules
+13-14(V) Nonaugmented play
+15-16 Augmentation Into / SAR System
+17(V) Augmentation Video
+18-22 Augmented play walkthrough
+23-26 Implementation Details
+27-28 User Study Process
+29-31 Quantitative Results
+32-35 Comments / Feedback
+36 Conclusions
+37 Future Work
+
+
+
+Allow human sloppiness but correct in software

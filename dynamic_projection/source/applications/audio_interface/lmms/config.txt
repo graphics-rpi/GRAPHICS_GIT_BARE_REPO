@@ -1,0 +1,10 @@
+LMMS Configuration for Multi-Mouse Audio Interface
+==================================================
+
+Drum Instrument Sound Fonts (sf2)
+
+Drum1: 1247_KitDRY (Dr Pop DRY)
+Drum2: 198_JB_KiT (JB Room kit)
+Drum3: 198_Lightning_KiT (Lightning kicks)
+Drum4: 566_HARD_ROCK_DRUMS_V3 (Hard Rock Drums)
+Drum5: TamaDrumKit (Standard)

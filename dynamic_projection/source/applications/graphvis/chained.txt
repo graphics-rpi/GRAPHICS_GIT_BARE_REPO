@@ -1,0 +1,11 @@
+# A A 500 600 false Someinfo 0 0 
+# B B 1200 195 false moreinfo 0 0 
+# C C 564 900 false kittens 0 0 
+# D D 860 480 false inkling 0 0
+# E E 300 700 false kinl 0 0
+# F F 600 860 false link 0 0
++ 0 1 l
++ 1 2 k
++ 2 3 m
++ 3 4 k
++ 4 5 y

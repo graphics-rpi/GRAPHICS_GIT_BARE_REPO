@@ -1,0 +1,71 @@
+\chapter{Implementation of an Efficient and Extensible Rendering Engine for Interactive Lighting Simulation}
+
+\fbox{This chapter is still in draft form}
+
+Three key limitations of the radiosity based rendering method were: lack of specular materials, inability to render complex window geometry, and an $n^2$ slowdown with the complexity (in number of triangles from the model).  The $n^2$ slowdown was due to our former rendering method: radiosity involving computing relationships between ever pair of triangles in a scene.   Eric Li began a rendering engine in OptiX as part of a masters thesis\cite{LiThesis} based on \cite{McGuire:2009:HGI:1572769.1572783}.  This engine could render scenes effectively from a set viewpoint using progressive photon mapping.  Extensions to this code are necessary so that it is useful both for a standalone lighting tool and to utilize as the renderer for our tabletop interface.  In order for it to be made useful for daylighting analysis, we had to calculate lighting throughout the model and not just for the camera viewpoint.  Currently we have done this but are still using the assumption of a diffuse material model.  We need to both add specular materials as well as increase window material complexity and allow ‘invisible sensor planes’ to make this be a suitable replacement to our original renderer for a lighting tool for our collaborators.  Invisible sensor planes are artificial geometry put into the system where measurements can be taken but where we don’t want the geometry to interact with light.  An example would be if we want to see how much light is at a standard height of a desk but have the rendering be unaffected.
+
+
+\section{Photon Mapping Hybrid Method}
+
+  \subsection{Basic Photon Mapping}
+    Photon mapping as well as other ray tracing methods are easily parallelizable as they involve shooting many rays with no information shared until later steps in the algorithm.  Photon mapping also has a gather step that can be very easily parallelized.
+  \subsection{Photon Mapping on GPU}
+  NVidia developed a ray tracing framework, OptiX, which has greatly simplified creating ray tracing programs that are efficiently parallelized on the GPU.  OptiX provides the framework for storing geometry as well as effectively having slots to drop various programs in a ray tracing framework into.  Eric Li created a ray tracer based on Morgan McGuire's work using the OptiX framework.  The ray tracing steps used in his program were
+  \begin{itemize}
+    \item Ray generation program (Per pixel)
+    \item Photon Pass program (based on detail desired)
+    \item Gather Pass Program (per pixel)
+  \end{itemize}
+  The ray generation program would send rays into the scene based on the camera view of the viewer.  Each ray that intersected the geometry would be stored as a hit.  Each of these hits was then mapped back to each direct light (in this case only the sun).  The direct light was then stored in a buffer.
+  
+  The photon pass sent photons into the scene from the windows.  This was done by selecting random points on the windows and a random directions from each window.  Using the CIE turbid sky model, the brightness of the sky can be obtained for a given direction.  A photon of that brightness was then sent into the room.  As with all photon mapping programs the photon is then stored at the first point that it encounters in the room.  In addition based on Russian roulette \fbox{describe somewhere} the photon continues bouncing inside the scene and depositing photons as it goes.  Each of the photons in the scene are stored in a KD-tree.  The gather pass then uses the hits from the ray generation pass and gathers all photon hits by navigating the KD-tree within a fixed radius of the hit.  The photon illumination is added to the direct illumination stored in the direct light buffer and stored in the output buffer.
+  
+  Eric's code also used the idea of progressive photon mapping.  Simply, this is just running the ray generation program once for a viewpoint and then repeatedly running the photon pass and the gather pass.  Each time this is done a weighted average is used for the output buffer.  It also enables the photon radius to shrink with time as more information is available each pass.
+  
+  \subsection{Patch Based approximations for global illumination}
+  
+  One of the needs of architectural daylighting simulation is getting average brightnesses over areas in a scene.  Radiosity was suited for this very well because lighting is computed per triangle.  Image-space photon mapping only computed lighting for the visible part of the scene.  For computing these values, the per pixel values are not important, but getting approximations for all triangles in the scene was important.  For this reason rather than continuing to use the image space to calculate direct values (and then gather for), we started using one point on each triangle (the centroid).  This changed the buffer size for the direct light as well as the separate buffer for indirect light's size to the number of triangles instead of the size of the output image.  
+  
+  Transferring data back and forth to the GPU is inefficient and can easily become a bottleneck in a program.  Meshes can contain tens of thousands of triangles so if the program wanting values back from the renderer does not need that granularity of details it is more efficient to return more generalized details.  We came up with the idea of patch to define groups of triangles in a region (also specified by the user).  Barbara Cutler's remesher ``patchifies'' the scene before it is passed to the renderer.  The renderer is informed which triangles are part of which patch and this is part of the information stored on the GPU.
+  
+  For this reasons after each triangle's lighting is computer we compute the lighting in each patch.  The patch lighting is computed based on a weighted average of lighting by area. the equation is simply $\sum{\frac{trianglearea*trivalue}{patcharea}}$.  This is done in the patch gather step.  Because we need to make sure that only one item is added at a time, this can only be done in parallel per patch.
+  
+  Because the first 4 passes are only done per triangle/per patch the last pass is responsible for rendering (if an output image is desired).  The last pass intersects a triangle and then finds the value in the patch buffer (or triangle buffer if you prefer) and renders it to screen.  In a normal workflow we picture patch based rendering used primarily for sensors and image based rendering used for renderings although we may attempt to merge these intelligently as discussed a bit later.
+
+  \begin{itemize}
+    \item Ray generation program (Per triangle)
+    \item Photon Pass program (based on detail desired)
+    \item Gather Pass Program (per triangle)
+    \item Patch Gather Program (per patch)
+    \item Regather Pass Program (per pixel)
+  \end{itemize}  
+  
+  
+  \section{Photon Mapping on GPUs for use in a Tangible User Interface (future work)}
+    \subsection{Evolution of system to render in box rendering}
+    The bottleneck in the current contraption system is actually the transferring of images to client computers (as discussed in the previous chapter).  This had been done primarily because the radiosity code is CPU bound.  Given that we now are rendering on the GPUs, it makes more sense to render on a box and then display from the same GPU that is being rendered from.  Using photon mapping on the tabletop system will enable us to implement additional visualization such as glare (as described in Design section FIXME).  We expect that much of the infrastructure should be able to remain the same with the difference being that the master is now responsible only for the vision code and distributing commands and all the rendering as well as displaying happening on the client nodes.
+  \subsection{Specifying view for view dependent visualizations}
+    Calculating glare as well as having a large display will necessitate adding view controls to the tabletop system.  This should just involve adding an additional token.  One of two approaches could be used.  Army men detection code has been developed (reference army paper FIXME).  We could use these same men to indicate position and either attempt to discern the direction they are pointing or have them matched up with alternate tokens where we assume the closest alternate token is the direction of interest
+
+\section{Specular and Diffuse Material Model}
+  As the tabletop system previously used a radiosity shadow volumes hybrid method, it was limited to lambertian surfaces as well as simple window models.  While this is a fairly accurate approximation for traditional office spaces, it does not provide good functionality for specular materials or for different window materials.  Providing different window materials is particularly useful for daylighting design as there are many glare reduction and light increasing devices that can be used in place of traditional windows.
+  \subsection{Windows}
+    \paragraph{More advanced BTDFs}
+    LSV assumed that light that entered the window continued straight through (while assuming the color of the glass).  Materials are available that can disperse light different than these.  
+    %some daylighting reference
+    \paragraph{More advanced geometry in windows (blinds, complicated geometry)}
+    Also of interest are more advanced geometry put into windows.  These include Venetian blinds as well as other geometry that could leave interesting patterns on the floor.  OptiX's functionality provides opportunities both to allow the light through in a stencil pattern as well as to simulate light being dispersed in interesting ways off of this geometry.
+  \subsection{Specular reflections}
+  While office spaces will have predominantly diffuse materials inside of them many places with stylistic lighting contain many specular and diffuse surfaces.  For instance car showrooms or concert halls will often have light direct the viewers gaze in very direct ways to the focus of the area.
+    \paragraph{Mirrors, Shiny and Glossy surfaces}
+    Mirrors, Shine and Glossy surfaces all have light reflect in similar ways: much of the light is reflected across the normal at a similar angle to the incident angle (or the same angle in the case of the mirror).  This property is what allows you to see the bright spot on a marble, a reflection in a mirror, or extreme glare off of a watch.  This functionality will be added to the renderer in the next several months.  
+    \paragraph{Only recalculate lighting for glossy components of materials when view is changed}
+    While specular lighting is directly related to the position of the viewer, diffuse lighting is relatively unchanged.  For this reason our radiosity solution was unaffected by the movement throughout a space.  I plan to adjust the algorithm to recompute significant specular reflection while caching much of the diffuse lighting in the scene.  This will involve deciding how many bounces of direct light need to be recomputed as well as deciding if indirect light should be recomputed for shadowed areas.
+  \subsection{Sensors}
+  Sensor planes are an important way to measure lighting in architectural daylighting tools.  Sensors are artificial geometry which measures light in a space while not affecting the rendering of the room.  Sensors are placed in areas of interest.  This could be where a desk surface may be placed or where a painting will hang on a wall.  
+  
+In the case of photon mapping this means that the renderer needs to collect photons on a surface while not allowing these photons to influence the lighting in the rest of the room.  There seem to be two implementation options to achieve this.  The first is to create a completely separate KD-tree for 'sensor photons'.  A photon will be placed in this tree each time a photon passes through a sensor (and the photon will pass through unaffected).  Photons will be collected from these sensors during the gather step.  The second option is to keep the photons in the same tree, but to have a boolean flag, isSensorPhoton.  These photons will only contribute to gathers on sensor surfaces while photons without the flag will have no contribution.  Conversely, for the rendering of the scene only the photons where the isSensorPhoton is false will be gathered (the others will just have 0 contribution).
+  
+\section{Summary}
+
+By creating a photon map renderer on the GPU, I am meeting a need both for a tabletop system as well as for our collaborators.  This system will create renderings of the same quality faster than the radiosity equivalent.  It will also have the functionality due to an extended material model to provide more interesting lighting effects of windows with more complicated geometry or more complicated fenestration materials.  The methods used are patch based so that lighting measurements can also be obtained from the simulation.  By using multiple types of photons view dependent and view independent portions of lighting will be approximated.  

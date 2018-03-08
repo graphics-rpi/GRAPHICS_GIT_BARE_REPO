@@ -1,0 +1,570 @@
+// Included files for OpenGL Rendering
+#ifdef __APPLE__
+#include <OpenGL/gl.h>
+#include <OpenGL/glu.h>
+#include <GLUT/glut.h>
+#else
+#include "canvas.h"
+//#include <GL/gl.h>
+//#include <GL/glu.h>
+//#include <GL/glut.h>
+//#include <GL/glext.h>
+//#include <GL/glx.h>
+//#include <GL/glxext.h>
+#endif
+
+#include <list>
+#include <vector>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <set>
+#include <ctime>
+#include <iomanip>
+
+#include "../../common/directory_locking.h"
+#include "../../../../remesher/src/vectors.h"
+
+#include "../../calibration/planar_interpolation_calibration/tracker.h"
+#include "../../calibration/planar_interpolation_calibration/colors.h"
+
+// Include the Interaction class
+#include "../../multi_mouse/interaction.h"
+
+#include "argparser.h"
+#include "../paint/button.h"
+#include "../paint/stroke.h"
+#include "../paint/text.h"
+#include "../../common/Image.h"
+#include "../../multi_mouse/key_and_mouse_logger.h"
+
+#define __NO_SOUND__
+
+#ifdef __APPLE__
+#define __NO_SOUND__
+#endif
+
+#ifndef __NO_SOUND__
+#include "../../common/Sound/SoundHandler.h"
+#endif
+
+#include "mesh.h"
+#include "canvas.h"
+#include "../../common/glm/glm/glm.hpp"
+#include "../../common/glm/glm/ext.hpp"
+
+bool completed = false;
+
+
+//int GLOBAL_total_moves = 0;
+int GLOBAL_total_time = 0;
+
+int GLOBAL_fastest_time;
+int GLOBAL_fewest_moves;
+int GLOBAL_num_people;
+
+
+
+
+//#define IR_STATE_DIRECTORY                "../state/ir_tracking"
+//#define FOUND_IR_POINTS_FILENAME          "../state/ir_tracking/found_ir_points.txt"
+//#define PLANAR_CALIBRATION_GEOMETRY_DATA_FILENAME  "../state/ir_tracking/planar_calibration_geometry_data.txt"
+//#define PLANAR_CALIBRATION_INTENSITY_DATA_FILENAME  "../state/ir_tracking/planar_calibration_intensity_data.txt"
+
+//#define MK_STATE_DIRECTORY                   "../state/mouse_and_keyboard"
+//#define MK_ACTION_FILENAME_TEMPLATE          "../state/mouse_and_keyboard/actions_XXX.txt"
+
+#define APPLICATIONS_STATE_DIRECTORY            "../state/applications/"
+#define PUZZLE_STATE_FILENAME             "../state/applications/puzzle_state.txt"
+#define PUZZLE_HIGH_SCORES_FILENAME             "../state/applications/puzzle_high_scores.txt"
+
+#define BORDER_THICKNESS 25
+
+int SPACING;
+int X_BORDER;
+int Y_BORDER;
+
+int SNAP_GRID = 3;
+
+double TILE_w;
+double TILE_h;
+
+// ==========================================================================================
+// GLOBAL VARIABLES
+// ==========================================================================================
+
+ArgParser *args;
+DirLock global_app_dirlock(APPLICATIONS_STATE_DIRECTORY);
+Mesh* mesh;
+GLuint program_id;
+GLuint texture_id;
+GLuint matrix_id;
+glm::mat4 MVP;
+
+// Change these to use ClickableObjects
+Colors global_colors;
+
+// Don't know what this is...
+std::vector<std::pair<std::list<Pt>,Vec3f> > GLOBAL_strokes;
+
+// Change this to all be stored within Cursor ... multi-mice
+Pt mouse_location;
+std::vector<Pt> positions;
+std::vector<Pt> correctpositions;
+
+#ifndef __NO_SOUND__
+SoundHandler soundcontroller = SoundHandler();
+#endif
+// ==========================================================================================
+// HELPER FUNCTIONS
+// ==========================================================================================
+
+void prepare_strokes();
+void draw_cursors();
+
+void initialize_buttons();
+//void check_for_button_press();
+//void check_for_button_motion();
+void check_for_correctness();
+void nudge_toward_grid();
+
+void keyfunc(unsigned char key, int x, int y);
+void specialkeyfunc(int key, int x, int y);		
+void mousefunc(int button, int state, int x, int y);
+void motionfunc(int x, int y);
+
+void keyfunc_helper(int which_keyboard, unsigned char key, int x, int y, int glut_modifiers);
+void specialkeyfunc_helper(int which_keyboard, int key, int x, int y, int glut_modifiers);		 
+void mousefunc_helper(int which_mouse, int button, int state, int x, int y, int glut_modifiers);
+void motionfunc_helper(int which_mouse, int x, int y, int glut_modifiers);
+
+void TryToPressButton(int id, double x, double y);
+void TryToReleaseButton(int id, double x, double y);
+void TryToMoveButton(int id, double x, double y);
+
+/*
+// CHRIS STUETZLE 
+// No longer needed here, it's in interaction.cpp
+void clamp_to_display(Pt &pt) { 
+  int x = pt.x;
+  int y = pt.y;
+  x = std::max(0,std::min(x,args->tiled_display.full_display_width));
+  y = std::max(0,std::min(y,args->tiled_display.full_display_height));
+  pt = Pt(x,y);
+}
+*/
+
+
+#ifndef __NO_SOUND__
+void initsound(SoundHandler* Controller);
+#endif
+
+int HandleGLError(std::string foo) {
+	GLenum error;
+	int i = 0;
+	while ((error = glGetError()) != GL_NO_ERROR) {
+		printf ("GL ERROR(#%d == 0x%x):  %s\n", i, error, gluErrorString(error));
+		std::cout << foo << std::endl;
+		if (error != GL_INVALID_OPERATION) i++;
+	}
+	if (i == 0) return 1;
+	return 0;
+}
+
+#ifndef __NO_SOUND__
+void initsound(SoundHandler* Controller){
+
+	Controller->AddSource("../../common/Sound/wavdata/gameover.wav");
+	Controller->AddSource("../../common/Sound/wavdata/FancyPants.wav");
+	Controller->AddSource("../../common/Sound/wavdata/guitar.wav");
+
+}
+#endif
+
+// ==========================================================================================
+// DRAWING ROUTINES
+// ==========================================================================================
+
+void draw() { 
+    glUseProgram(program_id);
+    glUniformMatrix4fv(matrix_id, 1, GL_FALSE, &MVP[0][0]);
+    
+    mesh->Draw(texture_id);
+
+	/*static GLfloat amb[] =  {0.4, 0.4, 0.4, 0.0};
+	static GLfloat dif[] =  {1.0, 1.0, 1.0, 0.0};
+
+	float s = 0.0;
+
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_LIGHT1);
+	glDisable(GL_LIGHT2);
+	amb[3] = dif[3] = cos(s) / 2.0 + 0.5;
+	glMaterialfv(GL_FRONT, GL_AMBIENT, amb);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, dif);
+
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_LIGHT2);
+	glDisable(GL_LIGHT1);
+	amb[3] = dif[3] = 0.5 - cos(s * .95) / 2.0;
+	glMaterialfv(GL_FRONT, GL_AMBIENT, amb);
+	glMaterialfv(GL_FRONT, GL_DIFFUSE, dif);
+
+	glPushAttrib(GL_ENABLE_BIT);
+	glDisable(GL_DEPTH_TEST);
+	glDisable(GL_LIGHTING);
+	glMatrixMode(GL_PROJECTION);
+	glPushMatrix();
+	glLoadIdentity();
+
+	args->tiled_display.ORTHO();
+
+	glMatrixMode(GL_MODELVIEW);
+	glPushMatrix();
+	glLoadIdentity();
+
+	if (!args->tiled_display.is_tiled_display ||
+	    (args->tiled_display.is_tiled_display && args->tiled_display.is_master)) {
+	  //prepare_strokes();
+	}
+
+
+	//draw_cursors();
+
+
+	glDisable(GL_LINE_SMOOTH);
+	//  glDisable(GL_BLEND);
+
+	glPopMatrix();
+	glMatrixMode(GL_PROJECTION);
+	glPopMatrix();
+	glPopAttrib();
+	glMatrixMode(GL_MODELVIEW);
+    */
+
+	glutSwapBuffers();
+    return;
+}
+
+void draw_cursors() {
+  Vec3f color;
+  glPointSize(20);
+  glBegin(GL_POINTS);
+  color = global_colors.GetColor(PRIMARY_MOUSE);
+  glColor3f(color.x(),color.y(),color.z());
+  glVertex2f(GLOBAL_PRIMARY_MOUSE_POS.x,args->tiled_display.full_display_height-GLOBAL_PRIMARY_MOUSE_POS.y);
+  //glVertex2f(GLOBAL_PRIMARY_MOUSE_POS.x,GLOBAL_PRIMARY_MOUSE_POS.y);
+
+  color = global_colors.GetColor(MOUSE_2);
+  glColor3f(color.x(),color.y(),color.z());
+  glVertex2f(GLOBAL_MOUSE_2_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_2_POS.y);
+  color = global_colors.GetColor(MOUSE_3);
+  glColor3f(color.x(),color.y(),color.z());
+  glVertex2f(GLOBAL_MOUSE_3_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_3_POS.y);
+  color = global_colors.GetColor(MOUSE_4);
+  glColor3f(color.x(),color.y(),color.z());
+  glVertex2f(GLOBAL_MOUSE_4_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_4_POS.y);
+
+  color = global_colors.GetColor(MOUSE_5);
+  glColor3f(color.x(),color.y(),color.z());
+  glVertex2f(GLOBAL_MOUSE_5_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_5_POS.y);
+  color = global_colors.GetColor(MOUSE_6);
+  glColor3f(color.x(),color.y(),color.z());
+  glVertex2f(GLOBAL_MOUSE_6_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_6_POS.y);
+  glEnd();
+
+}
+
+/*
+void draw_grid() {
+  
+  int SPACING = 1;
+  
+  Pt pt,pt2;
+
+  glColor3f(0.15,0.15,0.15);
+  glBegin(GL_QUADS);
+  for (int i = 0; i < args->cols; i++) {
+    for (int j = 1; j <= args->rows; j++) {
+      glVertex2f(X_BORDER+i*(TILE_w+SPACING),       SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j)*(TILE_h+SPACING)));
+      glVertex2f(X_BORDER+i*(TILE_w+SPACING)+TILE_w,SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j)*(TILE_h+SPACING)));
+      glVertex2f(X_BORDER+i*(TILE_w+SPACING)+TILE_w,SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j+0)*(TILE_h+SPACING))+TILE_h);
+      glVertex2f(X_BORDER+i*(TILE_w+SPACING),       SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j+0)*(TILE_h+SPACING))+TILE_h);
+    }
+  }
+  glEnd();
+}
+*/
+
+void make_nice_time(std::stringstream &ss, int t) {
+  int sec = int(t) % 60;
+  int min = int(t) / 60;
+  ss << min << ":" << std::setw(2) << std::setfill('0') << sec;
+}
+
+
+std::string intToString(int a) { 
+  if (a == 0) return " ";
+  std::stringstream tmp;
+  tmp << a;
+  return tmp.str();
+}
+
+
+void pretty_colors_move_quality(const std::string &name, int good, int neutral, int bad, int which, int total_count) {
+  std::stringstream tmp;
+  int w = args->tiled_display.full_display_width;
+  int h = args->tiled_display.full_display_height;
+
+
+  std::string a = name;
+  std::string b = " "+intToString(good);
+  std::string c = " "+intToString(neutral);
+  std::string d = " "+intToString(bad);
+
+  //  double aw = drawstring_relative_width(a.c_str());
+  //double bw = drawstring_relative_width(b.c_str());
+  //double cw = drawstring_relative_width(c.c_str());
+  //double dw = drawstring_relative_width(d.c_str());
+  //double sumw = 1.2*(aw + bw + cw + dw);
+
+  //std::cout << "widths " << aw << " " << bw << " " << cw << " " << dw << std::endl;
+
+
+  //  double horiz = (0.5+which) / double(total_count);
+  //
+  //double width = (which + 0.5) / double(total_count*1.1); 
+  //double height = 0.05*h;
+
+
+  std::vector<std::string> texts;
+  texts.push_back(a);
+  texts.push_back(b);
+  texts.push_back(c);
+  texts.push_back(d);
+  std::vector<Vec3f> colors;
+  colors.push_back(Vec3f(1,1,1));
+  colors.push_back(Vec3f(0,1,0));
+  colors.push_back(Vec3f(1,1,0));
+  colors.push_back(Vec3f(1,0,0));
+
+  //drawstrings((0.5+which)*w/double(total_count), 0.05*h, texts,colors, 1/(total_count*1.1)*w, 0.05*h);
+
+  //  double width = 1 / double(total_count*1.1); 
+  //  double height = 0.05*h;
+
+
+}
+
+void display(void) {
+  HandleGLError("BEFORE DISPLAY");
+  draw();
+  HandleGLError("AFTER DISPLAY");
+}
+
+
+// ==========================================================================================
+// IDLE
+// ==========================================================================================
+
+void idle(void) {
+  
+  //std::cout << "redisplay" << std::endl;
+  display();
+  usleep(1000);
+   
+}
+
+
+// ===================================================================
+// MOUSE FUNCTIONS
+
+
+void reshape(int w, int h) {
+	HandleGLError("BEFORE RESHAPE");
+	args->tiled_display.reshape(w,h);
+	//args->width = w;
+	//args->height = h;
+	glViewport(0,0,w,h);
+
+	glMatrixMode(GL_PROJECTION);
+	gluPerspective(40.0, 1.0, 1.0, 10.0);
+	glMatrixMode(GL_MODELVIEW);
+	gluLookAt(0.0, 0.0, 5.0,
+			0.0, 0.0, 0.0,
+			0.0, 1.0, 0.);
+	glTranslatef(0.0, 0.6, -1.0);
+
+	/*
+	for(unsigned int i = 0; i < piece_pointers.size(); ++i)
+		piece_pointers[i]->ResetBorder();
+	*/
+
+	HandleGLError("AFTER RESHAPE");
+}
+
+
+void TryToPressButton(int id, double x, double y){
+  return;
+}
+void TryToReleaseButton(int id, double x, double y){
+  return;
+}
+void TryToMoveButton(int id, double x, double y){
+  return;
+}
+
+
+
+
+void keyfunc(unsigned char key, int x, int y) {
+  keyfunc_helper(PRIMARY_KEYBOARD,key,x,y,glutGetModifiers());
+}
+
+void specialkeyfunc(int key, int x, int y) {
+  specialkeyfunc_helper(PRIMARY_KEYBOARD,key,x,y,glutGetModifiers());
+}
+
+
+void mousefunc(int button, int state, int x, int y) {
+  mousefunc_helper(PRIMARY_MOUSE,button,state,x,y,glutGetModifiers());
+}
+
+void motionfunc(int x, int y) {
+  motionfunc_helper(PRIMARY_MOUSE,x,y,0); //glutGetModifiers());
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// this will get called eventually :)
+void keyfunc_helper(int which_keyboard, unsigned char key, int x, int y, int glut_modifiers) {
+  //  std::cout << "RECEIVED KEY FROM LOGGER: " << which_keyboard << " '" << key << "' " << x << " " << y << " " << glut_modifiers << std::endl;
+  if (key == 'q') {
+    exit(0);
+  }
+}
+
+
+void specialkeyfunc_helper(int which_keyboard, int key, int x, int y, int glut_modifiers) {
+  //  std::cout << "RECEIVED SPECIAL KEY FROM LOGGER: " << which_keyboard << " '" << key << "' " << x << " " << y << " " << glut_modifiers << std::endl;
+
+}
+
+void mousefunc_helper(int which_mouse, int button, int state, int x, int y, int glut_modifiers) {
+  //  std::cout << "RECEIVED MOUSE FROM LOGGER: " << which_mouse << " " << button << " " << state << " " << x << " " << y << " " << glut_modifiers << std::endl;
+
+}
+
+void motionfunc_helper(int which_mouse, int x, int y, int glut_modifiers) {
+  //  std::cout << "RECEIVED MOTION FROM LOGGER: " << which_mouse << " " << x << " " << y << " " << glut_modifiers << std::endl;
+
+}
+
+// ===================================================================
+
+using std::cout;
+using std::endl;
+
+int  main(int argc, char **argv) 
+{
+
+	ArgParser* args = new ArgParser(argc,argv);
+    Mesh* mesh = new Mesh(args);
+   /* 
+
+// ALL OF THESE THINGS BELONG IN INTERACTION
+//	Interaction::setGlobalPointTracker( NULL );
+
+//    Interaction::setGlobalCalibrationData( new PlanarCalibration(Interaction::PLANAR_CALIBRATION_GEOMETRY_DATA_FILENAME, Interaction::PLANAR_CALIBRATION_INTENSITY_DATA_FILENAME) );
+	//Interaction::getGlobalCalibrationData() = new PlanarCalibration(PLANAR_CALIBRATION_GEOMETRY_DATA_FILENAME,PLANAR_CALIBRATION_INTENSITY_DATA_FILENAME);
+
+//	global_colors.AssignRandomAvailableColor(PRIMARY_MOUSE);
+//	global_colors.AssignRandomAvailableColor(MOUSE_2);
+//	global_colors.AssignRandomAvailableColor(MOUSE_3);
+//	global_colors.AssignRandomAvailableColor(MOUSE_4);
+
+
+	// initialize things...
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA 
+    //| GLUT_DEPTH
+    );
+    args->tiled_display.print();
+    glutInitWindowSize(800 ,800);
+    //glutInitWindowSize(args->tiled_display.my_width,args->tiled_display.my_height);
+
+	glutCreateWindow("Puzzle");
+	glutDisplayFunc(display);
+	glutIdleFunc(idle);
+	glutReshapeFunc(reshape);
+	glutKeyboardFunc(keyfunc);
+	glutSpecialFunc(specialkeyfunc);
+	glutMouseFunc(mousefunc);
+	glutMotionFunc(motionfunc);
+
+	//GLfloat light0_ambient[] = {0.2, 0.2, 0.2, 1.0};
+	//GLfloat light0_diffuse[] = {0.0, 0.0, 0.0, 1.0};
+	//GLfloat light1_diffuse[] = {1.0, 0.0, 0.0, 1.0};
+	//GLfloat light1_position[] = {1.0, 1.0, 1.0, 0.0};
+	//GLfloat light2_diffuse[] = {0.0, 1.0, 0.0, 1.0};
+	//GLfloat light2_position[] = {-1.0, -1.0, 1.0, 0.0};
+
+	//glEnable(GL_LIGHTING);
+	//glEnable(GL_LIGHT0);
+	//glLightfv(GL_LIGHT0, GL_AMBIENT, light0_ambient);
+	//glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);
+	//glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diffuse);
+	//glLightfv(GL_LIGHT1, GL_POSITION, light1_position);
+	//glLightfv(GL_LIGHT2, GL_DIFFUSE, light2_diffuse);
+	//glLightfv(GL_LIGHT2, GL_POSITION, light2_position);
+	//glEnable(GL_DEPTH_TEST);
+	//glDisable(GL_CULL_FACE);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_LINE_SMOOTH);
+	//glLineWidth(2.0);
+
+    glm::mat4 Projection = glm::perspective(45.0f, 1.0f , 0.1f, 100.0f);
+    glm::mat4 View = glm::lookAt( glm::vec3(0,0,3), glm::vec3(0,0,0), glm::vec3(0,1,0) );
+    glm::mat4 Model = glm::mat4(1.0f);
+
+    MVP = Projection * View * Model;
+    
+
+
+
+    glClearColor(0.0f, 0.0f, 0.4f, 0.0f);
+    program_id = LoadShaders("applications/magnification/shaders/texture.vs", "applications/magnification/shaders/texture.fs");
+    mesh->Initialize();
+
+    matrix_id = glGetUniformLocation(program_id, "MVP");
+    texture_id = glGetUniformLocation(program_id, "myTextureSampler");
+
+	HandleGLError("main 1");
+
+	if ( 0 ) { //args->tiled_display.full_screen) {
+          std::cout << "FULL SCREENING" << std::endl;
+          glutFullScreen();
+	}
+
+    // Set up the cursors
+  //Interaction::setupCursors(&(args->tiled_display), AddTrackedPoint,RemoveTrackedPoint );
+	//Interaction::setGlobalPointTracker( new PointTracker(Interaction::getGlobalCalibrationData(), AddTrackedPoint,RemoveTrackedPoint,-1,0.5) );
+	//args->tiled_display.set_from_calibration_data(Interaction::getGlobalCalibrationData());
+	
+#ifndef __NO_SOUND__
+	initsound(&soundcontroller);
+#endif
+	glutMainLoop();
+
+	return 0;
+*/
+}
+
+
+// CHRIS STUETZLE
+// TEMP 
+void TryToPressObj(int cursIndex) {}
+void TryToReleaseObj(int cursIndex) {}
+void TryToMoveObj(int cursIndex) {}

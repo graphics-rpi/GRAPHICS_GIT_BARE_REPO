@@ -1,0 +1,35 @@
+#!/bin/bash
+
+color[0]=red
+color[1]=orange
+color[2]=green
+color[3]=blue
+color[4]=firebrick
+color[5]=purple
+color[6]=chartreuse
+color[7]=yellow
+color[8]=SeaGreen1
+color[9]=DeepPink
+
+i=0
+while [ 1 ]
+do
+    let "j=(i+0)%8"
+    xsetroot -display torch:1.1    -solid ${color[$j]}
+    let "j=(i+1)%8"
+    xsetroot -display torch:1.0    -solid ${color[$j]}
+    let "j=(i+2)%8"
+#    xsetroot -display torch:0.0    -solid ${color[$j]}
+    let "j=(i+3)%8"
+    xsetroot -display torch:0.1    -solid ${color[$j]}
+    let "j=(i+4)%8"
+    xsetroot -display chainsaw:1.1 -solid ${color[$j]}
+    let "j=(i+5)%8"
+    xsetroot -display chainsaw:1.0 -solid ${color[$j]}
+    let "j=(i+6)%8"
+    xsetroot -display chainsaw:0.0 -solid ${color[$j]}
+    let "j=(i+7)%8"
+    xsetroot -display chainsaw:0.1 -solid ${color[$j]}
+    sleep 1
+    let "i+=1"
+done

@@ -1,0 +1,7 @@
+# table top calibration data
+# table center (row col)
+720.287682 1092.919404
+# table radius
+790.769908
+# image crop region (min_row max_row min_col max_col)
+0 1455 0 1935

@@ -1,0 +1,99 @@
+------------------
+non augment positive
+
+know exact outcome of dice
+play faster
+felt responsible for the outcome of the dice
+felt like traditional board game
+wiggle room in interpretation of the ryles
+slight bending of rules for more realistic and entertaining gameplay
+player decisions were more fluid
+being able to check whether you were in range without waiting for the system to update
+not having to worry about glitches
+it was a little more hands on
+it was easier to do certain things, like skip a turn or make mutal agreements on rulings or confusion
+keeps players actively involved in gameplay
+
+------------------
+non augment negative
+
+time consuming
+measuring is tedious
+difficult to keep up with everything during combat
+in dense soldier cluster there were so many attacks made that we probably lost count at some point and either attacked too many times or too few
+some subjectivity with measurements
+much slower combat (actually rolling the dice each time and making sure every combination of soldiers is accounted for)
+a slightly sloppy feel where i felt that i could be making mistakes
+occasional confusion (even about whose turn it was)
+dice kept falling off table
+sometimes it was tricky remembering which pairs of soldiers had already fired, but we came up with a strategy that mostly solved that.
+while we made decisions, they were not necessarily the correct ones in terms of the rules
+when many attacks  [happen] at the same time, it made the game stop and not be fun
+
+
+------------------
+augment positive
+
+visualizations were easy to understand
+can see where you're going
+didn't have to do any work
+projected scenery made me feel like i was playing a game and not a probability simulator
+trust computer
+no disagreeement between playesr since there was an ultimate referee
+visually it was far more interesting
+no human errors
+combat was faster
+easy to see how far you can move
+the arrows for combat were amusing to watch
+distances were clearly marked as well as line of sight and current shooting pairs.
+never unclear about whose turn it was or what could be done
+much easier to establish movement strategy
+considerably quicker pace
+it fixed the "wait did he shoot yet?" problem.  
+it allowed you to focus on the gameplay and not the math behind it
+no questioning who was on higher ground
+more visually stimulating
+
+------------------
+autment negative
+
+waiting for recalculation
+turns were slow
+restriction in terrain placemen because of projection (vision)
+minor issues identifying scenery
+don't know the reason the soldier was disabled
+moving pieces slightly out of range made it take longer sometimes
+hard to see line of sight sometimes
+some setup bugs
+some rules implemented questionable
+occasional glitches
+things not getting detected for being in certain positions
+wall blockage issue with camera, couldn't move too close to walls.
+blind spots forced us to simplify our first terrain design a but, but that's a natural consequence of using a single camera.  
+took the player engagement away a bit.  watched action happen rather than rolling the dice. takes away your feeling of involvement.
+switching between turns was a little slow.
+
+------------------
+
+
+
+
+preferred traditional
+
+2 (can still pretend you have skill at rolling dice)
+
+38 (but only because the augmented system was still new and rough, .
+if the augmented reality was more refined, i think it would fix many
+of the problems that mitigated the benegits)
+
+
+preferred augmented
+
+1,7,19,24,25,44,49,58,62,67,79,96,97, 98,99
+
+
+tie
+82
+
+
+

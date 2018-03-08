@@ -1,0 +1,95 @@
+\contentsline {chapter}{LIST OF TABLES}{v}
+\contentsline {chapter}{LIST OF FIGURES}{vi}
+\contentsline {chapter}{ABSTRACT}{x}
+\contentsline {chapter}{\numberline {1.}Background of the Virtual Heliodon System}{1}
+\contentsline {section}{\numberline {1.1}Tabletop Virtual Heliodon}{1}
+\contentsline {chapter}{\numberline {2.}Related Work}{3}
+\contentsline {section}{\numberline {2.1}Research in the Field of Tangible User Interfaces}{3}
+\contentsline {subsection}{\numberline {2.1.1}History of the Field}{3}
+\contentsline {subsection}{\numberline {2.1.2}Windows Into a Scene}{4}
+\contentsline {subsection}{\numberline {2.1.3}Innovative Input and Output Devices}{6}
+\contentsline {subsection}{\numberline {2.1.4}Adding or Changing Functionality to Existing Objects}{8}
+\contentsline {subsection}{\numberline {2.1.5}Viewing Tools}{10}
+\contentsline {subsection}{\numberline {2.1.6}Studying Communication and Perception}{13}
+\contentsline {subsection}{\numberline {2.1.7}Relevancy of Tangible User Interfaces}{14}
+\contentsline {subsection}{\numberline {2.1.8}Procedure and Evaluation of a User Study}{16}
+\contentsline {subsection}{\numberline {2.1.9}User studies}{17}
+\contentsline {subsection}{\numberline {2.1.10}Summary}{20}
+\contentsline {subsection}{\numberline {2.1.11}Full Scale Virtual Heliodon}{21}
+\contentsline {section}{\numberline {2.2}Related Work In Global Illumination Methods}{21}
+\contentsline {chapter}{\numberline {3.}Daylighting Design Motivation and Goals}{22}
+\contentsline {chapter}{\numberline {4.}Implementing System Details for Interactive Spatially Augmented Reality}{23}
+\contentsline {section}{\numberline {4.1}Running the Virtual Heliodon Across Multiple Machines}{23}
+\contentsline {subsection}{\numberline {4.1.1}Running radiosity across multiple cores including the BlueGene L}{23}
+\contentsline {subsection}{\numberline {4.1.2}Starting servers and synchronization using MPI}{24}
+\contentsline {subsection}{\numberline {4.1.3}Communicating via sockets}{25}
+\contentsline {section}{\numberline {4.2}Other System details}{26}
+\contentsline {paragraph}{Camera Class}{26}
+\contentsline {paragraph}{Bash Scripts}{26}
+\contentsline {paragraph}{Compressed Textures}{27}
+\contentsline {section}{\numberline {4.3}Summary}{27}
+\contentsline {chapter}{\numberline {5.}Implementation of an Efficient and Extensible Rendering Engine for Interactive Lighting Simulation}{29}
+\contentsline {section}{\numberline {5.1}Photon Mapping Hybrid Method}{29}
+\contentsline {subsection}{\numberline {5.1.1}Basic Photon Mapping}{29}
+\contentsline {subsection}{\numberline {5.1.2}Photon Mapping on GPU}{30}
+\contentsline {subsection}{\numberline {5.1.3}Patch Based approximations for global illumination}{31}
+\contentsline {section}{\numberline {5.2}Photon Mapping on GPUs for use in a Tangible User Interface (future work)}{32}
+\contentsline {subsection}{\numberline {5.2.1}Evolution of system to render in box rendering}{32}
+\contentsline {subsection}{\numberline {5.2.2}Specifying view for view dependent visualizations}{32}
+\contentsline {section}{\numberline {5.3}Specular and Diffuse Material Model}{32}
+\contentsline {subsection}{\numberline {5.3.1}Windows}{33}
+\contentsline {paragraph}{More advanced BTDFs}{33}
+\contentsline {paragraph}{More advanced geometry in windows (blinds, complicated geometry)}{33}
+\contentsline {subsection}{\numberline {5.3.2}Specular reflections}{33}
+\contentsline {paragraph}{Mirrors, Shiny and Glossy surfaces}{33}
+\contentsline {paragraph}{Only recalculate lighting for glossy components of materials when view is changed}{33}
+\contentsline {subsection}{\numberline {5.3.3}Sensors}{34}
+\contentsline {section}{\numberline {5.4}Summary}{34}
+\contentsline {chapter}{\numberline {6.}Evaluating for User Interaction in Spatially Augmented Reality Systems}{35}
+\contentsline {section}{\numberline {6.1}Interpreting Physical Sketches as Architectural Models}{36}
+\contentsline {subsection}{\numberline {6.1.1}Validation of Physical Sketch Interpretation Environment}{37}
+\contentsline {subsection}{\numberline {6.1.2}Design Collection Study}{37}
+\contentsline {subsection}{\numberline {6.1.3}Re-Interpretation Study to Quantify Design Ambiguities}{39}
+\contentsline {subsection}{\numberline {6.1.4}Validation Results: Subjective Feedback}{41}
+\contentsline {subsection}{\numberline {6.1.5}Quantitative Sketch Interpretation Results}{42}
+\contentsline {subsection}{\numberline {6.1.6}Summary and Future Work}{43}
+\contentsline {section}{\numberline {6.2}ARmy Design and Interaction User Study}{46}
+\contentsline {subsection}{\numberline {6.2.1}ARmy Game}{46}
+\contentsline {paragraph}{Augmented and non-augmented versions of play}{47}
+\contentsline {subsection}{\numberline {6.2.2}User Study Predictions}{47}
+\contentsline {subsection}{\numberline {6.2.3}Goals for User Study Design}{48}
+\contentsline {subsection}{\numberline {6.2.4}Background of Study Participants}{48}
+\contentsline {subsection}{\numberline {6.2.5}Written Questionnaire}{49}
+\contentsline {subsection}{\numberline {6.2.6}Timing Results}{49}
+\contentsline {subsection}{\numberline {6.2.7}Quantitative Analysis of Unit Movements}{51}
+\contentsline {subsection}{\numberline {6.2.8}Verbal and Written Feedback}{52}
+\contentsline {subsection}{\numberline {6.2.9}Discussion and Conclusions}{53}
+\contentsline {section}{\numberline {6.3}Evaluation of the Daylighting Tool in terms of Daylighting Intuition, Analysis, Renovation, and Creativity}{55}
+\contentsline {subsection}{\numberline {6.3.1}Research Questions}{57}
+\contentsline {paragraph}{Daylighting Intuition and Education}{57}
+\contentsline {paragraph}{Modeling and Simulation Accuracy}{57}
+\contentsline {paragraph}{Creativity and Architectural Design }{58}
+\contentsline {subsection}{\numberline {6.3.2}User Study Design and Protocol}{59}
+\contentsline {paragraph}{Part 1: Daylighting Intuition for Existing Space}{60}
+\contentsline {paragraph}{Part 2: Using the TUI to Analyze Existing Space}{61}
+\contentsline {paragraph}{Part 3: Analysis of a Proposed Renovation}{61}
+\contentsline {paragraph}{Part 4: Analysis of a New Design}{62}
+\contentsline {subsection}{\numberline {6.3.3}User Study Results}{62}
+\contentsline {paragraph}{Part 1: Intuition of Existing Design}{63}
+\contentsline {paragraph}{Part 2: Analysis of Existing Design}{65}
+\contentsline {paragraph}{Part 3: Analysis of a Proposed Renovation}{68}
+\contentsline {paragraph}{Part 4: Analysis of a New Design}{69}
+\contentsline {subsection}{\numberline {6.3.4}Discussion}{70}
+\contentsline {subsection}{\numberline {6.3.5}Limitations and Future Work}{71}
+\contentsline {subsection}{\numberline {6.3.6}Summary}{72}
+\contentsline {section}{\numberline {6.4}User Study Lessons}{74}
+\contentsline {chapter}{\numberline {7.}Feature Design for User Interaction in Spatially Augmented Reality Systems}{75}
+\contentsline {section}{\numberline {7.1}``Rendering Window'' on a small portable screen device}{75}
+\contentsline {section}{\numberline {7.2}Token specifying viewpoint added to the tabletop system}{78}
+\contentsline {section}{\numberline {7.3}False color renderings for areas that are too bright, too dark, or contain glare}{78}
+\contentsline {section}{\numberline {7.4}Large screen showing specified viewpoint inside the the tabletop system}{79}
+\contentsline {section}{\numberline {7.5}Create an accessible renderer so that collaborators can use it as a rendering engine}{79}
+\contentsline {section}{\numberline {7.6}Summary}{80}
+\contentsline {chapter}{\numberline {8.}Future Work}{81}
+\contentsline {section}{\numberline {8.1}User Studies}{81}
+\contentsline {section}{\numberline {8.2}Summary}{82}

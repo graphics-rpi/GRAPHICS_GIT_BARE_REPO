@@ -1,0 +1,36 @@
+Introduction
+  Motivation
+    Multiple User Collaboration (Classrooms, etc.) (C)
+    Accessibility (C)
+  Contributions (C)
+  Previous Literature
+    Lasers as Pointing Devices (C)
+    Multiple Mice (T,C)
+    Accessibility (C)
+    Graph Interaction
+Interaction Interface
+  Idea of "Gestures"
+    General Description of Each (C,B)
+    Integration of mice and lasers (C)
+  Extensibility (C)
+Applications
+  Graph Drawing
+    Graphs vs. Trees (B)
+    Large Data (B)
+    Graph Interaction Tool (C)
+  Spatial Graph Drawing
+    Crop Zooming (B)
+    Synenv Tool (B)
+  "User Studies" Usability (C)
+System Implementation
+  Intuitive Interface with Application
+    Callback Methods (C)
+  Cursors
+    MultiMice System (T)
+    Laser Personality System (C)
+Conclusion
+  Discussion (C)
+  Future Work (C)
+  Code Available Soon (C)
+Acknowledgements (C)
+    

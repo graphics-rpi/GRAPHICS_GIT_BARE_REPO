@@ -1,0 +1,67 @@
+\chapter{Conclusion}
+\label{chapter:ConclusionAndDiscussion}
+
+This thesis has explored variations of terrain modeling through mathematical operations, statistical analysis, and erosion simulation. 
+The more that is understood about the surface of the Earth and its underlying mathematical properties, the more is understood about the behavior of water, specifically with regard to water flow and erosion.
+This work has investigated these properties by studying the hydrography of terrain data, using it to more robustly represent terrain surface, and describing the surface through statistical metrics. 
+% In addition, a simulation of erosion has been developed that
+
+% Chapter \ref{chapter:DrillOperator} presented the drill operator, a terrain operator that, when applied iteratively to a plateau, can robustly and compactly represent the surface of all legal terrains.
+
+\section{Summary of Contributions}
+
+% \fbox{Fill In This Section}
+
+This thesis has presented a novel representation of terrain data capable of encoding complex terrain features (such as caves and cliffs). This new representation stores elevation data in a procedural manner that mimics the hydraulic erosion responsible for terrain formation, thus guaranteeing hydrographically valid terrain (that contains no pits). This was accomplished with the aid of a novel weighting scheme for flow threshold based on both a pixel's rank among its peers and its elevation value.
+% 
+In order to judge the accuracy of the drill representation, several distance metrics were used. These included both well-known and novel adaptations of popular distance metrics, such as the Average Hausdorff Distance. 
+
+The drill representation maintains the fundamental hydrography of the terrain it represents. However, there is more that can be accomplished with terrain hydrography. A series of hydrographic characteristics were identified to be used to represent and compare the hydrography of various terrains. These statistics, called the terrain's \textit{fingerprint}, are useful for a variety of applications, including measuring dissimilarity between extracted channel networks (when coupled with the Earth Mover's Distance), unbiasing algorithms in GIS that are based on pixel elevation, and pruning and dissecting channel networks. 
+
+For most applications in GIS, surface data is sufficient. However, to truly delve into the underlying mathematics of terrain formation and representation, an understanding of the hydraulic erosion responsible is necessary. For these times when volumetric data is necessary, such as for an erosion simulation, this thesis has presented the Segmented Height Field. This dynamic layered data structure can also be converted to a tetrahedral mesh for rendering and surface smoothing.
+
+This thesis has also presented a method of manipulating and exploring terrain data in a group problem-solving environment, such as a classroom. The system takes advantage of the fact that inexpensive laser pointers do not contain effective IR filtering and thus leak IR light around their visible spots. Also presented is an application for this system allowing users to explore the hydrography of terrain by manipulating the surface and watching as the hydrography is updated in interactive time.
+
+
+\section{Applications of This Research}
+% 
+% Applications of the drill operator are presented in Chapter \ref{chapter:UsingTheDrillOperator}. The first and most natural application is compressing terrain data, as presented in Section \ref{section:TerrainCompression}. 
+% % With the drill operator
+% \fbox{WILL FILL THIS IN WHEN HAVE RESULTS}
+% 
+% In addition, the drill operator allows for encoding terrain data that meets the criteria for terrain legality as presented in Chapter \ref{chapter:Introduction}. The shape of the drill can be changed and adapted to fit any shape of the terrain, include cliff faces and caves. By representing a channel in the terrain's channel network by its first and last pixels and interpolating drill position and shape along the channel, local minima cannot exist on the surface. And finally, the drill operator's 
+
+
+The elevation data collected from the Earth's surface is used in a multitude of applications in Geographic Information Science. Improvements in the accuracy of the collection of data, along with the results of various applications, is dependent upon the means with which we represent and store this data. The drill representation allows for data to be stored in such a way that complex terrain features are encoded in a procedural manner that mimics the erosion that formed the terrain. This is a powerful and flexible representation that allows for more sophisticated data collection procedures to be investigated, along with smarter compression schemes that maintain the hydrography of the original terrain. Once more accurate data is collected and encoded, GIS applications, such as path planning, floodplain mapping, and observer siting, can be made faster and more robust.
+
+%  The drill operator provides means for more accurate collection and application of terrain data.
+
+In this thesis, I have provided tools necessary to take a step forward in developing a deeper understanding of the mathematics of the Earth's surface. This begins with the way we collect and store terrain data. Typical data collection techniques regularly introduce error. This is not of great concern when the data is stored in a limited representation, like a height field. However, as more robust and flexible representations arise the limitations of data collection techniques will become more apparent, and new technologies will emerge. The drill operator is one such representation, as it provides the necessary flexibility to encode various terrain formations, including cliff faces and caves, that height fields and TINs do not, while simultaneously storing additional information based on the procedural nature of the representation. It excels at representing high-frequency terrains, especially those with clearly defined rivers and channels running throughout, which other more popular representations struggle with these features.
+
+
+Terrain fingerprinting is an application of shape analysis on terrain data that focuses on the hydrography of the terrain instead of its isometry to greyscale image data. Statistical descriptors of terrain surfaces allow for numerical encoding of the surface that succinctly describes its shape while providing for a natural method of terrain comparison, accomplished by an application of the Earth Mover's Distance. In addition, each characteristic of the fingerprint represents a physical property, and so together they also describe the behavior of water on the terrain surface.
+
+The erosion simulation is a tool that allows for further exploration of the process of erosion, specifically as it pertains to levee breach. Breach can be studied by measuring the velocities of water particles as they erode the levee surface away. Erosion can be studied on any scale from any angle due to the nature of the simulation.
+
+Finally, with the laser-based group problem solving tool, groups of users can explore spatial data together, manipulate the data, and watch in interactive time as their manipulations affect the behavior of the simulation. The application presented in this thesis is one such example, providing an interface for users to manipulate terrain data and watch as the hydrography changes. This can be used to investigate how other characteristics change the terrain and its behavior as well, incorporating other representations. Allowing users to drill the terrain as an action provides feedback regarding the effects of the drills on the hydrography in an interactive and educational manner.
+
+
+
+
+
+
+% \section{Future Work}
+% \label{section:FutureWork}
+
+% This research is a step toward a fuller understanding of the mathematics of terrain data and, in turn, the surface of the Earth. This section will describe the next steps to be taken in each of its major areas.
+% 
+% % \subsection{Future Work for the Drill Operator}
+
+
+
+
+
+% \subsection{Future Work for Erosion Simulation}
+
+% \subsection{Future Work for Laser Personalities}
+

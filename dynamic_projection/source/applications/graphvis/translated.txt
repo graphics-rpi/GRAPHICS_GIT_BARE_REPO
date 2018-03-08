@@ -1,0 +1,15 @@
+# alligator alligator 0 0 true info 0 -1
+# animals animals 0 0 true info 0 0
+# vertebrates vertebrates 0 0 true info 0 2
+# reptiles reptiles 0 0 true info 0 4
+# bear bear 0 0 true info 0 4
+# invertebrates invertebrates 0 0 true info 0 1
+# mammals mammals 0 0 true info 0 2
+# carnivores carnivores 0 0 true info 0 3
++ 0 3 derp
++ 3 2 derp
++ 2 1 derp
++ 4 7 derp
++ 7 6 derp
++ 6 5 derp
++ 5 1 derp

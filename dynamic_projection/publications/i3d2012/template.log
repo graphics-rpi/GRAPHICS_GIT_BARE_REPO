@@ -1,0 +1,344 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2011.9.20)  19 DEC 2011 12:40
+entering extended mode
+ %&-line parsing enabled.
+**template
+(./template.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
+erman, danish, esperanto, spanish, catalan, galician, estonian, farsi, finnish,
+ french, greek, monogreek, ancientgreek, croatian, hungarian, interlingua, ibyc
+us, indonesian, icelandic, italian, latin, mongolian, dutch, norsk, polish, por
+tuguese, pinyin, romanian, russian, slovenian, uppersorbian, serbian, swedish, 
+turkish, ukenglish, ukrainian, loaded.
+(./acmsiggraph.cls
+Document Class: acmsiggraph 2011/03/02 ACM SIGGRAPH class
+\ACMpointsize=\skip41
+(/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo
+File: size10.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip42
+\belowcaptionskip=\skip43
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+\linenopenalty=\count87
+\output=\toks14
+\linenoprevgraf=\count88
+\linenumbersep=\dimen103
+\linenumberwidth=\dimen104
+\c@linenumber=\count89
+\c@pagewiselinenumber=\count90
+\c@LN@truepage=\count91
+\c@internallinenumber=\count92
+\c@internallinenumbers=\count93
+\quotelinenumbersep=\dimen105
+\bframerule=\dimen106
+\bframesep=\dimen107
+\bframebox=\box26
+LaTeX Info: Redefining \\ on input line 3056.
+)
+(/usr/share/texmf/tex/latex/psnfss/helvet.sty
+Package: helvet 2005/04/12 PSNFSS-v9.2a (WaS) 
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks15
+))
+(/usr/share/texmf/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count94
+))
+\Gin@req@height=\dimen108
+\Gin@req@width=\dimen109
+)
+(/usr/share/texmf/tex/latex/caption/caption.sty
+Package: caption 2007/01/07 v3.0k Customising captions (AR)
+
+(/usr/share/texmf/tex/latex/caption/caption3.sty
+Package: caption3 2007/01/07 v3.0k caption3 kernel (AR)
+\captionmargin=\dimen110
+\captionmarginx=\dimen111
+\captionwidth=\dimen112
+\captionindent=\dimen113
+\captionparindent=\dimen114
+\captionhangindent=\dimen115
+))
+(/usr/share/texmf/tex/latex/ltxmisc/parskip.sty
+Package: parskip 2001/04/09 non-zero parskip adjustments
+)
+\ACMcopyrightspace=\skip44
+\bibhang=\skip45
+\titlespace=\skip46
+\teaserspace=\skip47
+\@ACMabs=\toks16
+
+(/usr/share/texmf/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2006/02/20 v1.4 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in pdf mode detected.
+)
+(/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2007/02/07 v6.75r Hypertext links for LaTeX
+\@linkdim=\dimen116
+\Hy@linkcounter=\count95
+\Hy@pagecounter=\count96
+
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2007/02/07 v6.75r Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/share/texmf/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/share/texmf/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2006/08/22 v2.4 Connects package keyval with LaTeX options (
+HO)
+)
+Package hyperref Info: Option `breaklinks' set `true' on input line 2238.
+Package hyperref Info: Option `hyperfootnotes' set `false' on input line 2238.
+Package hyperref Info: Option `bookmarks' set `false' on input line 2238.
+Package hyperref Info: Hyper figures OFF on input line 2288.
+Package hyperref Info: Link nesting OFF on input line 2293.
+Package hyperref Info: Hyper index ON on input line 2296.
+Package hyperref Info: Plain pages OFF on input line 2303.
+Package hyperref Info: Backreferencing OFF on input line 2308.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks OFF on input line 2450.
+(/usr/share/texmf/tex/latex/ltxmisc/url.sty
+\Urlmuskip=\muskip10
+Package: url 2005/06/27  ver 3.2  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 2599.
+\Fld@menulength=\count97
+\Field@Width=\dimen117
+\Fld@charsize=\dimen118
+\Choice@toks=\toks17
+\Field@toks=\toks18
+Package hyperref Info: Hyper figures OFF on input line 3102.
+Package hyperref Info: Link nesting OFF on input line 3107.
+Package hyperref Info: Hyper index ON on input line 3110.
+Package hyperref Info: backreferencing OFF on input line 3117.
+Package hyperref Info: Link coloring OFF on input line 3122.
+\Hy@abspage=\count98
+\c@Item=\count99
+)
+*hyperref using driver hpdftex*
+(/usr/share/texmf/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
+\Fld@listcount=\count100
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 503.
+)
+(/usr/share/texmf/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks19
+\verbatim@line=\toks20
+\verbatim@in@stream=\read1
+)
+(/usr/share/texmf/tex/latex/soul/soul.sty
+Package: soul 2003/11/17 v2.4 letterspacing/underlining (mf)
+\SOUL@word=\toks21
+\SOUL@lasttoken=\toks22
+\SOUL@cmds=\toks23
+\SOUL@buffer=\toks24
+\SOUL@token=\toks25
+\SOUL@spaceskip=\skip48
+\SOUL@ttwidth=\dimen119
+\SOUL@uldp=\dimen120
+\SOUL@ulht=\dimen121
+) (./template.aux)
+\openout1 = `template.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 113.
+
+
+(/usr/share/texmf/tex/latex/psnfss/ot1ptm.fd
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+(/usr/share/texmf/tex/latex/ragged2e/ragged2e.sty
+Package: ragged2e 2003/03/25 v2.04 ragged2e Package (MS)
+
+(/usr/share/texmf/tex/latex/everysel/everysel.sty
+Package: everysel 1999/06/08 v1.03 EverySelectfont Package (MS)
+LaTeX Info: Redefining \selectfont on input line 125.
+)
+\CenteringLeftskip=\skip49
+\RaggedLeftLeftskip=\skip50
+\RaggedRightLeftskip=\skip51
+\CenteringRightskip=\skip52
+\RaggedLeftRightskip=\skip53
+\RaggedRightRightskip=\skip54
+\CenteringParfillskip=\skip55
+\RaggedLeftParfillskip=\skip56
+\RaggedRightParfillskip=\skip57
+\JustifyingParfillskip=\skip58
+\CenteringParindent=\skip59
+\RaggedLeftParindent=\skip60
+\RaggedRightParindent=\skip61
+\JustifyingParindent=\skip62
+)
+Package caption Info: hyperref package v6.74m (or newer) detected on input line
+ 113.
+
+(/usr/share/texmf/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/share/texmf/tex/latex/config/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+)
+Package hyperref Info: Link coloring ON on input line 113.
+
+(/usr/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
+
+(/usr/share/texmf/tex/latex/oberdiek/refcount.sty
+Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
+)
+\c@section@level=\count101
+)
+LaTeX Info: Redefining \ref on input line 113.
+LaTeX Info: Redefining \pageref on input line 113.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\new@ifnextchar' on input line 113.
+
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 129.
+
+(/usr/share/texmf/tex/latex/psnfss/ot1phv.fd
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 13.24796pt on input line 129.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 129.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 13.24796pt on input line 129.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 129.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 129.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 129.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 129.
+LaTeX Font Info:    Font shape `OT1/phv/m/n' will be
+(Font)              scaled to size 11.03998pt on input line 133.
+LaTeX Font Info:    Font shape `OT1/phv/bx/n' in size <12> not available
+(Font)              Font shape `OT1/phv/b/n' tried instead on input line 133.
+LaTeX Font Info:    Font shape `OT1/phv/b/n' will be
+(Font)              scaled to size 11.03998pt on input line 133.
+
+Underfull \hbox (badness 1097) in paragraph at lines 233--245
+[]\OT1/ptm/m/n/9 The day-light-ing anal-y-sis sys-tem sim-u-lates the com-plex 
+inter-
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 264.
+
+(/usr/share/texmf/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <9> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 264.
+
+Underfull \hbox (badness 1546) in paragraph at lines 274--276
+[]\OT1/ptm/m/n/9 Demonstration of our tan-gi-ble in-ter-face as a creativity-
+ []
+
+<images/photos/josh_jonathan_new_contraption.jpg, id=7, 361.35pt x 361.35pt>
+File: images/photos/josh_jonathan_new_contraption.jpg Graphic file (type jpg)
+
+<use images/photos/josh_jonathan_new_contraption.jpg>
+<images/photos/available_wall_pieces.jpg, id=8, 240.9pt x 240.9pt>
+File: images/photos/available_wall_pieces.jpg Graphic file (type jpg)
+
+<use images/photos/available_wall_pieces.jpg>
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 283.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 283.
+
+<images/photos/sample_model.png, id=9, 803.0pt x 587.19376pt>
+File: images/photos/sample_model.png Graphic file (type png)
+
+<use images/photos/sample_model.png>
+<images/photos/sample_rendering.png, id=10, 803.0pt x 587.19376pt>
+File: images/photos/sample_rendering.png Graphic file (type png)
+
+<use images/photos/sample_rendering.png> (./template.bbl) [1{/usr/share/texmf/f
+onts/map/pdftex/updmap/pdftex.map}
+
+
+ <./images/photos/josh_jonathan_new_contraption.jpg> <./images/photos/available
+_wall_pieces.jpg> <./images/photos/sample_model.png (PNG copy)> <./images/photo
+s/sample_rendering.png (PNG copy)>]
+(./template.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3629 strings out of 256216
+ 53173 string characters out of 1917072
+ 116114 words of memory out of 1500000
+ 6859 multiletter control sequences out of 10000+200000
+ 22983 words of font info for 46 fonts, out of 1200000 for 2000
+ 645 hyphenation exceptions out of 8191
+ 42i,13n,40p,485b,341s stack positions out of 5000i,500n,6000p,200000b,15000s
+{/usr/share/texmf/fonts/enc/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/b
+luesky/cm/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy7.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmsy9.pfb></usr/share/texmf/fonts/type1/urw/he
+lvetic/uhvb8a.pfb></usr/share/texmf/fonts/type1/urw/times/utmb8a.pfb></usr/shar
+e/texmf/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf/fonts/type1/urw/time
+s/utmri8a.pfb>
+Output written on template.pdf (1 page, 1774035 bytes).
+PDF statistics:
+ 55 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 131072)
+ 37 words of extra memory for PDF output out of 10000 (max. 10000000)
+

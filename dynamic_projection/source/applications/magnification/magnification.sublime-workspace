@@ -1,0 +1,1481 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"edge",
+				"edge"
+			],
+			[
+				"new",
+				"new_edge"
+			],
+			[
+				"QT",
+				"QTEdge"
+			],
+			[
+				"p",
+				"path"
+			],
+			[
+				"getLayer",
+				"GetLayerID"
+			],
+			[
+				"Check",
+				"CheckIfValidEdge"
+			],
+			[
+				"edges",
+				"edgeshashtype"
+			],
+			[
+				"first",
+				"first_layer"
+			],
+			[
+				"Get",
+				"GetLayerID"
+			],
+			[
+				"relative",
+				"RELATIVE_SIZE_MULTIPLIER"
+			],
+			[
+				"rel",
+				"RELATIVE_SIZE_MULTIPLIER"
+			],
+			[
+				"REL",
+				"RELATIVE_SIZE_MULTIPLIER"
+			],
+			[
+				"DOWN",
+				"PushDown"
+			],
+			[
+				"b",
+				"b"
+			],
+			[
+				"n",
+				"n"
+			],
+			[
+				"t",
+				"t"
+			],
+			[
+				"bbox",
+				"bbox"
+			],
+			[
+				"getLast",
+				"getLastTouched"
+			],
+			[
+				"all",
+				"all_selected"
+			],
+			[
+				"test",
+				"testing_object"
+			],
+			[
+				"STATE",
+				"STATE"
+			],
+			[
+				"m_y",
+				"m_ypixelsize"
+			],
+			[
+				"X",
+				"X"
+			],
+			[
+				"INCLUDE",
+				"INCLUDE_DIRECTORIES"
+			],
+			[
+				"PYTHON",
+				"PYTHONLIBS_FOUND"
+			],
+			[
+				"fo",
+				"forv	Vector For Loop"
+			],
+			[
+				"photon",
+				"photon_mapping"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "// Included files for OpenGL Rendering\n#ifdef __APPLE__\n#include <OpenGL/gl.h>\n#include <OpenGL/glu.h>\n#include <GLUT/glut.h>\n#else\n#include <GL/gl.h>\n#include <GL/glu.h>\n#include <GL/glut.h>\n#endif\n\n#include <list>\n#include <vector>\n#include <fstream>\n#include <iostream>\n#include <sstream>\n#include <set>\n#include <ctime>\n#include <iomanip>\n\n#include \"../../common/directory_locking.h\"\n#include \"../../../../remesher/src/vectors.h\"\n\n#include \"../../calibration/planar_interpolation_calibration/tracker.h\"\n#include \"../../calibration/planar_interpolation_calibration/colors.h\"\n\n// Include the Interaction class\n#include \"../../multi_mouse/interaction.h\"\n\n#include \"argparser.h\"\n#include \"../paint/button.h\"\n#include \"../paint/stroke.h\"\n#include \"../paint/text.h\"\n#include \"../../common/Image.h\"\n#include \"../../multi_mouse/key_and_mouse_logger.h\"\n\n#define __NO_SOUND__\n\n#ifdef __APPLE__\n#define __NO_SOUND__\n#endif\n\n#ifndef __NO_SOUND__\n#include \"../../common/Sound/SoundHandler.h\"\n#endif\n\n\nbool completed = false;\n\n\n//int GLOBAL_total_moves = 0;\nint GLOBAL_total_time = 0;\n\nint GLOBAL_fastest_time;\nint GLOBAL_fewest_moves;\nint GLOBAL_num_people;\n\n\n\n\n//#define IR_STATE_DIRECTORY                \"../state/ir_tracking\"\n//#define FOUND_IR_POINTS_FILENAME          \"../state/ir_tracking/found_ir_points.txt\"\n//#define PLANAR_CALIBRATION_GEOMETRY_DATA_FILENAME  \"../state/ir_tracking/planar_calibration_geometry_data.txt\"\n//#define PLANAR_CALIBRATION_INTENSITY_DATA_FILENAME  \"../state/ir_tracking/planar_calibration_intensity_data.txt\"\n\n//#define MK_STATE_DIRECTORY                   \"../state/mouse_and_keyboard\"\n//#define MK_ACTION_FILENAME_TEMPLATE          \"../state/mouse_and_keyboard/actions_XXX.txt\"\n\n#define APPLICATIONS_STATE_DIRECTORY            \"../state/applications/\"\n#define PUZZLE_STATE_FILENAME             \"../state/applications/puzzle_state.txt\"\n#define PUZZLE_HIGH_SCORES_FILENAME             \"../state/applications/puzzle_high_scores.txt\"\n\n#define BORDER_THICKNESS 25\n\nint SPACING;\nint X_BORDER;\nint Y_BORDER;\n\nint SNAP_GRID = 3;\n\ndouble TILE_w;\ndouble TILE_h;\n\n// ==========================================================================================\n// GLOBAL VARIABLES\n// ==========================================================================================\n\nArgParser *args;\nDirLock global_app_dirlock(APPLICATIONS_STATE_DIRECTORY);\n\n// Change these to use ClickableObjects\nColors global_colors;\n\n// Don't know what this is...\nstd::vector<std::pair<std::list<Pt>,Vec3f> > GLOBAL_strokes;\n\n// Change this to all be stored within Cursor ... multi-mice\nPt mouse_location;\nstd::vector<Pt> positions;\nstd::vector<Pt> correctpositions;\n\n#ifndef __NO_SOUND__\nSoundHandler soundcontroller = SoundHandler();\n#endif\n// ==========================================================================================\n// HELPER FUNCTIONS\n// ==========================================================================================\n\nvoid prepare_strokes();\nvoid draw_cursors();\n\nvoid initialize_buttons();\n//void check_for_button_press();\n//void check_for_button_motion();\nvoid check_for_correctness();\nvoid nudge_toward_grid();\n\nvoid keyfunc(unsigned char key, int x, int y);\nvoid specialkeyfunc(int key, int x, int y);		\nvoid mousefunc(int button, int state, int x, int y);\nvoid motionfunc(int x, int y);\n\nvoid keyfunc_helper(int which_keyboard, unsigned char key, int x, int y, int glut_modifiers);\nvoid specialkeyfunc_helper(int which_keyboard, int key, int x, int y, int glut_modifiers);		 \nvoid mousefunc_helper(int which_mouse, int button, int state, int x, int y, int glut_modifiers);\nvoid motionfunc_helper(int which_mouse, int x, int y, int glut_modifiers);\n\nvoid TryToPressButton(int id, double x, double y);\nvoid TryToReleaseButton(int id, double x, double y);\nvoid TryToMoveButton(int id, double x, double y);\n\n/*\n// CHRIS STUETZLE \n// No longer needed here, it's in interaction.cpp\nvoid clamp_to_display(Pt &pt) { \n  int x = pt.x;\n  int y = pt.y;\n  x = std::max(0,std::min(x,args->tiled_display.full_display_width));\n  y = std::max(0,std::min(y,args->tiled_display.full_display_height));\n  pt = Pt(x,y);\n}\n*/\n\n\n#ifndef __NO_SOUND__\nvoid initsound(SoundHandler* Controller);\n#endif\n\nint HandleGLError(std::string foo) {\n	GLenum error;\n	int i = 0;\n	while ((error = glGetError()) != GL_NO_ERROR) {\n		printf (\"GL ERROR(#%d == 0x%x):  %s\\n\", i, error, gluErrorString(error));\n		std::cout << foo << std::endl;\n		if (error != GL_INVALID_OPERATION) i++;\n	}\n	if (i == 0) return 1;\n	return 0;\n}\n\n#ifndef __NO_SOUND__\nvoid initsound(SoundHandler* Controller){\n\n	Controller->AddSource(\"../../common/Sound/wavdata/gameover.wav\");\n	Controller->AddSource(\"../../common/Sound/wavdata/FancyPants.wav\");\n	Controller->AddSource(\"../../common/Sound/wavdata/guitar.wav\");\n\n}\n#endif\n\n// ==========================================================================================\n// DRAWING ROUTINES\n// ==========================================================================================\n\nvoid InitTriangles(){\n  GLuint vertex_array_id;\n  glGenVertexArrays(1, &vertex_array_id);\n  glBindVertexArray(vertex_array_id);\n\n  static const GLfloat g_vertex_buffer_data[] = {\n    -1.0f, -1.0f, 0.0f,\n     1.0f, -1.0f, 0.0f,\n     0.0f,  1.0f, 0.0f\n  };\n\n  GLuint vertex_buffer.\n  glGenBuffers(1, &vertex_buffer);\n  glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);\n  glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data) g_vertex_buffer_data, GL_STATIC_DRAW);\n  return;\n}\n\nvoid draw() { \n  glEnableVertexAttribArray(0);\n  glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);\n  glVertexAttribPointer(\n    0,\n    3,\n    GL_FLOAT,\n    GL_FALSE,\n    0,\n    (void*)0\n  );\n  glDrawArrays(GL_TRIANGLES, 0, 3);\n  glDisableVertexAttribArray(0)\n	/*static GLfloat amb[] =  {0.4, 0.4, 0.4, 0.0};\n	static GLfloat dif[] =  {1.0, 1.0, 1.0, 0.0};\n\n	float s = 0.0;\n\n	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);\n	glEnable(GL_LIGHT1);\n	glDisable(GL_LIGHT2);\n	amb[3] = dif[3] = cos(s) / 2.0 + 0.5;\n	glMaterialfv(GL_FRONT, GL_AMBIENT, amb);\n	glMaterialfv(GL_FRONT, GL_DIFFUSE, dif);\n\n	glClear(GL_DEPTH_BUFFER_BIT);\n	glEnable(GL_LIGHT2);\n	glDisable(GL_LIGHT1);\n	amb[3] = dif[3] = 0.5 - cos(s * .95) / 2.0;\n	glMaterialfv(GL_FRONT, GL_AMBIENT, amb);\n	glMaterialfv(GL_FRONT, GL_DIFFUSE, dif);\n\n	glPushAttrib(GL_ENABLE_BIT);\n	glDisable(GL_DEPTH_TEST);\n	glDisable(GL_LIGHTING);\n	glMatrixMode(GL_PROJECTION);\n	glPushMatrix();\n	glLoadIdentity();\n\n	args->tiled_display.ORTHO();\n\n	glMatrixMode(GL_MODELVIEW);\n	glPushMatrix();\n	glLoadIdentity();\n\n	if (!args->tiled_display.is_tiled_display ||\n	    (args->tiled_display.is_tiled_display && args->tiled_display.is_master)) {\n	  //prepare_strokes();\n	}\n\n\n	//draw_cursors();\n\n\n	glDisable(GL_LINE_SMOOTH);\n	//  glDisable(GL_BLEND);\n\n	glPopMatrix();\n	glMatrixMode(GL_PROJECTION);\n	glPopMatrix();\n	glPopAttrib();\n	glMatrixMode(GL_MODELVIEW);\n\n\n	glutSwapBuffers();*/\n\n}\n\nvoid draw_cursors() {\n  Vec3f color;\n  glPointSize(20);\n  glBegin(GL_POINTS);\n  color = global_colors.GetColor(PRIMARY_MOUSE);\n  glColor3f(color.x(),color.y(),color.z());\n  glVertex2f(GLOBAL_PRIMARY_MOUSE_POS.x,args->tiled_display.full_display_height-GLOBAL_PRIMARY_MOUSE_POS.y);\n  //glVertex2f(GLOBAL_PRIMARY_MOUSE_POS.x,GLOBAL_PRIMARY_MOUSE_POS.y);\n\n  color = global_colors.GetColor(MOUSE_2);\n  glColor3f(color.x(),color.y(),color.z());\n  glVertex2f(GLOBAL_MOUSE_2_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_2_POS.y);\n  color = global_colors.GetColor(MOUSE_3);\n  glColor3f(color.x(),color.y(),color.z());\n  glVertex2f(GLOBAL_MOUSE_3_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_3_POS.y);\n  color = global_colors.GetColor(MOUSE_4);\n  glColor3f(color.x(),color.y(),color.z());\n  glVertex2f(GLOBAL_MOUSE_4_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_4_POS.y);\n\n  color = global_colors.GetColor(MOUSE_5);\n  glColor3f(color.x(),color.y(),color.z());\n  glVertex2f(GLOBAL_MOUSE_5_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_5_POS.y);\n  color = global_colors.GetColor(MOUSE_6);\n  glColor3f(color.x(),color.y(),color.z());\n  glVertex2f(GLOBAL_MOUSE_6_POS.x,args->tiled_display.full_display_height-GLOBAL_MOUSE_6_POS.y);\n  glEnd();\n\n}\n\n/*\nvoid draw_grid() {\n  \n  int SPACING = 1;\n  \n  Pt pt,pt2;\n\n  glColor3f(0.15,0.15,0.15);\n  glBegin(GL_QUADS);\n  for (int i = 0; i < args->cols; i++) {\n    for (int j = 1; j <= args->rows; j++) {\n      glVertex2f(X_BORDER+i*(TILE_w+SPACING),       SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j)*(TILE_h+SPACING)));\n      glVertex2f(X_BORDER+i*(TILE_w+SPACING)+TILE_w,SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j)*(TILE_h+SPACING)));\n      glVertex2f(X_BORDER+i*(TILE_w+SPACING)+TILE_w,SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j+0)*(TILE_h+SPACING))+TILE_h);\n      glVertex2f(X_BORDER+i*(TILE_w+SPACING),       SPACING+args->tiled_display.full_display_height-(Y_BORDER+(j+0)*(TILE_h+SPACING))+TILE_h);\n    }\n  }\n  glEnd();\n}\n*/\n\nvoid make_nice_time(std::stringstream &ss, int t) {\n  int sec = int(t) % 60;\n  int min = int(t) / 60;\n  ss << min << \":\" << std::setw(2) << std::setfill('0') << sec;\n}\n\n\nstd::string intToString(int a) { \n  if (a == 0) return \" \";\n  std::stringstream tmp;\n  tmp << a;\n  return tmp.str();\n}\n\n\nvoid pretty_colors_move_quality(const std::string &name, int good, int neutral, int bad, int which, int total_count) {\n  std::stringstream tmp;\n  int w = args->tiled_display.full_display_width;\n  int h = args->tiled_display.full_display_height;\n\n\n  std::string a = name;\n  std::string b = \" \"+intToString(good);\n  std::string c = \" \"+intToString(neutral);\n  std::string d = \" \"+intToString(bad);\n\n  //  double aw = drawstring_relative_width(a.c_str());\n  //double bw = drawstring_relative_width(b.c_str());\n  //double cw = drawstring_relative_width(c.c_str());\n  //double dw = drawstring_relative_width(d.c_str());\n  //double sumw = 1.2*(aw + bw + cw + dw);\n\n  //  std::cout << \"widths \" << aw << \" \" << bw << \" \" << cw << \" \" << dw << std::endl;\n\n\n  //  double horiz = (0.5+which) / double(total_count);\n  //\n  //double width = (which + 0.5) / double(total_count*1.1); \n  //double height = 0.05*h;\n\n\n  std::vector<std::string> texts;\n  texts.push_back(a);\n  texts.push_back(b);\n  texts.push_back(c);\n  texts.push_back(d);\n  std::vector<Vec3f> colors;\n  colors.push_back(Vec3f(1,1,1));\n  colors.push_back(Vec3f(0,1,0));\n  colors.push_back(Vec3f(1,1,0));\n  colors.push_back(Vec3f(1,0,0));\n\n  //drawstrings((0.5+which)*w/double(total_count), 0.05*h, texts,colors, 1/(total_count*1.1)*w, 0.05*h);\n\n  //  double width = 1 / double(total_count*1.1); \n  //  double height = 0.05*h;\n\n\n}\n\nvoid display(void) {\n  HandleGLError(\"BEFORE DISPLAY\");\n  draw();\n  HandleGLError(\"AFTER DISPLAY\");\n}\n\n\n// ==========================================================================================\n// IDLE\n// ==========================================================================================\n\nvoid idle(void) {\n  \n  //std::cout << \"redisplay\" << std::endl;\n  display();\n  usleep(1000);\n   \n}\n\n\n// ===================================================================\n// MOUSE FUNCTIONS\n\n\nvoid reshape(int w, int h) {\n	HandleGLError(\"BEFORE RESHAPE\");\n	args->tiled_display.reshape(w,h);\n	//args->width = w;\n	//args->height = h;\n	glViewport(0,0,w,h);\n\n	glMatrixMode(GL_PROJECTION);\n	gluPerspective(40.0, 1.0, 1.0, 10.0);\n	glMatrixMode(GL_MODELVIEW);\n	gluLookAt(0.0, 0.0, 5.0,\n			0.0, 0.0, 0.0,\n			0.0, 1.0, 0.);\n	glTranslatef(0.0, 0.6, -1.0);\n\n	/*\n	for(unsigned int i = 0; i < piece_pointers.size(); ++i)\n		piece_pointers[i]->ResetBorder();\n	*/\n\n	HandleGLError(\"AFTER RESHAPE\");\n}\n\n\nvoid TryToPressButton(int id, double x, double y){\n  return;\n}\nvoid TryToReleaseButton(int id, double x, double y){\n  return;\n}\nvoid TryToMoveButton(int id, double x, double y){\n  return;\n}\n\n\n\n\nvoid keyfunc(unsigned char key, int x, int y) {\n  keyfunc_helper(PRIMARY_KEYBOARD,key,x,y,glutGetModifiers());\n}\n\nvoid specialkeyfunc(int key, int x, int y) {\n  specialkeyfunc_helper(PRIMARY_KEYBOARD,key,x,y,glutGetModifiers());\n}\n\n\nvoid mousefunc(int button, int state, int x, int y) {\n  mousefunc_helper(PRIMARY_MOUSE,button,state,x,y,glutGetModifiers());\n}\n\nvoid motionfunc(int x, int y) {\n  motionfunc_helper(PRIMARY_MOUSE,x,y,0); //glutGetModifiers());\n}\n\n\n////////////////////////////////////////////////////////////////////////////////////////////////////\n\n// this will get called eventually :)\nvoid keyfunc_helper(int which_keyboard, unsigned char key, int x, int y, int glut_modifiers) {\n  //  std::cout << \"RECEIVED KEY FROM LOGGER: \" << which_keyboard << \" '\" << key << \"' \" << x << \" \" << y << \" \" << glut_modifiers << std::endl;\n  if (key == 'q') {\n    exit(0);\n  }\n}\n\n\nvoid specialkeyfunc_helper(int which_keyboard, int key, int x, int y, int glut_modifiers) {\n  //  std::cout << \"RECEIVED SPECIAL KEY FROM LOGGER: \" << which_keyboard << \" '\" << key << \"' \" << x << \" \" << y << \" \" << glut_modifiers << std::endl;\n\n}\n\nvoid mousefunc_helper(int which_mouse, int button, int state, int x, int y, int glut_modifiers) {\n  //  std::cout << \"RECEIVED MOUSE FROM LOGGER: \" << which_mouse << \" \" << button << \" \" << state << \" \" << x << \" \" << y << \" \" << glut_modifiers << std::endl;\n\n}\n\nvoid motionfunc_helper(int which_mouse, int x, int y, int glut_modifiers) {\n  //  std::cout << \"RECEIVED MOTION FROM LOGGER: \" << which_mouse << \" \" << x << \" \" << y << \" \" << glut_modifiers << std::endl;\n\n}\n\n// ===================================================================\n\nusing std::cout;\nusing std::endl;\n\nint  main(int argc, char **argv) \n{\n\n	args = new ArgParser(argc,argv);\n\n// ALL OF THESE THINGS BELONG IN INTERACTION\n//	Interaction::setGlobalPointTracker( NULL );\n\n//    Interaction::setGlobalCalibrationData( new PlanarCalibration(Interaction::PLANAR_CALIBRATION_GEOMETRY_DATA_FILENAME, Interaction::PLANAR_CALIBRATION_INTENSITY_DATA_FILENAME) );\n	//Interaction::getGlobalCalibrationData() = new PlanarCalibration(PLANAR_CALIBRATION_GEOMETRY_DATA_FILENAME,PLANAR_CALIBRATION_INTENSITY_DATA_FILENAME);\n\n//	global_colors.AssignRandomAvailableColor(PRIMARY_MOUSE);\n//	global_colors.AssignRandomAvailableColor(MOUSE_2);\n//	global_colors.AssignRandomAvailableColor(MOUSE_3);\n//	global_colors.AssignRandomAvailableColor(MOUSE_4);\n\n	\n	// initialize things...\n	glutInit(&argc, argv);\n	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);\n        args->tiled_display.print();\n        glutInitWindowSize(args->tiled_display.my_width,args->tiled_display.my_height);\n\n	glutInitWindowPosition(20,20);\n	glutCreateWindow(\"Puzzle\");\n	glutDisplayFunc(display);\n	glutIdleFunc(idle);\n	glutReshapeFunc(reshape);\n	glutKeyboardFunc(keyfunc);\n	glutSpecialFunc(specialkeyfunc);\n	glutMouseFunc(mousefunc);\n	glutMotionFunc(motionfunc);\n\n	GLfloat light0_ambient[] = {0.2, 0.2, 0.2, 1.0};\n	GLfloat light0_diffuse[] = {0.0, 0.0, 0.0, 1.0};\n	GLfloat light1_diffuse[] = {1.0, 0.0, 0.0, 1.0};\n	GLfloat light1_position[] = {1.0, 1.0, 1.0, 0.0};\n	GLfloat light2_diffuse[] = {0.0, 1.0, 0.0, 1.0};\n	GLfloat light2_position[] = {-1.0, -1.0, 1.0, 0.0};\n\n	glEnable(GL_LIGHTING);\n	glEnable(GL_LIGHT0);\n	glLightfv(GL_LIGHT0, GL_AMBIENT, light0_ambient);\n	glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_diffuse);\n	glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_diffuse);\n	glLightfv(GL_LIGHT1, GL_POSITION, light1_position);\n	glLightfv(GL_LIGHT2, GL_DIFFUSE, light2_diffuse);\n	glLightfv(GL_LIGHT2, GL_POSITION, light2_position);\n	glEnable(GL_DEPTH_TEST);\n	glDisable(GL_CULL_FACE);\n	glEnable(GL_BLEND);\n	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);\n	glEnable(GL_LINE_SMOOTH);\n	glLineWidth(2.0);\n\n	HandleGLError(\"main 1\");\n\n	if (args->tiled_display.full_screen) {\n          std::cout << \"FULL SCREENING\" << std::endl;\n          glutFullScreen();\n	}\n\n    // Set up the cursors\n  //Interaction::setupCursors(&(args->tiled_display), AddTrackedPoint,RemoveTrackedPoint );\n	//Interaction::setGlobalPointTracker( new PointTracker(Interaction::getGlobalCalibrationData(), AddTrackedPoint,RemoveTrackedPoint,-1,0.5) );\n	//args->tiled_display.set_from_calibration_data(Interaction::getGlobalCalibrationData());\n	\n#ifndef __NO_SOUND__\n	initsound(&soundcontroller);\n#endif\n	glutMainLoop();\n\n	return 0;\n\n}\n\n\n// CHRIS STUETZLE\n// TEMP \nvoid TryToPressObj(int cursIndex) {}\nvoid TryToReleaseObj(int cursIndex) {}\nvoid TryToMoveObj(int cursIndex) {}\n",
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/magnification/main.cpp",
+			"file_size": 15684,
+			"file_write_time": 1365633229000000,
+			"settings":
+			{
+				"buffer_size": 16302,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/magnification/mesh.h",
+			"settings":
+			{
+				"buffer_size": 186,
+				"line_ending": "Unix",
+				"name": "#ifndef MESH_H_"
+			}
+		},
+		{
+			"contents": "#include mesh.h\n\nvoid Mesh::Initialize(){\n  glGenVertexArrays(1, &vertex_array_id);\n  glBindVertexArray(vertex_array_id);\n\n  static const GLfloat g_vertex_buffer_data[] = {\n    -1.0f, -1.0f, 0.0f,\n     1.0f, -1.0f, 0.0f,\n     0.0f,  1.0f, 0.0f\n  };\n\n  GLuint vertex_buffer.\n  glGenBuffers(1, &vertex_buffer);\n  glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer);\n  glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data) g_vertex_buffer_data, GL_STATIC_DRAW);\n}\nvoid Mesh::Draw(){\n\n}\nvoid Mesh::Cleanup(){\n\n}",
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/magnification/mesh.cpp",
+			"file_size": 64,
+			"file_write_time": 1365630831000000,
+			"settings":
+			{
+				"buffer_size": 505,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/common/Image.h",
+			"settings":
+			{
+				"buffer_size": 21295,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/multi_mouse/interaction.h",
+			"settings":
+			{
+				"buffer_size": 3165,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/multi_mouse/interaction.cpp",
+			"settings":
+			{
+				"buffer_size": 12193,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/CMakeLists.txt",
+			"settings":
+			{
+				"buffer_size": 15156,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/puzzle/main.cpp",
+			"settings":
+			{
+				"buffer_size": 46023,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/paint/button.cpp",
+			"settings":
+			{
+				"buffer_size": 10720,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/puzzle/PuzzlePiece.cpp",
+			"settings":
+			{
+				"buffer_size": 7237,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"",
+				"About"
+			],
+			[
+				"git",
+				"Git: Diff Current File"
+			],
+			[
+				"diff",
+				"Git: Diff Current File"
+			],
+			[
+				"d",
+				"Git: Diff Current File"
+			],
+			[
+				"diff ",
+				"Git: Diff Current File"
+			],
+			[
+				"git diff curr",
+				"Git: Diff Current File"
+			],
+			[
+				"git diff",
+				"Git: Diff Current File"
+			],
+			[
+				":",
+				":w - Save"
+			],
+			[
+				":W",
+				":w - Save"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"cmake",
+				"Set Syntax: CMake"
+			],
+			[
+				"package re",
+				"Package Control: Remove Package"
+			],
+			[
+				"package list",
+				"Package Control: List Packages"
+			],
+			[
+				"git ",
+				"Package Control: Install Package"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
+			[
+				":we",
+				":w - Save"
+			],
+			[
+				"package install",
+				"Package Control: Install Package"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/puzzle/main.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Graph.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Layer.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/TreeNode.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/glutnotifier/glutnotifier.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/realtimedebug/Debug.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/CMakeLists.txt",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Hash.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Layer.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Graph.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/ClickableObject.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/realtimedebug/Inspectable.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/output.txt",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/BoundingBox2f.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_graph/Graphlayer.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/realtimedebug/Debug.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/BoundingBox2f.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/ClickableObject.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Spring.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Spring.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/QTEdge.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/QTNode.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/QTElement.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/DrawableObject.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/DrawableObject.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/button.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/QTEdge.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/button.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_graph/Graphlayer.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/QTElement.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/QuadTree.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QTEdge.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QTNode.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QTNode.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QTEdge.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/paint/ClickableObject.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/table_top_detection/point.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/remesher/src/boundingbox.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/DrawnNode.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/DrawnNode.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Edge.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/Edge.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/DrawableObject.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/QuadTree/bbox.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/graphvis/QuadTree/QuadTree.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/remesher/src/edge.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/graphvis/QuadTree/bbox.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_graph/InteractiveEdit.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/clickableobject.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/remesher/src/edge.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/DrawableObject.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/Graph.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/Graph.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/DrawnNode.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/Edge.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/paint/clickableobject.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/DrawnNode.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/graphvis/buildlib.sh",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/QuadTree/QuadTree.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/graphvis/GraphVisualization/buildlib.sh",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/Edge.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/TileCache.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/TileCache.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/QuadTree/bbox.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/QuadTree/bbox.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/QuadTree/TreeNode.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/QTreeElement.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/Viewer.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/AZMatrix3.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_basemap/Basemap.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/Viewer.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapview/main.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/calibration/planar_interpolation_calibration/tiled_display.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/TransformationManager.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/glutnotifier/glutnotifier.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_drawing/Drawing.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/TransformationManager.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/AZMatrix3.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/AZImage.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/calibration/planar_interpolation_calibration/planar_calibration.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_drawing/Drawing.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_basemap/CMakeLists.txt",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_selector/LayerSelector.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_selector/LayerSelector.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_selector/layer_selector.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/Layer.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/build_output.txt",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/clickable.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/QTreeElement.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_basemap/Basemap.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/Makefile",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/synenv-data/src/python-helpers.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/libexec/synenv/load-all.py",
+		"/home/kims20/mapnik/src/agg/agg_renderer.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_basemap/layer_basemap.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/multi_mouse/key_and_mouse_logger.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/valgrind_output.txt",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/synenv-data/CMakeLists.txt",
+		"/usr/local/tiledrawer/setup.sh",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_drawing/layer_drawing.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_graph/InteractiveEdit.cpp",
+		"/home/kims20/mapnik/INSTALL.md",
+		"/home/kims20/mapnik/demo/c++/rundemo.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/CMakeFiles/Makefile2",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/config.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/applications/graphvis/GraphVisualization/QuadTree/Makefile",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/dynamic_projection/source/calibration/planar_interpolation_calibration/colors.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/synenv-data/src/structures.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/synenv-data/include/data-source.hpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/TextureManager.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/JpegCache.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/Thread.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/AZImage.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_roads/RoadNetwork.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/Thread.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/TextureManager.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapcore/JpegCache.cpp",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/mapview/MapView.h",
+		"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv/visualizations/MapView/layer_graph/~Graphlayer.cpp",
+		"/home/kims20/projects/raytracing/depth_output.txt",
+		"/home/kims20/projects/raytracing/raytree.cpp",
+		"/home/kims20/projects/raytracing/material.h",
+		"/home/kims20/projects/raytracing/raytracer.cpp",
+		"/home/kims20/projects/raytracing/mesh.cpp",
+		"/home/kims20/projects/raytracing/kdtree.h",
+		"/home/kims20/projects/raytracing/reflective_spheres.obj",
+		"/home/kims20/projects/raytracing/reflective_ring.obj",
+		"/home/kims20/projects/raytracing/raytree.h"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/synenv"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"glutMain",
+			"display",
+			"image",
+			"display",
+			"RemoveTracked",
+			"ReleasePiece",
+			"release",
+			"60",
+			"draw",
+			"132",
+			"interaction",
+			"I",
+			"LoadEdges",
+			"--EDGE--",
+			"DirLock",
+			"bounds",
+			"last_query",
+			"DRAWING",
+			"drawing ",
+			"travers",
+			"traversla",
+			"last_query",
+			"overlap",
+			"GLOBAL",
+			"interpolate",
+			"visible",
+			"polylines",
+			"interpolate",
+			"visible",
+			"path_t",
+			"addlinepoint",
+			"list",
+			"edge",
+			"edges",
+			"curr_box",
+			"getBox",
+			"operator",
+			"relative",
+			"ID :: 27908",
+			"PT < 61193 835187>      PT < 62621 837346>",
+			"BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> }",
+			"object: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> }",
+			"PT < -3250 755000>      PT < 114500 920000>",
+			"70343.5 858125",
+			"70343",
+			"PT < 61193 835187>      PT < 62621 837346>",
+			"PT < 55625 837500>      PT < 70343.5 858125>",
+			"835187",
+			"PT < 61193",
+			"61193",
+			"PT < 61193 835187>      PT < 62621 837346>",
+			"PT < 55625 837500>      PT < 70343.5 858125>",
+			"bounds: BoundingBox2f { PT < 55625 837500>      PT < 70343.5 858125> }  \n PT < 55625 837500>      PT < 70343.5 858125> }",
+			"bounds: BoundingBox2f { PT < 55625 837500>      PT < 70343.5 858125> }  \nBoundingBox2f { PT < 55625 837500>      PT < 70343.5 858125> }  ",
+			"bounds: BoundingBox2f { PT < 55625 837500>      PT < 70343.5 858125> }  \nobject: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> } ",
+			"object: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> } ",
+			"PT < 61193 835187>      PT < 62621 837346>",
+			"{ PT < 55625 837500>      PT < 70343.5 858125> }",
+			"SUBDIVIDING",
+			"object: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> }",
+			"child : BoundingBox2f { PT < 55625 837500>      PT < 70343.5 858125> } \n",
+			"object: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> } \n",
+			"object: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> } \nobject: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346>",
+			"BoundingBox2f { PT < 55625 837500>      PT < 70343.5 858125> } ",
+			"PARENTBoundingBox2f { PT < 55625 837500>      PT < 70343.5 858125> } ",
+			"object: BoundingBox2f { PT < 61193 835187>      PT < 62621 837346> } ",
+			"55625",
+			"maxdepth",
+			"pushdown",
+			"DrawnNode",
+			"getButton",
+			"Edge",
+			"DrawnNode",
+			"addBorde",
+			"addBorder",
+			"setButtonBor",
+			"boundingbox",
+			"bounding",
+			"DrawableObject",
+			"ClickClosest",
+			"getButton",
+			"DrawnNode",
+			"Edge",
+			"DrawnNode",
+			"paint",
+			"DrawnNode",
+			"Edge",
+			"DrawnNode",
+			"Edge",
+			"button.",
+			"visible",
+			"bbox",
+			"QTreeElement",
+			"QTREELEMENT",
+			"QTreeElement",
+			"button",
+			"distance",
+			"graphlayer",
+			"SortSelected",
+			"occupants",
+			"point",
+			"b",
+			"a",
+			"Compute",
+			"clickclosest",
+			"Current",
+			"traversal",
+			"iterator",
+			"log_mouseaction",
+			"click",
+			"Log",
+			"utton",
+			"touch",
+			"last_touched",
+			"SELECTING_COUNTEr",
+			"ClickClosest",
+			"dt",
+			"click",
+			"buttons",
+			"position_index",
+			"relativesize",
+			"edgefound",
+			"python",
+			"USE",
+			"-D",
+			"use",
+			"synenv",
+			"synenv-data"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"i",
+			"QTNode",
+			"QTEdge",
+			"QTNode",
+			"QTElement",
+			"QTEdge",
+			"QTNode",
+			"QTEdge",
+			"QTNode",
+			"QTEdge",
+			"BoundingBox2f",
+			"DrawableObject",
+			"click"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/magnification/main.cpp",
+					"settings":
+					{
+						"buffer_size": 16302,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4788,
+								4788
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2754.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/magnification/mesh.h",
+					"settings":
+					{
+						"buffer_size": 186,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								52,
+								52
+							]
+						],
+						"settings":
+						{
+							"auto_name": "#ifndef MESH_H_",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/magnification/mesh.cpp",
+					"settings":
+					{
+						"buffer_size": 505,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								247,
+								247
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/common/Image.h",
+					"settings":
+					{
+						"buffer_size": 21295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								828,
+								828
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6426.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/multi_mouse/interaction.h",
+					"settings":
+					{
+						"buffer_size": 3165,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3060,
+								3060
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1030.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/multi_mouse/interaction.cpp",
+					"settings":
+					{
+						"buffer_size": 12193,
+						"regions":
+						{
+							"bookmark_o":
+							{
+								"flags": 144,
+								"regions":
+								[
+									[
+										1199,
+										1199
+									]
+								]
+							}
+						},
+						"selection":
+						[
+							[
+								7818,
+								7818
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4005.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/CMakeLists.txt",
+					"settings":
+					{
+						"buffer_size": 15156,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2579,
+								2579
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CMake/CMake.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1275.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/puzzle/main.cpp",
+					"settings":
+					{
+						"buffer_size": 46023,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5592,
+								5592
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 214.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/paint/button.cpp",
+					"settings":
+					{
+						"buffer_size": 10720,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								373,
+								373
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/home/kims20/GRAPHICS_GIT_WORKING_CHECKOUT/dynamic_projection/source/applications/puzzle/PuzzlePiece.cpp",
+					"settings":
+					{
+						"buffer_size": 7237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3157,
+								3157
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4233.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 45.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.git":
+	{
+		"height": 112.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"main",
+				"main.cpp"
+			],
+			[
+				"qtelement",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QTElement.h"
+			],
+			[
+				"",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QuadTree.h"
+			],
+			[
+				"clickableh",
+				"dynamic_projection/source/applications/paint/ClickableObject.h"
+			],
+			[
+				"clickable",
+				"dynamic_projection/source/applications/paint/ClickableObject.cpp"
+			],
+			[
+				"glut",
+				"glutnotifier/glutnotifier.h"
+			],
+			[
+				"inspect",
+				"realtimedebug/Inspectable.h"
+			],
+			[
+				"main.cpp",
+				"mapview/main.cpp"
+			],
+			[
+				"output",
+				"output.txt"
+			],
+			[
+				"output.",
+				"output.txt"
+			],
+			[
+				"debug.h",
+				"realtimedebug/Debug.h"
+			],
+			[
+				"bounding",
+				"dynamic_projection/source/applications/paint/BoundingBox2f.h"
+			],
+			[
+				"gra",
+				"layer_graph/Graphlayer.h"
+			],
+			[
+				"layer",
+				"dynamic_projection/source/applications/graphvis/Layer.cpp"
+			],
+			[
+				"graphlayer",
+				"layer_graph/Graphlayer.h"
+			],
+			[
+				"cmakelists",
+				"CMakeLists.txt"
+			],
+			[
+				"hash.h",
+				"dynamic_projection/source/applications/graphvis/Hash.h"
+			],
+			[
+				"layer.cpp",
+				"dynamic_projection/source/applications/graphvis/Layer.cpp"
+			],
+			[
+				"qtelecpp",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QTElement.cpp"
+			],
+			[
+				"layer.h",
+				"dynamic_projection/source/applications/graphvis/Layer.h"
+			],
+			[
+				"qtedge",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QTEdge.cpp"
+			],
+			[
+				"drawable",
+				"dynamic_projection/source/applications/paint/DrawableObject.cpp"
+			],
+			[
+				"qt",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QTNode.cpp"
+			],
+			[
+				"debug.cpp",
+				"realtimedebug/Debug.cpp"
+			],
+			[
+				"debug",
+				"realtimedebug/Debug.h"
+			],
+			[
+				"boundingbox2f",
+				"dynamic_projection/source/applications/paint/BoundingBox2f.h"
+			],
+			[
+				"bbox",
+				"dynamic_projection/source/applications/paint/BoundingBox2f.cpp"
+			],
+			[
+				"o",
+				"output.txt"
+			],
+			[
+				"graph.h",
+				"dynamic_projection/source/applications/graphvis/Graph.h"
+			],
+			[
+				"treenode",
+				"dynamic_projection/source/applications/graphvis/QuadTree/TreeNode.h"
+			],
+			[
+				"graph",
+				"dynamic_projection/source/applications/graphvis/Graph.cpp"
+			],
+			[
+				"quadtree",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QuadTree.h"
+			],
+			[
+				"spring",
+				"dynamic_projection/source/applications/graphvis/Spring.cpp"
+			],
+			[
+				"graph.cpp",
+				"dynamic_projection/source/applications/graphvis/Graph.cpp"
+			],
+			[
+				"boud",
+				"dynamic_projection/source/applications/paint/BoundingBox2f.cpp"
+			],
+			[
+				"grap",
+				"layer_graph/Graphlayer.h"
+			],
+			[
+				"graphlayer.cpp",
+				"layer_graph/Graphlayer.cpp"
+			],
+			[
+				"graphlayer.h",
+				"layer_graph/Graphlayer.h"
+			],
+			[
+				"quadtree.h",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QuadTree.h"
+			],
+			[
+				"qtnode",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QTNode.cpp"
+			],
+			[
+				"spring.h",
+				"dynamic_projection/source/applications/graphvis/Spring.h"
+			],
+			[
+				"cmakelist",
+				"CMakeLists.txt"
+			],
+			[
+				"edge.cpp",
+				"dynamic_projection/source/applications/graphvis/Edge.cpp"
+			],
+			[
+				"edge",
+				"dynamic_projection/source/applications/graphvis/Edge.h"
+			],
+			[
+				"drawnnode",
+				"dynamic_projection/source/applications/graphvis/DrawnNode.cpp"
+			],
+			[
+				"qtree",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QTElement.h"
+			],
+			[
+				"qtr",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QTElement.cpp"
+			],
+			[
+				"boundingbox",
+				"dynamic_projection/source/applications/paint/BoundingBox2f.h"
+			],
+			[
+				"point",
+				"dynamic_projection/source/table_top_detection/point.h"
+			],
+			[
+				"button.h",
+				"dynamic_projection/source/applications/paint/button.h"
+			],
+			[
+				"button.cpp",
+				"dynamic_projection/source/applications/paint/button.cpp"
+			],
+			[
+				"button",
+				"dynamic_projection/source/applications/paint/button.cpp"
+			],
+			[
+				"click",
+				"dynamic_projection/source/applications/paint/ClickableObject.h"
+			],
+			[
+				"edgecpp",
+				"dynamic_projection/source/applications/graphvis/Edge.cpp"
+			],
+			[
+				"drawnnode.cpp",
+				"dynamic_projection/source/applications/graphvis/DrawnNode.cpp"
+			],
+			[
+				"tree",
+				"dynamic_projection/source/applications/graphvis/QuadTree/TreeNode.h"
+			],
+			[
+				"quad",
+				"dynamic_projection/source/applications/graphvis/QuadTree/QuadTree.h"
+			],
+			[
+				"drawn",
+				"dynamic_projection/source/applications/graphvis/DrawnNode.h"
+			],
+			[
+				"drawableobje",
+				"dynamic_projection/source/applications/paint/DrawableObject.cpp"
+			],
+			[
+				"drawableob",
+				"dynamic_projection/source/applications/paint/DrawableObject.h"
+			],
+			[
+				"graphla",
+				"layer_graph/Graphlayer.cpp"
+			],
+			[
+				"graphlh",
+				"layer_graph/Graphlayer.h"
+			],
+			[
+				"interactive",
+				"layer_graph/InteractiveEdit.h"
+			],
+			[
+				"bbox.h",
+				"remesher/src/boundingbox.h"
+			],
+			[
+				"edge.h",
+				"remesher/src/edge.h"
+			],
+			[
+				"cmake",
+				"CMakeLists.txt"
+			],
+			[
+				"qtreeelement",
+				"dynamic_projection/source/applications/graphvis/GraphVisualization/QTreeElement.cpp"
+			],
+			[
+				"drawnnode.h",
+				"dynamic_projection/source/applications/graphvis/GraphVisualization/DrawnNode.h"
+			],
+			[
+				"clist",
+				"CMakeLists.txt"
+			],
+			[
+				"graphly",
+				"layer_graph/Graphlayer.cpp"
+			],
+			[
+				"node",
+				"dynamic_projection/source/applications/graphvis/GraphVisualization/QuadTree/TreeNode.h"
+			],
+			[
+				"base",
+				"layer_basemap/Basemap.cpp"
+			],
+			[
+				"tile",
+				"mapcore/TileCache.h"
+			],
+			[
+				"tiled_dis",
+				"dynamic_projection/source/calibration/planar_interpolation_calibration/tiled_display.h"
+			],
+			[
+				"tilecache",
+				"mapcore/TileCache.cpp"
+			],
+			[
+				"basemap.cpp",
+				"layer_basemap/Basemap.cpp"
+			],
+			[
+				"az",
+				"mapcore/AZMatrix3.cpp"
+			],
+			[
+				"viewe",
+				"mapcore/Viewer.h"
+			],
+			[
+				"bbox.cpp",
+				"dynamic_projection/source/applications/graphvis/GraphVisualization/QuadTree/bbox.cpp"
+			],
+			[
+				"azma",
+				"mapcore/AZMatrix3.h"
+			],
+			[
+				"viewr.h",
+				"mapcore/Viewer.h"
+			],
+			[
+				"viewer.cpp",
+				"mapcore/Viewer.cpp"
+			],
+			[
+				"drawing.cpp",
+				"layer_drawing/Drawing.cpp"
+			],
+			[
+				"planar_calibr",
+				"dynamic_projection/source/calibration/planar_interpolation_calibration/planar_calibration.h"
+			],
+			[
+				"viewer",
+				"mapcore/Viewer.cpp"
+			],
+			[
+				"trans",
+				"mapcore/TransformationManager.cpp"
+			],
+			[
+				"transformationmanager",
+				"mapcore/TransformationManager.h"
+			],
+			[
+				"glutnotifier",
+				"glutnotifier/glutnotifier.cpp"
+			],
+			[
+				"tilecac",
+				"mapcore/TileCache.cpp"
+			],
+			[
+				"drawing.h",
+				"layer_drawing/Drawing.h"
+			],
+			[
+				"drawing",
+				"layer_drawing/Drawing.cpp"
+			],
+			[
+				"clickableobject",
+				"dynamic_projection/source/applications/paint/clickableobject.h"
+			],
+			[
+				"layersee",
+				"layer_selector/LayerSelector.h"
+			],
+			[
+				"layerseelc",
+				"layer_selector/layer_selector.cpp"
+			],
+			[
+				"layer.",
+				"dynamic_projection/source/applications/graphvis/GraphVisualization/Layer.cpp"
+			],
+			[
+				"graphlayerc",
+				"layer_graph/Graphlayer.cpp"
+			],
+			[
+				"layerdrawing",
+				"layer_drawing/layer_drawing.cpp"
+			],
+			[
+				"loadall",
+				"libexec/synenv/load-all.py"
+			],
+			[
+				"config.h",
+				"config.h"
+			],
+			[
+				"cmakefile",
+				"CMakeFiles/Makefile2"
+			],
+			[
+				"python.",
+				"synenv-data/src/python-helpers.cpp"
+			],
+			[
+				"make",
+				"Makefile"
+			],
+			[
+				"valgrin",
+				"valgrind_output.txt"
+			],
+			[
+				"keyand",
+				"dynamic_projection/source/multi_mouse/key_and_mouse_logger.h"
+			],
+			[
+				"basemap.h",
+				"layer_basemap/Basemap.h"
+			],
+			[
+				"layerbasem",
+				"layer_basemap/layer_basemap.cpp"
+			],
+			[
+				"mapview/main",
+				"mapview/main.cpp"
+			],
+			[
+				"glutnotife",
+				"glutnotifier/glutnotifier.cpp"
+			],
+			[
+				"colors.h",
+				"dynamic_projection/source/calibration/planar_interpolation_calibration/colors.h"
+			],
+			[
+				"structures.cpp",
+				"synenv-data/src/structures.cpp"
+			],
+			[
+				"data-source",
+				"synenv-data/include/data-source.hpp"
+			],
+			[
+				"build",
+				"build_log.txt"
+			],
+			[
+				"glutnotif",
+				"glutnotifier/glutnotifier.cpp"
+			],
+			[
+				"thread",
+				"mapcore/Thread.h"
+			],
+			[
+				"tileca",
+				"mapcore/TileCache.cpp"
+			],
+			[
+				"basemap",
+				"layer_basemap/Basemap.cpp"
+			],
+			[
+				"layersele",
+				"layer_selector/LayerSelector.cpp"
+			],
+			[
+				"tilech",
+				"mapcore/TileCache.h"
+			],
+			[
+				"texture",
+				"mapcore/TextureManager.h"
+			],
+			[
+				"thread.cpp",
+				"mapcore/Thread.cpp"
+			],
+			[
+				"graphcp",
+				"layer_graph/Graphlayer.cpp"
+			],
+			[
+				"val",
+				"valgrind_output.txt"
+			],
+			[
+				"gracp",
+				"layer_graph/Graphlayer.cpp"
+			],
+			[
+				"jpe",
+				"mapcore/JpegCache.h"
+			],
+			[
+				"jpeg",
+				"mapcore/JpegCache.cpp"
+			],
+			[
+				"azimage.h",
+				"mapcore/AZImage.h"
+			],
+			[
+				"azimage",
+				"mapcore/AZImage.cpp"
+			],
+			[
+				"layerselectr",
+				"layer_selector/LayerSelector.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

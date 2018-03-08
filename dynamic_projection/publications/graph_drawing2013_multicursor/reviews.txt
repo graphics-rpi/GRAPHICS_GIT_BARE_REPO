@@ -1,0 +1,135 @@
+Dear author(s),
+
+We regret to inform you that your submission
+Multimedia Groupware for Graph Interaction and Visualization
+was rejected for Graph Drawing 2013.
+
+This year, GD received a large number of submissions -- 94 of which we could only accept 42. Thus, we had to reject many very good papers. The Program Committee worked very hard and had to make some difficult decisions.
+
+Enclosed with this e-mail are the reviews of your paper. The PC based its decision both on these reviews and on comments that were made during the discussion phase of the reviewing process; hence the reviews may not fully reflect the reasons for our decision, but should provide valuable feedback to you on your submission.
+
+Thank you for submitting your work to GD13. We hope that you still will be able to attend GD13 in Bordeaux -- it is a good opportunity to meet with colleagues with similar research interests.
+
+Yours sincerely,
+Stephen Wismath, Alexander Wolff,
+PC co-chairs GD13
+
+P.S. The poster submission deadline is August 20 and the contest submission date is Sept. 20.
+See the conference web page for details: http://gd2013.labri.fr
+
+
+----------------------- REVIEW 1 ---------------------
+PAPER: 95
+TITLE: Multimedia Groupware for Graph Interaction and Visualization
+AUTHORS: Christopher Stuetzle, Tyler Sammann and Barbara Cutler
+
+
+----------- REVIEW -----------
+The paper is a description of a collaborative visualization system handling multiple
+users, multiple media and multiple cursors on a single display. While interesting, I
+find it difficult to see it fitting within the scope of the Symposium on Graph Drawing.
+The main novelties described in the paper deal with generic user interactions essentially
+applicable to the collaborative display of any data, which just happens to use
+graphs as examples. At the graph level, all of the described dynamic graph
+operations are standard and available in many systems, but without multiple mice.
+Even the system architecture as described in the first paragraph of section 3, with its
+modularity and abstraction, is what one would expect in any well-designed system for the
+past 20 years. All told, the paper should be submitted to CHI or some similar forum.
+
+Table 1 presents a mapping of abstract gesture to device action. Is this configurable?
+Can it be configured on a per-user level?
+
+You describe the need to resolve possible conflicting zoom commands, but surely with
+multiple users, conflicts have the potential to occur all over the place, e.g., I want to
+expand a group, you want to contract it. Why only focus on automating zoom? Also, I
+assume the users can override the automated zoom?
+
+An obvious next step would be to extend the system to multiple displays for remote
+collaboration.
+
+The paper is very well written. My one quibble is the placement of the citation number.
+The authors typically place it at the end of the sentence. It would be better to place
+it nearer the noun or noun phrase that best denotes the paper. Usually, this doesn't
+matter very much, but at times the authors' style can be misleading, as with the second
+sentence on page 4. Here, we have [9] immediately following "Kinect" but [9] actually
+relates to Leap Motion.
+
+Page 3, line 8: Missing period after "teaching".
+Page 4, caption of figure 2: Do you really want "which expands the graph to include
+expands of animals"? What is an expand of animals?
+Page 5, caption figure 3: You say that each image is tagged with a number of descriptive
+strings, but as far as I can detect, each image and node has a single descriptive tag.
+Page 9, line -7: the Kuhn-Munkres Algorithm, a.k.a Hungarian Algorithm
+or
+  the Kuhn-Munkres, or Hungarian, Algorithm
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 95
+TITLE: Multimedia Groupware for Graph Interaction and Visualization
+AUTHORS: Christopher Stuetzle, Tyler Sammann and Barbara Cutler
+
+
+----------- REVIEW -----------
+The authors present a software tool for developing graph visualization applications focusing on interaction.
+The described system can handle multiple users working on the same visualization. Each user controls its own input device and interacts with the visualization through gestures. So far, only mice and laser pointers have been integrated into the system, however, the modularity of the system will make it easy to add new input devices in the future.
+
+The contributions of the paper are the following.
+1 An extensible and intuitive system for interacting with relational datasets.
+2 An interface allowing for collaborative data exploration through different input devices.
+3 A novel focus and zooming procedure based on the current cursor positions of users.
+4 A technique for the identification and user association of multiple laser points on the screen.
+Throughout the paper the system is well described and three examples of applications are briefly presented.
+
+The idea of a uniform and modular system for multi-user and multi-cursor graph visualization is very interesting and promising. Indeed, the increasing amount of powerful and cheap input devices have been poorly explored in the gd and infovis literature. Nevertheless, the overall contribution of the paper is quite limited, as explained in the following. The system architecture is well designed but does not represent an original contribution and the set of input devices already integrated into the system is quite limited (only mice and laser pointers). In addition, the set of implemented gestures should be evaluated through a user study, as pointed out by the authors. Indeed, the authors only provide a list of well-known actions that are useful to explore a graph visualization and their possible implementation as gestures.
+I also believe that the input devices should be evaluated as well, to understand if they are effective or not. To this aim, one may ask if a laser pointer is an effective input device for exploring large and dense graphs or not. About the zoom technique, to me it is not clear if this automatic mechanism is really easy to use and to understand for the users, also in this case, some kind of evaluation would be helpful.
+
+To summarize, I believe that the presented research is promising but still preliminary and it lacks of an experimental evaluation of its effectiveness.
+
+Minor comments
+- Pag.3 "for learning and teaching Pawar et al." -> missing "." after "teaching"
+- Pag.4 "The application is presented an interface" -> missing "as" or rephrase
+- Pag.9 "present an photo" -> "a photo"
+- Pag.10 "histogram of each each known" -> double "each"
+
+
+----------------------- REVIEW 3 ---------------------
+PAPER: 95
+TITLE: Multimedia Groupware for Graph Interaction and Visualization
+AUTHORS: Christopher Stuetzle, Tyler Sammann and Barbara Cutler
+
+
+----------- REVIEW -----------
+The paper presents a system that allows for multi-user (through
+multi-cursor) single display groupware and can be used for the
+interaction with graph data-sets. The software can "understand"
+several gestures that are passed to the applications that have
+registered for them. Gestures from up to 6 USB mice or laser
+pointers can be accommodated. The utilization of laser pointers is
+made possible through the utilization of the "laser personality"
+idea (based on intensity measurements around the centroid of the
+laser spot).
+
+The system is tested by an application that handles graph data. The
+application interprets the gestures as node selection, move,
+simplify, expand, group and un-group. These operations are
+implemented and applied on the graph data. The drawing of the graph
+is based on a spring embedder, however, not too many details are
+given.
+
+The paper demonstrated that the technology to enable multi-cursor,
+single display groupware is feasible. Having said that, it should
+be noted that no experimental/evaluation results are presented
+related to the usability of the graph manipulation application. The
+paper is well written.
+
+My main concern with regard to this paper is its relevance to the
+conference. Since the paper presents an "interface to interact with
+a graph" it fits within the scope of the Call of Papers. However, I
+find this fit to be marginal since the focus of the paper is in the
+technology that enables the interaction and not in the "interaction
+with the graph" itself.
+
+Despite the fact that I feel that the paper is better suited for a
+different conference, possibly on Computer-Human Interaction, I
+found it very interesting.

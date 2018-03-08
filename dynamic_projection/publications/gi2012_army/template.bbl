@@ -1,0 +1,178 @@
+\begin{thebibliography}{10}
+
+\bibitem{Ashdown2004}
+M.~Ashdown, M.~Flagg, R.~Sukthankar, and J.~M. Rehg.
+\newblock {A Flexible Projector-Camera System for Multi-Planar Displays}.
+\newblock In {\em Proceedings of the 2004 IEEE Computer Society Conference on
+  Computer Vision and Pattern Recognition (CVPR)}, pages 165--172, Washington,
+  DC, USA, 2004. IEEE Computer Society.
+
+\bibitem{Bimber2005}
+O.~Bimber, B.~Fr\"{o}hlich, D.~Schmalstieg, and L.~M. Encarna\c{c}\~{a}o.
+\newblock {The Virtual Showcase}.
+\newblock In {\em ACM SIGGRAPH 2005 Courses}, New York, NY, USA, 2005. ACM.
+
+\bibitem{BimberBook}
+O.~Bimber and R.~Raskar.
+\newblock {\em {Spatial Augmented Reality: Merging Real and Virtual Worlds}}.
+\newblock A K Peters LTD, 2005.
+
+\bibitem{Cruz-Neira1993}
+C.~Cruz-Neira, D.~J. Sandin, and T.~A. DeFanti.
+\newblock {Surround-Screen Projection-Based Virtual Reality: The Design and
+  Implementation of the CAVE}.
+\newblock In {\em Proceedings of the 20th Annual Conference on Computer
+  Graphics and Interactive Techniques (SIGGRAPH)}, pages 135--142, New York,
+  NY, USA, 1993. ACM.
+
+\bibitem{Monopoly}
+C.~Darrow.
+\newblock Monopoly.
+\newblock Parker Brothers / Hasbro, 1933.
+\newblock http://www.hasbro.com/monopoly/en\_US/ (Date Last Accessed: April 19,
+  2011).
+
+\bibitem{Fiala2005}
+M.~Fiala.
+\newblock {ARTag, a Fiducial Marker System Using Digital Techniques}.
+\newblock In {\em Proceedings of the 2005 IEEE Computer Society Conference on
+  Computer Vision and Pattern Recognition (CVPR)}, volume~2, pages 590--596,
+  Washington, DC, USA, 2005. IEEE Computer Society.
+
+\bibitem{MTG}
+R.~Garfield.
+\newblock {Magic: The Gathering}.
+\newblock Wizards of the Coast, 1993.
+\newblock http://www.wizards.com/Magic/Multiverse/ (Date Last Accessed: April
+  19, 2011).
+
+\bibitem{ARhrrrr!}
+{Georgia Institute of Technology Augmented Environments Lab}.
+\newblock {ARhrrrr!}
+\newblock http://www.augmentedenvironments.org/lab/research/
+  handheld-ar/arhrrrr/ (Date Last Accessed: April 19, 2011).
+
+\bibitem{Kato1999}
+H.~Kato and M.~Billinghurst.
+\newblock {Marker Tracking and HMD Calibration for a Video-Based Augmented
+  Reality Conferencing System}.
+\newblock In {\em Proceedings of the 2nd IEEE and ACM International Workshop on
+  Augmented Reality}, page~85, Washington, DC, USA, 1999. IEEE Computer
+  Society.
+
+\bibitem{Kinect}
+{Kinect}.
+\newblock Microsoft, November 2010.
+\newblock http://www.xbox.com/en-US/kinect (Date Last Accessed: April 20,
+  2011).
+
+\bibitem{Kuhn1955}
+H.~W. Kuhn.
+\newblock {The Hungarian Method for the Assignment Problem}.
+\newblock {\em Naval Research Logistics Quarterly}, 2:83--97, 1955.
+
+\bibitem{Lee2004}
+J.~C. Lee, P.~H. Dietz, D.~Maynes-Aminzade, R.~Raskar, and S.~E. Hudson.
+\newblock {Automatic Projector Calibration with Embedded Light Sensors}.
+\newblock In {\em Proceedings of the 17th Annual ACM Symposium on User
+  Interface Software and Technology (UIST)}, pages 123--126, New York, NY, USA,
+  2004. ACM.
+
+\bibitem{Lee2007}
+J.~C. Lee, S.~E. Hudson, and P.~H. Dietz.
+\newblock {Hybrid Infrared and Visible Light Projection for Location Tracking}.
+\newblock In {\em Proceedings of the 20th Annual ACM Symposium on User
+  Interface Software and Technology (UIST)}, pages 57--60, New York, NY, USA,
+  2007. ACM.
+
+\bibitem{Munkres1957}
+J.~Munkres.
+\newblock {Algorithms for the Assignment and Transportation Problems}.
+\newblock {\em Journal of the Society for Industrial and Applied Mathematics},
+  5(1):32--38, 1957.
+
+\bibitem{Nintendo3DS}
+{Nintendo}.
+\newblock {3DS}, February 2011.
+\newblock http://www.nintendo.com/3ds (Date Last Accessed: April 19, 2011).
+
+\bibitem{Pasman2003}
+W.~Pasman and C.~Woodward.
+\newblock {Implementation of an Augmented Reality System on a PDA}.
+\newblock In {\em Proceedings of the 2nd IEEE/ACM International Symposium on
+  Mixed and Augmented Reality (ISMAR)}, pages 276--, Washington, DC, USA, 2003.
+  IEEE Computer Society.
+
+\bibitem{Pinhanez2001}
+C.~S. Pinhanez.
+\newblock {The Everywhere Displays Projector: A Device to Create Ubiquitous
+  Graphical Interfaces}.
+\newblock In {\em Proceedings of the 3rd International Conference on Ubiquitous
+  Computing (UbiComp)}, pages 315--331, London, UK, 2001. Springer-Verlag.
+
+\bibitem{Warhammer40k}
+R.~Priestley and A.~Chambers.
+\newblock Warhammer 40,000.
+\newblock Games Workshop, 1987.
+\newblock http://www.games-workshop.com/gws/home.jsp (Date Last Accessed: April
+  19, 2011).
+
+\bibitem{Raskar1998b}
+R.~Raskar, M.~Cutts, G.~Welch, and W.~St{\"u}rzlinger.
+\newblock {Efficient Image Generation for Multiprojector and Multisurface
+  Displays}.
+\newblock In {\em Rendering Techniques}, pages 139--144. Springer, 1998.
+
+\bibitem{Raskar2000}
+R.~Raskar, K.~Low, and G.~Welch.
+\newblock {Shader Lamps: Animating Real Objects with Image-Based Illumination}.
+\newblock Technical report, University of North Carolina at Chapel Hill, Chapel
+  Hill, NC, USA, 2000.
+
+\bibitem{Raskar1998a}
+R.~Raskar, G.~Welch, M.~Cutts, A.~Lake, L.~Stesin, and H.~Fuchs.
+\newblock {The Office of the Future: A Unified Approach to Image-Based Modeling
+  and Spatially Immersive Displays}.
+\newblock In {\em Proceedings of the 25th Annual Conference on Computer
+  Graphics and Interactive Techniques (SIGGRAPH)}, pages 179--188, New York,
+  NY, USA, 1998. ACM.
+
+\bibitem{Sutherland1968}
+I.~E. Sutherland.
+\newblock {A Head-Mounted Three Dimensional Display}.
+\newblock In {\em Proceedings of the Fall Joint Computer Conference, Part I
+  (AFIPS)}, pages 757--764, New York, NY, USA, December 1968. ACM.
+
+\bibitem{Catan}
+K.~Teuber.
+\newblock {The Settlers of Catan}.
+\newblock Mayfair Games, 1955.
+\newblock http://www.catan.com/ (Date Last Accessed: April 19, 2011).
+
+\bibitem{Underkoffler1999}
+J.~Underkoffler, B.~Ullmer, and H.~Ishii.
+\newblock {Emancipated Pixels: Real-World Graphics in the Luminous Room}.
+\newblock In {\em Proceedings of the 26th Annual Conference on Computer
+  Graphics and Interactive Techniques (SIGGRAPH)}, pages 385--392, New York,
+  NY, USA, 1999. ACM Press/Addison-Wesley Publishing Co.
+
+\bibitem{Wagner2003}
+D.~Wagner and D.~Schmalstieg.
+\newblock {First Steps Towards Handheld Augmented Reality}.
+\newblock In {\em Proceedings of the 7th IEEE International Symposium on
+  Wearable Computers (ISWC)}, pages 127--, Washington, DC, USA, 2003. IEEE
+  Computer Society.
+
+\bibitem{MunkresCode}
+J.~Weaver.
+\newblock {Kuhn-Munkres implementation}, 2007.
+\newblock From GitHub: https://github.com/saebyn/munkres-cpp (Date Last
+  Accessed: February 14, 2011).
+
+\bibitem{Zhang2000}
+Z.~Zhang.
+\newblock {A Flexible New Technique for Camera Calibration}.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  22(11):1330--1334, November 2000.
+
+\end{thebibliography}

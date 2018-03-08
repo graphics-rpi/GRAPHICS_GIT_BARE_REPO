@@ -1,0 +1,295 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%                                                                 %
+%                            CHAPTER TWO                          %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+\chapter{Related Work}
+\section{Research in the Field of Tangible User Interfaces}
+
+In the less than 20 years since their inception, Tangible User Interfaces, TUIs, have transformed the ways people can interact with computers.  This chapter will discuss a brief history of the field, the motivation behind TUIs as well as several sub-fields within TUI: exploring how people react to new sensory input, adding new functionality to existing objects, viewing tools, and studies on perception and communication.
+%2.1 - done
+\subsection{History of the Field}
+
+One of the earliest works relating to the field of Tangible User Interfaces is that of the \emph{Digital Desk} \cite{159630}.  This interface is a hybrid of a normal desk and a computer desktop.  The Digital Desk is composed of a desktop surface, a camera facing down at the desk, and a projector projecting down onto the surface of the desk.  This set-up allows data from the computer to be projected and edited as well as having the flexibility of allowing users to physically write information on papers.  The system can recognize both pen input and finger pointing.  This provides a variety of possibilities for the system.  For instance, the Digital Desk simplifies the problem of having to tediously copy numbers into a calculator.  By pointing at a number on a sheet of paper, the number can be copied into the calculator and then be manipulated.  The Digital Desk most significant contribution was how to incorporate the physical and the digital into one cohesive display.
+
+In addition to having new and innovative ways to display and collect data from a surface, a foundational part of TUIs is having physically movable controls.  This is introduced in a work that refers to \emph{Bricks} \cite{223964}.  Bricks introduces having ``graspable" pieces in a user interface; their paper contains both conceptual ideas about how to develop with physical movable pieces as well as having their own interactive prototype. Their prototype involved using a desk surface and two position sensors; the sensors could detect their position and orientation in six dimensions allowing the system to intuit the position of the sensors relative to one another.  Challenges addressed in this work include using tangible controls, as well as using multiple bricks together to communicate information that would be challenging to communicate with a single control. 
+
+
+Ishii and Ullmer brought together the various pieces of TUIs into a cohesive field.  In their work not only did they coin the term `Tangible Bits', but they also presented several applications to the field \cite{Ishii97tangiblebits}. They expected pixels to no longer be simply seen on a screen but as tangible entities.  As part of this introduction, three systems were introduced.  The \emph{metadesk} introduced a desktop computer available on a physical desk.  Backprojected surfaces were available which acted similar to windows in a normal operating system.  Their second system introduced was the \emph{ambient room}: this room was a test of how users interacted with ambient input, input that was not their primary focus, such as light being projected on the ceiling.  They concluded that humans can receive and process ambient input.  Finally they proposed the \emph{transBoard}; this system was a whiteboard which a computer could sense the content of and use as input.  They discuss how in the future this will be more tangible when a board with 2-way communication is available (a way to display data from the computer).  This work culminated the creation of this field by bringing together the ideas of using multiple senses as well as new tangible interfaces to interact with computers in non-traditional ways. 
+
+
+\subsection{Windows Into a Scene}
+%2.3
+
+One theme in the field of TUIs is that of virtual windows in 3-dimensional scenes.  Consider looking into a room that is only visible through a window you can adjust in six dimensions (spatially and roll, pitch, and yaw).   Through this window you can view anything in the space, but your viewing area is confined to the area of the window.  With a positional sensor as well as a LCD screen, it is possible to create a tool that can view models through this type of window.   In this field, many researchers have extended this idea to view things as different as maps to architectural models.
+
+The \emph{Active lens} \cite{Ishii97tangiblebits} introduced this idea of a virtual window.  They presented the first instance of a 2-D viewer in 3-D space being used to view 3-D information.  One application they created using this interface was a \emph{Tangible Geospace} application. In this, a lens could be moved above a map of the MIT campus.  The Active Lens consisted of a device that could sense its location in 3-D space as well as a 2-D screen.  Because the position was known in relation to the map, it allowed the lens to view a 3-D model of the campus from the perspective of the lens.  This interface allowed users to interact with 3-D information in a more intuitive manner than had previously been available with a mouse and keyboard.
+
+Yee \cite{642613} extended the idea of a window into a virtual world.  He developed a display with first 2-D, and then 3-D tracking.  For this display, he used various PDA devices and tested several tracking methods.  In addition to having a window into a 3-D space like Ishii and Ullmer\cite{Ishii97tangiblebits}, Yee also introduced stylus input to this application.  This allowed the user to both select things on a physical plane as well as write and modify virtual planes.  This enabled applications such as an image viewer, a doodle pad, and a calendar.  The first two dimensions of the viewer were used to simply move the display in real space as if it was a window in a larger display.  The third dimension could either be used for zooming or switching between workspaces (such as on a clipboard).  Finally, the pen could be used for writing in a doodle pad or for selecting information in the case of the calendar.  This was important because it allowed window tools to be something more than a tool for looking at data; it could be interactive.
+%perhaps show clip of video during research qualifier?
+%Binder 1
+
+Recently, Maekawa et al. developed an interface which extended the idea of a virtual window beyond simply showing extra details of a physical plane \cite{1517704}.  The authors used the \emph{Active Cube} system which was comprised of five cm physical blocks which could be attached together in various configurations.  When a user created a configuration of blocks, it was compared to an existing database of 3-D models.  The model which most resembled the configuration of blocks was picked to be viewed. The model could be viewed by an iTouch which was capable of being attached to certain bricks.  In order to make it possible to have viewing angles besides 90 degrees (at the edges of the blocks), specialty blocks were also used.  As part of the system expansion/contraction blocks, tilt blocks, and rotation blocks were used.  These blocks allow the iTouch to view the model from positions which were not orthogonal to the sides of the block. In addition they developed a joint block which combined the three specialty blocks mentioned above.  The novel aspect of this system was that it allowed humans to use their creativity and it then would try to interpret the results and display it in a system. The Virtual Heliodon could use this idea of viewing a human made model through a small hi-resolution LCD screen.
+
+The research area of viewing windows from tangible devices contains a lot of promise as it allows additional information to be viewed virtually within the physical system with a mobile LCD screen.  As smartphones become more popular, the uses of small camera/LCD devices become more relevant to the general public.  Hopefully as this window technology continues to be developed, it will eventually be possible to point a cell phone device at an object such as a landmark or even products in a store and be able to visualize the target augmented with detailed information.
+
+\subsection{Innovative Input and Output Devices}
+%2.4
+
+As Tangible User Interfaces represent such an experimental field, many papers published have to do with completely novel input and output devices.  Often these devices only vaguely represent objects that have traditionally been used for communication and are almost completely exploratory.
+
+One such device was a lamp which would light up based on the noises and vibrations it sensed \cite{1709908}.  In this exploratory study, these light devices were put inside of plastic cases and the users were permitted to tap on them, bang on things with them, etc. The purpose of the study was to observe how people reacted to such devices in a variety of installations.  The study contained three distinct phases.  \emph{Street Pianos} was an installation where pianos as well as these specialized lights were places on street corners free for the public to use.  In the second installation as part of an amateur performance, these devices were used to compliment the performance.  In the third installation, the devices were placed in a bar while there was a video and film showcase.   While the research did not have any quantitative findings about the use of these devices, they did discover that humans interacted with the devices in innovative and unpredictable ways.  This study provided valuable insight into how humans interact with unfamiliar devices.
+
+In another exploratory study, it was tested if computer devices could provide useful feedback to a family's everyday life \cite{1519040}.  This study was done as an installation with many sensors and a single feedback mechanism.  Sensing devices were placed throughout a house in an attempt to determine the state of the people living there (sitting, standing or lying down as in addition to location) as well as the state of doors and windows (open or closed). The authors hypothesized that based on these states, it would be possible to guess how the social interactions of a family were progressing.  The first iteration of this system gave a daily horoscope based on the information accrued throughout the day.  When, at the conclusion of the study, it was discovered that horoscopes were often too general and conflicting day to day they reorganized their experiment.
+In the second iteration, the system was installed in a house with just a husband and wife instead of a family with kids in hopes that the actions would be more easily discerned.  They also decided that simply offering suggestions to the people instead of `horoscopes' would be more helpful.  While the people did not end up utilizing the system well, valuable lessons were learned through the study: the system must be explained to the user so that it is not an object of curiosity causing people to alter their behaviors because of its presence.  The output must be in an interesting and yet useful format otherwise people will consider the output either too cryptic, irrelevant or boring.  Hopefully future studies can learn from these results and find ways to provide more useful feedback to users in their everyday interactions.
+
+In addition to creative new output devices, novel input into devices has also been studied.  \emph{Whack Gestures} \cite{1709906} studies new ways to get quick input for cell phones and other mobile devices.  People in meetings frequently have the problem of a cell phone ringing; it would be useful for many people to have a way to silence these noises or send phone calls directly to voicemail.  This paper studies what gestures can be understood by a mobile device without removing it from one's pocket.  They investigate the gestures of both \emph{whacking} and \emph{wiggling} the device.  Based on these two, they come up with three complete gestures: whack-whack, whack-wiggle-whack and whack-whack-whack.  In their study, they are able to get a 97\% correct interpretation rate and only one false positive result in 22 hours of use.  This paper was useful both in that it did a comprehensive user study with conclusive results and that it provided a useful new input method.  
+
+Another example of a deployable system is the \emph{IT Scarecrow} \cite{1358645}.  IT is an acronym for Information Terminal; this scarecrow was an information display system that was deployed at train stations.  Motivating this project was the problem that train stations are often dangerous places and with more knowledge about the trains people could plan their time more efficiently such that they spent less time at risk.  The system used cell phones to track the trains coming to the system and then, through the use of a web-server, allowed the stations to display information about the train's schedule and arrival time.  Through an informal survey, the Scarecrow received very good feedback.  72\% of people said they needed the system and 66\% said they understood the information being displayed.  This system successfully used a new type of deployable display to reach a large audience.  This study is a valuable example of deploying a system on a fairly large scale and of compiling input from a user study or survey.
+
+%in binder B
+Andy Wu discusses a type of display tool that is also tangible.  He created the idea of a \emph{weather lamp} \cite{1709961}.  As with many interfaces in this field, the weather lamp was designed to be an ambient display. The weather lamp accepted input both from the Internet as well as user input and then displayed weather information as a result.  It combined color, shape, sound and animation in such a way that users could look at the device and quickly discern an overview of the weather.  While not much usability testing has been done on this device, it seems to contain a lot of potential as an everyday tangible user interface. 
+
+As computers become more pervasive in our society, new types of input and output devices become more relevant.  It is likely that soon many of the interactions we do with computers on a daily basis will be so ingrained in our culture we will no longer have to consciously process them e.g. a traffic light.  Many interfaces have moved from simply displaying text to communicating information in more complex ways.  Researchers will need to continue how to display information in more intuitive ways as more information in conveyed.
+
+\subsection{Adding or Changing Functionality to Existing Objects}
+%2.5
+ 
+At the heart of Tangible User Interfaces is finding ways that standard tasks can be accomplished more intuitively by adding a tangible control to the system.  To this point, most of the applications presented did this by creating a completely new interface.  Alternatively, existing interfaces can be simply adjusted to be more tangible.  This can either make interaction simpler or more confusing depending on the context.  This section will detail some interfaces which have been adjusted from well known interfaces.
+
+One such interface was created for recording and viewing memories \cite{1520342}. A recording device is presented which can only be replayed once. The device is triggered by striking a match and has approximately as much recording time as a match takes to burn. The video can then be seen by striking the other side of this match. There were two questions addressed in this investigation: how does doing a physical action associated with the memory affect use and how does a one time use device affect memory. From surveying the twelve subjects in their study, they discovered that both the physical action as well as the temporary nature of this interface affected the users' interactions. Having a physical object helped them relate an importance to the memory. The one time use of the device also made users much more deliberate in what they collected. One person commented on how it would be a good interface to use for special occasions but not in daily photography uses. Overall, the study confirms that a greater appreciation of memories could be attained by using a device that associates a physical action with a memory and by only having the memory available for a limited time. 
+
+Another common item that researchers attempted to make more tangible was a map.  Although GPS and digital map technology has been available for some time, it was not until more recently that a TUI with this purpose was tested.  One study compares a new TUI, \emph{Maplens}, with a traditional digital map, \emph{DigiMap}. MapLens \cite{1518991} allowed users to point a camera device at a map and view more detailed information through the screen. DigiMap was simply a traditional GPS based map system.  The results of a user study indicated that while MapLens was a very engaging interface and encouraged co-operation as far as a map tool, it diverted the users' attention from their surroundings and actually made them less efficient in their tasks. In fact, a much higher percentage of users considered DigiMap easier to use compared to Maplens. This paper brings up an interesting question about usability and usefulness. While Maplens is fascinating and engaging, in this application it is fairly clear that it is not the best tool.
+
+In another study, researchers modified iTunes using a plugin to make the interface more tangible.  ICandy \cite{1358681} is a new interface for iTunes where a type of trading cards are printed that correspond to songs, albums, or playlists.  Much like when tangible media such as CDs and audio cassettes were the norm, ICandy allows people to share their libraries in a more tangible setting. ICandy trading cards contain a barcode which can be scanned by a web-cam; iTunes automatically switches to the corresponding content when a card is scanned. They also presented a new visualization which was displayed and corresponded to this content. This interface introduced some interesting questions as to whether people would appreciate a tangible way to represent their own personal media libraries.  In the family that this was tested with, the children enjoyed interacting with the cards and in general gave positive feedback.  The interface should be tested with a larger audience, but seems to be going in a positive direction.
+
+Tangibility can either be a help or a hindrance in human computer interaction.  In the case of MapLens, we see an interface which made users less efficient at their tasks.  In the case of iCandy, we see an opportunity for people to once again have a sense of tangible ownership in regards to their music library.  In the case of the match recording interface, we see that peoples fundamental reaction to the way they remember an experience can be shaped by a tangible device.  While adding tangible computer interfaces to some common tasks may make them more efficient, some only complicate tasks.  It is also important to consider how a person's experience is affected by the device they are using.
+
+\subsection{Viewing Tools}
+%2.6
+An important part of any interface is how data is viewed.  Traditionally data is simply displayed using a cathode ray tube or liquid-crystal display monitor and navigated using single mouse-clicks and keyboard commands.  This section focuses on alternate ways of displaying data.
+
+A common problem with clickable displays and videos is that when a link is clicked, the original position in the content is lost.  This is seen most commonly when using displays based on a web-browser.  When watching multimedia such as YouTube, if any link is accidentally pressed the original spot in the content is gone.  \emph{CThru} \cite{1518887} attempts to address this dilemma in their interface which is a combination of a tabletop multi-touch display and high resolution display wall.  The system was tested using cellular biology information (videos and interactive content).  The content displayed was an informational video with clickable keyframes.  This allowed users to navigate to supplementary information if they were not familiar with a specific term.  When the user was done familiarizing them self with the supplementary information, they could resume the original content.  In a limited user study initial feedback was very positive.  This work successfully addressed the problem that in many interfaces the user effectively loses control of the system once it begins displaying data.  This problem should be considered every time a user interface is designed.
+
+Many more specialized tools have also been developed in the field of TUIs. \emph{JUMP} \cite{1268540} is a tool designed specifically for Architectural Technologists.  Their responsibilities include keeping track of the various architectural documents both in digital and paper form and rectifying differences between different drawings e.g. an electrical engineer's and a mechanical engineer's document. Jump is a tool that allows easier navigation of these documents. Given a base document, tokens can be used to indicate which document to view on the screen. In addition to having three filter tokens, zooming may also be done by using the framing tokens. Finally, older versions of the documents can be viewed by turning the `Time Machine' token counterclockwise.
+After creating this software, they ran an evaluation. For this evaluation, they used three architectural technologists as well as recruiting college students. A common issue they had in their study was that users wanted to use the more traditional mouse and keyboard display instead of the given tokens.  Despite this feedback, the comments made by users after they had completed the study indicated that this interface did provide an easier way to view the documents.  It is important when testing an interface to ensure that users can get beyond the learning curve during the study enabling them to give an objective opinion of it.
+
+As technology becomes available in smaller form factors, interesting new prospects for displays emerge.  \emph{Penlight} \cite{1518726} was a novel combination of an input and output device.  Similarly to the peephole systems described in section 2.3\cite{Ishii97tangiblebits}, Penlight allowed data to be viewed in a small high resolution area.  It allowed the viewing of digital data via a small projector mounted on a pen.  Only a prototype was available at the publishing of the paper, but they are hopeful the necessary technology will be available soon.  The device could collect data by using the same digital pen the projector was mounted on.  Multiple layers of data could then by manipulated by this device. Having multiple layers of an architectural design is one such application.  The primary contribution is the ability to have a projector system with digital input which could be completely portable.
+
+\begin{comment}
+Maybe not relevant, go back and look at paper
+Work has also been done to create more immersive environments using traditional displays.  \emph{Deskotheque}\cite{4811010} is a distributed system using many display surfaces. These surfaces of varying sizes and resolutions are accessible from the same terminal.  All of these displays are able to be accessed from various workstations allowing users to simultaneously be occupying the same workspaces.  It primarily uses X extensions as well as Compiz and Beryl. Similarly to our work, structured light is used for the calibration. It has many interesting applications such as how to use multiple pointers, how to overlap displays and how to make a real time display system. 
+\end{comment}
+
+Movable tokens have also been projected upon.  A user interface was developed which projected on puck like devices which were affixed to a smart whiteboard \cite{Jacob01atangible}.  This device detected where these `pucks' were using RFID tags.  Information can be associated with pucks and then displayed on them using the RFID tags.  This was shown to be useful in situations such as grouping papers for a conference with many sessions, or for developing schedules for groups of employees with different skill sets.  The interface was novel and useful, but also had several severe limitations.  One limitation was that projection could only be done when pucks were attached to the whiteboard.  If computer vision or another tracking method was used it may have been possible to locate the pucks when they were not in the plane of the board.  Another limitation was in order to implement special functions, like to see the details for a particular puck, a custom puck had to be used to select the puck.  In order for functionality to be added to the system, a new custom token must be invented. Having tangible interfaces that you project onto physical objects is useful, but makes it necessary to track the system much more closely.
+
+Another system which allowed projection onto objects in a plane was \emph{The Designer's Outpost} \cite{502350}.  This system was designed to be a tool for website design; in website design, often some form of sticky notes/paper is posted on the wall and connections between the notes are drawn.  The Designer's Outpost inherits this idea, but on an interactive whiteboard.  Physical sticky notes can be affixed to this board which results in electronic annotations being added to the system.  By using both a camera and projector, the notes were immediately digitized when they were put on the board.  Once on the board, they could be converted to digital data (and then the content of the note could be projected on the screen even when the physical note is removed).  This research combined the idea of projecting onto a specific type of object on a plane with the ability to remember the state of the system and redisplay the data at a later time.
+
+A wide variety of display interfaces are proposed in this field.  Some interfaces are the next step in a trend of technology such as the Penlight with portability.  Some systems such as the Designer's Outpost allow people to interact in ways they already would but create a much better way of digitizing the information.  Many interfaces try to make the system be reusable by allowing users to more tangibly manipulate data (JUMP and pucks paper). From work in this area, it is clear that display systems should be intuitive, reusable when possible, and have a way of storing the state of the system back to a computer. 
+
+\subsection{Studying Communication and Perception}
+%2.7
+
+As part of the field of Tangible interfaces, it is necessary to study communication and perception specifically relating to these interfaces.  Often, things that can be assumed with perception in a real world scenario no longer apply when people are looking at virtual displays.  People's perception even change when a person goes from indoors to outdoors. Especially when attempting to have computers interpret a human's intention, great care must be taken to understand both what the human intends and how the system may interpret it.
+
+%Binder B
+One user study investigated how accurate people were in pointing at a virtual screen \cite{4811011}. The virtual screen was created by using a single projection surface with two projectors. The object projected that users pointed at was an automotive dashboard. The researchers studied three different ways of pointing: touching, outlining and distance pointing. Pointing at an actual object was shown to be much clearer than pointing at the projection. Interestingly, they claim many of the mismatches are due to inaccurate pointing of the users. While they identify this as a problem, they do not propose a way to teach users to point more accurately. This leaves open the research question of how best to communicate where a small object is in a projected scene.
+%Binder B
+
+Distance also is affected by having a virtual scene. One study \cite{4811007} studied the effect of virtual reality systems on people's perception of distance using three different techniques.  The techniques were a simple verbal estimate of how far away something was, imagined timed walking (after already measuring the subjects walking speed), and blind triangulated guessing: they were told to observe an object, turn, close their eyes, walk for an instructed amount of time and then turn and face the object.  The biggest discrepancy in results occurred in the triangulated blind walking.  People greatly underestimated distance in this case.  Overall the results were not conclusive and the authors recommended more tests should be done to clarify some of their questions. 
+
+In a similar vain, studies have been done which compare indoor and outdoor perceptions of distance.  In one study \cite{1549848} they put users in an Augmented Reality situation with both an indoor and outdoor scene.  They then put objects which were identified with colored boxes in both of these displays. It was discovered that distance is overestimated outside and underestimated inside.  They also discovered that by putting tramlines in the display, people's perception of distance became more accurate. Their work helps show in what situations people may misperceive objects in a scene.
+
+Gestures are an important thing to learn how to receive as input.  One paper discusses different ways of interpreting user gestures \cite{1240868}.  The first approach is the wizard of oz approach.  In this approach, a user uses the program with gestures and verbally communicates to the program designer exactly what they want to have happen.  The second approach is gesture log analysis; this involves letting a user use the interface allowing them use gesture in any manner they want.  Afterwords, the designers study what gestures the user used and interpret them and then introduce them to the system. Both of these approaches should be considered when looking into implementing gesture interpretation in an interface.  Gestures are not something which can be assumed to be trivially added to a system.
+
+As is evidenced by these papers, researchers need to be very cautious of making assumptions regarding people's perception when dealing with tangible systems.  Particularly if people need to communicate while using the virtual heliodon, an assumption that a secondary person will recognize what the primary user is pointing to may not be safe.  If gesturing is added, a plan must be developed to determine which gestures the contraption needs to correctly interpret.  User studies are a good way to confirm that your assumptions about perception, communicating and gesturing are correct when interacting with an interface.
+
+\subsection{Relevancy of Tangible User Interfaces}
+%2.2 - done
+%Binder 1
+
+%Blackwell is a good introduction
+Blackwell details how often TUIs are not properly analyzed and planned before they are implemented \cite{Blackwell}.  TUIs are developed simply under the pretense that a TUI will be more intuitive or more natural in the same way that Graphical User Interfaces were when everything from word processors to games moved away from only having ASCII character displays.  While this may often be the case, this should be validated before extensive work is done.  Blackwell argues that psychological research must be done in order to make these conclusions.   This work contains significant discussions of both the benefits and detriments of using a physical interface, making it a valuable reference when considering how to design a tangible interface.  It addresses many design questions such as whether pictures or words should be used in representations.  As an example of a tangible interface, Blackwell investigates what would be possible given a query language which used radio frequency identification (RFID) tags.  RFID tags emit a radio signal when triggered which is unique to each tag.   Specific to this type of interface, one common problem the authors addressed is that of orientation.  With RFID tags, signals can be missed if they are at bad orientations to the receiver.  Similarly when a TUI uses computer vision, there can be a problem detecting patterns at a bad angle in relation to the camera.  By properly analyzing the development of this query language Blackwell effectively provides an example of how analysis should be done.  Blackwell's foundational work in evaluating the uses and limitations of TUIs as well as presenting his own novel interface have shaped the field of Tangible User Interfaces.
+
+Studies validating the usefulness of TUIs in comparison to other interfaces have also been done.   This work  \cite{1517688} describes five studies performed on children to evaluate their quantitative learning. The participants of the study were children between the ages of four to seven.  The studies tested how well the participants counted objects when using either physical materials, virtual materials, no materials, or pictures. Problem solving strategies were investigated in this research; some strategies were enabled or encouraged by the alternate interfaces. Two strategies used were a compensation strategy and a commutative strategy .  These strategies involved ways in which the children used configurations from one exercise to the next.  The compensation strategy involved simply adjusting the number of objects.  The commutative strategy involved realizing when a group of objects could be switched with another to match the desired configuration.
+The limitations of the system were also studied.  In the virtual representation only one block could be moved at a time, since blocks were just dragged across the screen with a mouse. This made more children use the compensation strategy over the commutative strategy.  The investigation was useful in finding some interesting interactions with the system and obtaining some qualitative results, but did not obtain quantitative measurements of the system.  
+
+Using Tangible User Interfaces allows a less limiting set of control constraints to be put on the user.  Often adjusting these constraints from the traditional mouse and keyboard to new innovative interfaces broadens the scope of what a tool can be used for.  As Blackwell argues, it is important for validation to continue to be done on TUIs \cite{Blackwell}, but used in the right context they provide avenues that facilitate new learning strategies \cite{1517688}.
+
+\subsection{Procedure and Evaluation of a User Study}
+
+An important step in evaluating any user interface including that of TUIs is running a user study.  While running a user study may at first sound like a trivial process, it involves many tedious steps to be carried out effectively.
+
+The first step of running a user study is determining your target audience.  This involves not only finding people who will be appropriate users for an interface, but also an audience which will be available for trial.  For instance, if a user study is happening at a school, often it will be much easier to locate students in a discipline than to locate professionals.  Students are often satisfactory for subjects for the user study but it is important to note how much experience the subjects have when evaluating the results.  Often interfaces can be initially tested (pilot study) with people who are not specific to the discipline of the user study.  To test a user interface for bugs unless the interface is heavily laden with technical jargon just about anyone can help find bugs.  On the other hand, if feedback is needed on how appropriate the interface is for a problem (which should be asked in the actual study), feedback should only be taken from users within the field.
+
+Often approval will need to be sought from an Internal Review Board (IRB).  Especially if there is any danger, the institute will often want to review the user study before students are put through it.  In addition if participants are going to be reimbursed, this should also be mentioned to the board.
+
+Recruiting participants can often be one of the most difficult tasks.  Despite common practices, most institutions do not let students be required to do a user study for a class.  Incentives are often a valuable tool.  Whether they be a bit of cash or a gift card students often will be motivated by even a small incentive.  In addition, handing out fliers and getting professors to send out e-mails advertising the study is often important.
+
+The study itself should be set up in such a way that it is as uniform as possible an environment for all participants involved.  The best way of doing this is by having both a script and a questionnaire created before the start of the study.  Participants should be read an introductory part of the script which answers as many questions as possible that may come up during the session.  Questions should always be answered for the participants, but ideally not many will be asked because a comprehensive explanation should have already addressed these.  
+
+The questionnaire should be given to the user at a specified time within the script.  This may either be given all at once or in pieces, but should be the same for all participants.  It is useful to have questions that are both quantitative and qualitative in nature.  This allows both results which may be statistically significant to be obtained as well as useful feedback for improving the system.
+
+Finally, it is important to properly analyze the data after collection.  If the results contain numerical values the best tool to analyze data is ANOVA.  ANOVA is detailed in a later section but allows researchers to determine the likelihood that there is a trend in their data.
+\subsection{User studies}
+%2.8
+
+This section contains a number of user studies.  The focus will be on the procedure and the evaluation of the user studies.  My goal in looking into other user studies is to look at how the studies were run, the participant pool as well as what statistical methods were used to evaluate them.
+
+ANOVA is an important tool that is used to test results in most thorough User Studies.  Analysis of variance is a test to determine how likely it is the differences in the means of multiple sets of data is not due to random variation.  In order to calculate this statistic, a calculation is done which takes into account the number of data points in each group, the mean of each group and the mean of the entire population of data.  Ultimately this information can be used to calculate an F statistic, a number used to tell if the variances between means of two populations vary significantly.  If this number is larger than the critical value of F for the given degree of freedom, then it can be assumed that the result is significant.  Degrees of freedom are determined by the sample size of the population and the sample size of a given group.  In order to reproduce a test it is necessary to know both the degrees of freedom and the p value (the probability threshold) used. 
+
+%Binder B
+One study \cite{1518727} investigated a tabletop display with different resolutions in different areas. The design is based upon the physiological design of the eye.  In the center of the retina, fovea, cones and rods are more densely distributed than in the outer region, peripheral.  This results in humans having much sharper vision in the center of their eyes.  The display being designed in this paper tries to mimic this by having a small display with approximately four times denser pixels than a large display surrounding it.  For multi-resolution displays two types have been proposed: ones with fixed focus regions and ones with steerable focus regions.  This study compared users completing two tasks with both of these types of regions. The device with a steerable projection region is moved by projecting onto a steerable mirror.
+
+In the first experiment, users had to trace the routes of circuit boards. With the fixed focus region this meant clicking the image and dragging it such that the focus region stayed on the relevant part. With the steerable region the focus region followed the mouse. Participants were able to track the circuits much more quickly with the movable focus region (16.66 seconds in comparison to 33.70 seconds with ANOVA of 23.9 p$<$.001).  This ANOVA result is less than comprehensive as they do not specify what F value they are comparing the results to.  In order to be thorough it would be better to include the numerator and denominator degrees of freedom. For the second experiment, moving boxes with E or reverse E moved about the screen and users had to select them and identify which was in each box. The steerable region was only around 15\% faster on average for this test. It was still statistically significant (F=15.98 p$<$.001), but impossible for a reader to verify. This paper has an excellent description of background, experiments, and results but could have done better to explain how the ANOVA statistics were obtained. 
+
+%\subsection{Evaluating One Hand Thumb Tapping on Mobile Touchscreen Devices}
+Researchers have also studied mobile device use.  One such study investigated one handed thumb tapping on a mobile touch screen \cite{1375725}.  In this paper, three variables were investigated: position of targets, handedness, and using the device while walking versus standing still.  It was discovered that both the position of targets and handedness affected how accurate users were, but that walking versus standing still did not have a statistically significant difference in the results.  Thorough analysis was done for all the results using ANOVA.  The paper was also very thorough in discussing expected versus unexpected results.  The most unexpected result was people being more accurate touching the edge of the screen than the center.  It was discussed at length because users said they preferred touching targets in the center.  
+This leads to an interesting research question.  When running a user study, which is more important: pleasing the user or creating an interface which is more accurate in its acquisition of data?
+ This paper does well to comprehensively describe their procedure.  The paper goes into depth about a pilot study they performed and how that later affected their user study; it discusses how they did recruiting and substantial statistics about the group of people they found.  Finally they comprehensively describe the PDA device they used and all relevant specifications of it.
+  In the results section useful well labeled graphs are used to show the relationships of all important statistics along with the variance in each case.  The graphs effectively communicate the improvement of using a preferred hand including showing an uncertainty bar.  Additionally when they claimed things were statistically significant they included all relevant numbers including the numerator and denominator degrees of freedom.  
+
+\begin{comment}
+ does a user study on one handed thumb tapping.  Much research has been done on touch screens but not specifically ones where thumb tapping will predominantly be used.  This paper is relevant to the use of cell phones as well as PDAs.  In this paper three variables were investigated: position of targets, handedness and using the device while walking versus standing still.  The variables seem to be sufficient for a successful user study.  Once they obtained results, they ran all of their results through ANOVA.  They discussed the statistical significance of both the position of the targets and the handedness and discussed how walking did not attain statistical significance.  They also did a good job at discussing the significance of unexpected results.  Surprisingly when they asked user to rate the ease of hitting various parts of the screen it was actually opposite to the accuracy.  Apparently users prefer to hit targets on the center of the screen, while actually being much more accurate when touching the targets around the corner of the screen.
+  This brings up an interesting research question: when designing a user interface and you come across a problem which has an efficient solution and a solution that users like better, which is the appropriate choice?  
+  This paper does well to comprehensively describe their procedure.  The paper goes into depth about a pilot study they performed and how that later affected their user study; it discusses how they did recruiting and substantial statistics about the group of people they found.  Finally they comprehensively describe the PDA device they used and all relevant specifications of it.
+  In the results section useful well labeled graphs are used to show the relationships of all important statistics along with the variance in each case.  The graphs effectively communicate the improvement of using a preferred hand including showing an uncertainty bar.  Additionally when they claimed things were statistically significant they included all relevant numbers including the numerator and denominator degrees of freedom.  I will go back and reference this paper when writing up our user study paper.\\
+\end{comment}
+
+%\subsection{Comparing usage of a large high-resolution display to single or dual desktop displays for daily work}
+  Investigations have also been done on much larger displays.  One compared the use of single and dual displays with one very large display for at least five hours for five subsequent days \cite{1518855}. The display tested was a 16' by 6' display at a 6144 x 2034 resolution. Users tended to feel more productive with the larger screen. The researchers observed that each time users used the display, they tended to devote some time to setting up the screen. As a result with the larger display windows were minimized less. With the larger display, the researchers discovered that users tended to have a focal region as well as peripheral regions. The peripheral regions were often used for windows which might occasionally be used while the focal region was used for windows which were used more frequently. They discovered that one advantage of the system was that many windows could be open simultaneously and not primarily that people wanted to use most of the space for a single window. The implication is that common displays will continue to grow as larger ones become more cost effective. A useful statistic that was not included was if the same task takes a different amount of time using the two displays.    This paper falls into one of the familiar pitfalls that all results are based on users' feelings of a system and quantitative comparison of tasks using an interface is not done.
+
+\begin{comment}
+%\subsection{Using comics to communicate qualitative user research findings}
+  This paper discusses the problem that a lot of research done (apparently at adobe) never actually gets read. Her solution is to present the findings in a more interesting manner, namely, a comic book. It's not so much a user study as a summary of a trial and some comments made, but it is interesting that it seems that some people will be more drawn into something if it just displayed in a more interesting medium. \cite{1358653}\\
+\end{comment}
+
+%\subsection{An Empirical Evaluation of Touch and Tangible Interfaces for Tabletop Displays}
+Lucchi et al. did a formal user study to compare how users interacted with a tangible tabletop display versus a touch tabletop display \cite{1709917}.  The study required participants to make specified layouts with the given primitives.  Although as many controls as possible were placed on the system to give users a similar experience with both interfaces, many differences were inherent in using these two types of interfaces.  For example with the touch display, it was natural to assume that primitives could be scaled.  In the tangible display, things like translation and rotation were much more simple than in the other case.  The same table was used for both interfaces.  For the touch section the touch sensors were used to get input and for the tangible section an overhead camera was used to collect input.  An overhead projector displayed down onto the tabletop.  A user study was done with 40 participants.  Each user created 40 layouts that were given to them by the study administrators. Statistics were presented comparing the various methods as well as comparing the different interfaces across the same actions.  Users were more efficient creating the tangible shelves layouts than the digital shelves.  Although the tangible walls exercise on average was completed faster than the digital walls exercise, the digital one had a very large variance in the time it took people to complete.  The authors suggest this could be due to people not having much experience with touch interfaces.  In this study, many factors had to be taken into account to try to create a fair comparison between these two interfaces.  We see that in some cases even when all possible measures are taken it is still very difficult to claim you were comparing the same exact task.  This is a problem that will become apparent if we need to test different interfaces in our study.
+
+User studies are a very useful way to test interfaces in situations where there is not a standard quality metric for a system.   An inherent problem in comparing interfaces is that often tasks involve different steps on different types of interfaces making comparison between them more difficult. In order to test which tool is better, it is almost always necessary to ask the opinions of the users in a user study or survey.  Because results can be difficult to compare, tools such as ANOVA are useful to determine if results are significant. 
+
+\subsection{Summary}
+Tangible User Interfaces have been developed which perform a wide variety of tasks.  Some of these tasks such as designing architecture help people in the workplace.  Others, including iCandy, simply provide a fun way to interface with a product.  The field focuses strongly on the best types of tangible interactions and ways to display tangibly interactive information. User studies are an important part of validating the utility of these interfaces, but some have been shown to be very effective alternatives to the traditional interfaces.
+
+\subsection{Full Scale Virtual Heliodon}
+In addition to the tabletop system, the a full scale version of the system was taken to EMPAC, the Experimental Media and Performing Arts Center at RPI, and used with full sized walls \cite{5543463}.  These walls used LED's instead of colored tops, but with some adjustments we have made the system portable to be used in both a full size model and in  a 1/12 size model tabletop.
+
+As the system has evolved from its initial four projector set-up on the table, the infrastructure of the system has had to be adjusted.  I have done much of this work.  This is detailed later in the contributions section.
+
+\begin{comment}
+%from daylighting user study paper
+
+\subsection{2 ~ RELATED WORK}
+
+%\fbox{REVISE TO HIGHLIGHT OUR DIFFERENCES MORE EXPLICITLY}
+
+%\fbox{ADD SOME DAYLIGHTING REFERENCES}
+
+The novel interactions of Tangible User Interfaces (TUIs) make them
+exciting candidates for alternate teaching methods.  Furthermore,
+since TUIs feature lists include point and click interactions, layout
+design, and simulation, the accuracy of both the user's input and the
+user's perception of the output must be evaluated.  Prevalent themes
+in the field of TUIs include education, accuracy, design and creativity.
+
+\subsubsection{2.1 ~ TUIs for Education and Information Exploration}
+
+TUIs inspire innovation in teaching and learning through physical
+interaction with data.  Ishii and Ullmer presented an interface of
+{\em phicons} (physical icons) and multiple display surfaces to
+navigate campus information.  They combined a back-projected display
+and an LCD screen to create the {\em activeLENS}, which allows users
+to view an overview map and 3D information~\cite{Ishii97tangiblebits}.
+%
+Yee created a hybrid interface for a workspace with a large passive
+display and a smaller handheld display with stylus input~\cite{642613}
+to effectively utilize both hands for data manipulation: one to hold
+and guide the lens and one for stylus input.
+%
+Maekawa extended ActiveLENS to a re-configurable blocks and mapped the
+current 3D configuration to a database of known shapes and virtual
+objects~\cite{1517704}.
+%
+Jacob et al. developed the first system to directly project onto
+movable, tangible {\em pucks} for data manipulation~\cite{Jacob01atangible}.
+%
+Spindler developed PaperLens~\cite{Spindler:2009:PAM:1731903.1731920},
+an interface using a tangible 2D display to show 3D information.
+%
+Similarly, Song presents a tangible interface with a touch screen for
+displaying select planes of data based on its orientation relative to
+a large 2D display~\cite{Song:2011:WEA:1978942.1979140}.
+%
+As illustrated by these TUIs and others, displays allowing physical
+manipulation provide unique opportunities to visualize, organize,
+and understand data.
+
+\subsubsection{2.2 ~ Accuracy and Usability of TUIs}
+
+The usefulness of TUIs is directly correlated to the correct and
+complete recognition of user input and, likewise, the user's ease and
+accuracy in interpreting the displayed output. 
+%
+The \emph{Digital Desk}~\cite{159630} used a projector and camera to
+create a hybrid desk surface-computer desktop interface.  Data was be
+manipulated and collected by writing on and interacting with
+information on the table surface and the desk enabled remote users to
+work on the same virtual surface.
+%
+The ``Bricks'' system~\cite{223964} is an example of a {\em graspable
+  interface}, which utilizes multiple graspable controls in tandem to
+select or expand information.  To ensure the usefulness and precision
+of the application, these interfaces must accurately and precisely
+detect the user's actions.
+%
+In addition to accurately responding to interactions, usability is a
+prime concern.  A user study on the map viewing tool, ``Like Bees
+around the Hive''~\cite{1518991}, found that users enjoyed the tool,
+but were less adept at performing a specific task when compared to a
+traditional digital map interface.  Even though the data displayed was
+accurate, the interface was not effective because of usability
+concerns.  
+
+\subsubsection{2.3 ~ TUIs for Creativity and Design}
+
+As the field of TUIs evolves, the variety of its applications for
+design has grown.  Lucchi et al. compared tangible interaction and
+touch interaction for design~\cite{1709917} and found that the TUI
+allowed users to perform tasks more quickly.  This comparison assumed
+fully functional interfaces for both systems and not simply the least
+common denominator.  
+%
+Mechanix is a tool that
+teaches children about simple machines and the interaction of
+objects~\cite{TsengBB11}.  
+%
+The {\em URban Planning} system
+(URP)~\cite{Underkoffler:1999:ULW:302979.303114} provided a tangible
+``luminous workbench'' interface for urban planning with
+visualizations of the buildings casting shadows and reflecting
+sunlight.
+%
+Sheng et al. present a related SAR system for dynamic
+visualization of sunlight within interior spaces~\cite{sheng_TVCG}.
+%
+TUIs are designed to be both informative and encourage creativity.
+The JUMP tool~\cite{1268540} uses a variety of tokens to rectify
+multiple architectural documents (e.g., electrical and mechanical) for
+a construction project within a single interface.  A study of this
+tool revealed that some users found the new design environment to be
+foreign and preferred a more traditional method of interaction (mouse
+and keyboard).  
+%
+While TUIs as design tools is an exciting prospect, it is important to
+ensure that users feel comfortable using the new tangible interface
+and similar or better efficiencies can be achieve when compared to
+traditional interfaces.
+
+
+\end{comment}
+
+\section{Related Work In Global Illumination Methods}
+This section will be extended in the thesis to include relevant global illumination methods.  I also expect a few more references on using the GPU for global illumination.  I expect these papers to start the section.
+Discuss radiosity\cite{Goral:1984:MIL:800031.808601}, hierarchical radiosity\cite{Hanrahan:1991:RHR:127719.122740}, ray tracing \cite{Whitted:1980:IIM:358876.358882, Cook:1984:DRT:964965.808590}, photon mapping \cite{Jensen:1996:GIU:275458.275461}, progressive photon mapping \cite{Hachisuka:2008:PPM:1457515.1409083}, image-space photon mapping \cite{McGuire:2009:HGI:1572769.1572783}.

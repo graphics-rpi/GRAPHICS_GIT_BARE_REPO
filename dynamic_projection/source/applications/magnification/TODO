@@ -1,0 +1,37 @@
+Moving cursor without input
+    Global Zoom
+        Centroid / Bounding box as center
+        When all cursors are far enough away from edge, zoom in overall texture
+        When approaching outside, zoom out
+        Adjusting cursor positions
+        Defined threshold for zoom speed
+            How quickly to adjust the problem.
+
+    Mass spring system? 
+        If two users want points close together -> repelling force?
+
+Radii of zoom bubbles
+    Outer / Inner zooms.
+    3 numbers to adjust on the fly
+        inner / outer radius and linear zoom level.
+        300, 250, 100x
+
+Interactions between bubbles
+    None
+    "Tangent"
+    Only Outer
+    Outer & Inner
+    Inner & Inner (related to single merged bubbles, forgo distortion free zone)
+
+Single Merged Bubble
+   Centroid / Bounding box. 
+   Deciding on merged bubbles.
+
+Graph visualization
+    Instead of x position versus distance
+    plot original distance versus distance
+
+Research Questions:
+    lasjdfkl
+Implementation Details:
+    asdfjk

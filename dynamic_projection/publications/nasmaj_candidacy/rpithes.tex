@@ -1,0 +1,52 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%                                                                 %
+%                            ROOT FILE                            %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+%  Run LaTeX or pdfLaTeX on this file to produce your thesis.
+%  To produce the abstract title page followed by the abstract,
+%  see the file abstitle-phd.tex or abstitle-mas.tex.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[chap]{thesis}
+
+% Use the first command below if you want captions over 1 line indented. A side
+% effect of this is to remove the use of bold for captions (thesis default).
+% To restore bold, also include the second line below.
+\usepackage[hang]{caption}      % to indent subsequent lines of captions
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{times,color}
+\usepackage{soul}
+\renewcommand{\captionfont}{\bfseries} % bold caption (needed with caption 
+                                       % package to restore boldface.)
+%\includeonly{rpichap1}  % use \includeonly to process only
+                         % the file(s) listed inside the braces                       
+\begin{document}
+ 
+%\include{rpititle-mas}   % titlepage material for Master's thesis or project
+\include{rpititle-phd}   % titlepage material for PhD thesis 
+%\include{rpiack}
+\include{rpiabs}
+\include{background}
+\include{relatedwork}
+\include{daylightingdesign}
+\include{systemimplementation}
+\include{renderingimplementation}
+\include{evaluation}
+\include{remesherevaluation}
+\include{armyevaluation}
+\include{daylightingevaluation}
+\include{evaluationsummary}
+\include{featuredesign}
+\include{futurework}
+%\include{rpibib}
+%\include{rpiapp}
+ \bibliography{rpithes}{}
+\bibliographystyle{apalike}
+
+
+\end{document}

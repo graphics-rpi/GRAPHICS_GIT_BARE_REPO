@@ -1,0 +1,2 @@
+alligator     0 animals   2 vertebrates   4 reptiles 
+bear          0 animals   1 invertebrates   2 mammals     3 carnivores 

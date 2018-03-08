@@ -1,0 +1,202 @@
+\chapter{Measuring Terrain Distances}
+\label{chapter:TerrainDistances}
+
+% It is necessary to have 
+A quantitative measure of the difference between two terrain datasets, specifically height fields, $T_{0}$ and $T_{1}$, is necessary 
+in order to judge the accuracy of terrain compression schemes and data representations (such as the drill operator presented in Chapter \ref{chapter:DrillOperator}).
+Therefore, the notion of \textit{terrain distance}, or \textit{terrain dissimilarity}, must be explored. This chapter will present a series of metrics that determine $d\left(T_{0}, T_{1}\right)$, the distance between two height field datasets.
+
+\section{Description of Distance Metrics}
+\label{section:DescriptionOfMetrics}
+
+Traditional distance metrics for spatial datasets, such as terrain surfaces, include Root Mean Square Error (RMSE) and Slope Surface RMSE (SSRMSE). These metrics provide a measure of 
+% precision and accuracy lost 
+distance on a global scope but ignore what can be thought of as the ``important'' characteristics of terrain, such as the shape and behavior of watersheds and channel networks,
+and have been used to judge the accuracy of compression schemes and terrain representations (Stookey et al. \cite{Stookey08parallelodetlap}).
+
+
+RMSE measures the root of the average squared difference in heights across the terrain, as shown in Equation \ref{equation:RMSMetric}:
+
+\begin{equation}
+\label{equation:RMSMetric}
+%   RMSE\left(T_{0}, T_{1}\right) = \sqrt{ \frac{\displaystyle\sum_{\textbf{p}\in T_{0}, \textbf{q} \in T_{1}}{ \left(\textbf{p}_{z} - \textbf{q}_{z} \right)^2 } }{ z_{max} - z_{min} } }
+  RMSE\left(T_{0}, T_{1}\right) = \sqrt{ \frac{\displaystyle\sum_{\textbf{p}\in T_{0}, \textbf{q} \in T_{1}}{ \left(\textbf{p}_{z} - \textbf{q}_{z} \right)^2 } }{ |T_{0}| } }
+\end{equation}
+
+\noindent where $\bf{p}$ and $\bf{q}$ are corresponding pixels in two separate datasets, $\bf{p}_{z}$ and $\bf{q}_{z}$ are their elevation values, and 
+% $z_{max}$ and $z_{min}$ are the maximum and minimum elevations of the pixels of $T_{0}$. 
+$|T_{0}|$ is the number of pixels in $T_{0}$.
+This metric provides a single global distance measurement when comparing two datasets.
+% , normalized by the value range of the pixels in $T_{0}$.
+
+% % % For any two sets of pixels (in this case, the sets of all pixels in the channel network of each terrain), AHD finds  the maximum value of the average of the infimum of the
+% % % distances between the sets,
+% % % % the average of the shortest distance between their pixels, 
+% % % as shown in Equation \ref{equation:hausdorffAvg}:
+% % % 
+% % % \begin{equation}
+% % % \label{equation:hausdorffAvg}
+% % % d_{ave} \left( N^{T_{0}}_{\tau}, N^{T_{1}}_{\tau} \right) = \max\left\{ \overline{\inf_{\textbf{p}_{j} \in N^{T_{1}}_{\tau}, \textbf{p}_{i} \in N^{T_{0}}_{\tau}} d\left(\textbf{p}_{i}, \textbf{p}_{j}\right)}, \overline{\inf_{\textbf{p}_{i} \in N^{T_{0}}_{\tau}, \textbf{p}_{j} \in N^{T_{1}}_{\tau}} d\left( \textbf{p}_{i}, \textbf{p}_{j} \right)} \right\}
+% % % \end{equation}
+% % % 
+% % % \noindent where $N^{T_{0}}_{\tau}$ is the $i^{th}$ pixel of the set of channel network pixels extracted using threshold $\tau$, and $d\left( \textbf{p}_{i}, \textbf{p}_{j} \right) $ is
+% % % the Euclidean distance between pixels $\textbf{p}_{i}$ and
+% % % $\textbf{p}_{j}$. 
+% % %  This metric tends to give a much more
+% % % realistic look at the channel networks' distances.
+% 
+% 
+
+The slope surface RMSE metric measures the RMSE in the slope values at each pixel. To measure the SSRMSE, a slope surface is created by measuring the slope at each pixel. For each pixel $\textbf{p}_{i} = \left(x_{i}, y_{i}\right)$, the slope values is determined by Equation \ref{equation:PixelSlopeValue}:
+
+\begin{equation}
+\label{equation:PixelSlopeValue}
+  \Delta_{xy} \left( \textbf{p}_{i} \right) = \dfrac{ |\left( \left( x_{i} + 1, y_{i}\right)_{z} - \left(x_{i} - 1, y_{i} \right)_{z} \right)| + |\left( \left( x_{i}, y_{i} + 1\right)_{z} - \left(x_{i}, y_{i} - 1 \right)_{z} \right)| }{2}
+\end{equation}
+
+SSRMSE measures the RMSE between the slope surfaces of $T_{0}$ and $T_{1}$, $S_{T_{0}}$ and $S_{T_{1}}$, respectively. This is described in Equation \ref{equation:SSRMSE}
+
+\begin{equation}
+\label{equation:SSRMSE}
+  SSRMSE\left(T_{0}, T_{1}\right) = RMSE\left(S_{T_{0}}, S_{T_{1}}\right)
+\end{equation}
+
+Both of these metrics measure the global distances between two spatial datasets. However, when measuring the distance between two terrain datasets, it is often more appropriate to determine how dissimilar specific characteristics of the terrain are from one another.
+
+
+
+The following two metrics take as input two channel networks
+($N^{T_{0}}_{\tau}$ and $N^{T_{1}}_{\tau}$) and return the distance between
+them. These metrics are used to help define the difference between the
+terrains and thresholds from which the networks result. 
+% % Since the metrics have been designed to 
+% % take in any channel networks, comparisons between terrains
+% % from simulation data (different time steps in the same sequence), between unrelated terrains, or even
+% the same terrain with networks formed using different thresholds are possible.
+
+% \subsection{Pixel-to-Pixel Correspondence Metric}
+% \label{section:PixelToPixelCorrespondence}
+
+The first metric is the pixel to pixel correspondence metric, described in equation \ref{equation:pix_dist}, in which
+each pixel of $N^{T_{0}}_{\tau}$ is compared to each in $N^{T_{1}}_{\tau}$,
+and two pixels are said to correspond if 
+% their addresses have the same length (meaning 
+they are each the same depth in their respective networks,
+and their flow travels in the same direction. 
+% I do not compare
+% addresses directly because of potential inconsistencies in the
+% labeling scheme applied to two similar but not identical networks.
+% A slight change in threshold can cause a new, very small network to
+% form elsewhere in the terrain, and as a result the ID system for the
+% networks (Figure \ref{figure:addressingScheme}) is not comparable
+% between thresholds, only a pixel's position within its own network.
+
+\begin{align}
+\label{equation:pix_dist}
+  d_{pix} \left( N^{T_{0}}_{\tau}, N^{T_{1}}_{\tau} \right) = \dfrac{ \left| \left\{ \textbf{p}_{i} \  | \ \textbf{p}_{i} \rightarrow \textbf{p}_{j} \right\} \right| }{ \left| N^{T_{0}}_{\tau} \right|  }
+\end{align}
+
+\noindent where $\textbf{p}_{i} \in N^{T_{0}}_{\tau}\,$ and
+$\textbf{p}_{j} \in N^{T_{1}}_{\tau}$ is its corresponding pixel (same x,
+y coordinates in its respective terrain), and $\left| N^{T_{0}}_{\tau}
+\right|$ is the total number of pixels compared, a normalizing
+component.
+
+% One major shortcoming of the pixel-to-pixel correspondence metric is that a small change in the network downstream of any pixel has the potential to drastically change the address assigned to the pixel. For this reason, the use of this metric should be limited to major channel networks after a pruning procedure has taken place. Thus, 
+Pixels of similar networks correspond regarding their positions in the network, and thus this metric is a normalized count of the number of correlated pixels between two networks. This metric also inherently uses channel length as a measure of dissimilarity.
+
+% \subsection{Hausdorff Distance Metrics}
+% \label{section:HausdorffDistanceMetrics}
+
+The second metric is an adaptation of the traditional \emph{Hausdorff distance} metric, defined in equation \ref{equation:hausdorff}.
+
+\begin{align}
+\begin{split}
+\label{equation:hausdorff}
+& d_{haus} \left( N^{T_{0}}_{\tau}, N^{T_{1}}_{\tau} \right) =  
+\max \left\{ \sup_{ \textbf{p}_{i} \in N^{T_{0}}_{\tau} } \inf_{ \textbf{p}_{j} \in N^{T_{1}}_{\tau} } d\left( \textbf{p}_{i} \, \textbf{p}_{j} \right) \, \sup_{ \textbf{p}_{j} \in N^{T_{1}}_{\tau} } \inf_{ \textbf{p}_{i} \in N^{T_{0}}_{\tau} } d\left( \textbf{p}_{i} \, \textbf{p}_{j} \right) \right\}
+%  \max\left\{ \overline{\inf_{\textbf{p}_{j} \in N^{T_{1}}_{\tau}, \textbf{p}_{i} \in N^{T_{0}}_{\tau}} d\left(\textbf{p}_{i}, \textbf{p}_{j}\right)}, \overline{\inf_{\textbf{p}_{i} \in N^{T_{0}}_{\tau}, \textbf{p}_{j} \in N^{T_{1}}_{\tau}} d\left( \textbf{p}_{i}, \textbf{p}_{j} \right)} \right\}
+\end{split}
+\end{align}
+
+\noindent where $d\left( \textbf{p}_{i}, \textbf{p}_{j} \right) $ is
+the Euclidean distance between pixels $\textbf{p}_{i}$ and
+$\textbf{p}_{j}$. The Hausdorff distance metric is a measure over all of the pixels in each channel network. It is defined as the maximum distance  of the set of minimum distances between a pixel $\textbf{p}_{i}$ in $N^{T_{0}}_{\tau}$ and the pixels in $N^{T_{1}}_{\tau}$. However, due to the nature of the metric, it can lend too much weight to outliers. Therefore, a third metric has been produced.
+
+For any two sets of pixels, the average Hausdorff metric finds the average of the shortest distance between their respective pixels, as shown in Equation \ref{equation:hausdorffAvg}:
+%  the average Hausdorff distance metric, as described by Equation \ref{equation:hausdorffAvg}.
+
+\begin{align}
+\label{equation:hausdorffAvg}
+\begin{split}
+& d_{avg} \left( N^{T_{0}}_{\tau}, N^{T_{1}}_{\tau} \right) = 
+% \max \left\{ \overline{ \inf_{\textbf{p}_{j} \in N^{T_{1}}_{\tau} \textbf{p}_{i} \in N^{T_{0}}_{\tau} } d\left( \textbf{p}_{i}, \textbf{p}_{j} \right) }, \overline{ \inf_{\textbf{p}_{i} \in N^{T_{0}}_{\tau}, \textbf{p}_{j} \in N^{T_{1}}_{\tau} } d\left( \textbf{p}_{i}, \textbf{p}_{j} \right) } \right\}
+ \max\left\{ \overline{\inf_{\textbf{p}_{j} \in N^{T_{1}}_{\tau}, \textbf{p}_{i} \in N^{T_{0}}_{\tau}} d\left(\textbf{p}_{i}, \textbf{p}_{j}\right)}, \overline{\inf_{\textbf{p}_{i} \in N^{T_{0}}_{\tau}, \textbf{p}_{j} \in N^{T_{1}}_{\tau}} d\left( \textbf{p}_{i}, \textbf{p}_{j} \right)} \right\}
+\end{split}
+\end{align}
+
+\noindent where 
+$\textbf{p}_{i} \in N^{T_{0}}_{\tau}$ is the $i^{th}$ pixel of the set of channel network pixels 
+of $T_{0}$ extracted using threshold $\tau$, $N^{T_{0}}_{\tau}$. The overline means ``mean value of''. 
+It is important to note that AHD is limited to the channel networks of the terrain, whereas RMSE is applied globally. 
+Limiting RMSE to only $N_{\tau}$ would not give an accurate picture of how close the terrains' hydrography networks are, 
+since the network pixels are found by looking at the global flow pattern. Even if the elevations of the pixels in $N_{\tau}$ 
+are comparable, it does not indicate that the overall terrain shape is similar. In addition, slight variations 
+in the location of the pixels in $N_{\tau}$ would render RMSE unusable.
+
+% \noindent or the maximum value of the average of the infimum of the
+% distances between the sets. This metric tends to give a much more
+% realistic look at the channel networks' distances, as it smooths out inaccurate distances created by outliers. 
+
+
+The average Hausdorff distance provides a general picture of how close the pixels in $N^{T_{0}}_{\tau}$ are to those in $N^{T_{1}}_{\tau}$. It is important to note that this is a Euclidean metric, based on their exact positions in $\mathbb{R}^{3}$. All information regarding the geometry of the channel network (such as slope), meander, or flow is ignored. However, unlike the RMS Error metric, the average Hausdorff distance is a measurement of the geometric distance between only the pixels in the channel network, and thus it places emphasis on them and ignores the rest of the terrain. In this way, ``unimportant'' elevation information and outliers are not taken into account. By limiting the metric to pixels in the channel network, the geometry of the entire terrain is inherently incorporated but weighted by distance and contribution to the channel network.
+% , because it is all data critical to the formation of the channel network, while focusing the metric on the important pixels.
+
+
+
+
+
+\section{Finding an Optimal Flow Threshold}
+
+Once a definition of the distance between two terrains has been determined, then an optimal threshold value that minimizes the distance between two terrains can be found. 
+% 
+% A good deal of work has been done with the intent of finding an \emph{optimal} flow accumulation value with which to threshold the flow accumulation matrix to extract the channel network. 
+There have been attempts to use drainage density (a ratio of flow value to pixel watershed size) as a value to threshold instead of flow accumulation, while others have attempted to use local curvature or gradient values, as discussed in section \ref{section:ChoosingAFlowThreshold}. 
+
+
+A simple brute force method will find this threshold among a set of terrains, by trying several different thresholds for the terrains in question and recording those that produce the smallest distances.
+What is a more interesting challenge is finding the optimal threshold to apply to each terrain in a sequential series. 
+If there are several terrains that belong to a series (such as time steps in an erosion simulation, or several regenerated terrains that had been compressed with various parameters), $\{ T_{i} \}$, finding an optimal threshold to compare their channel networks requires a degree of sequential coherence so that networks change smoothly as one moves from one terrain to another.
+% 
+% 
+% It is clear that this is an interesting and important avenue of research. With this in mind, I introduce 
+% Therefore, a method for finding the optimal flow threshold with which to compare two terrains, $T_{i}$ and $T_{j}$ in a sequence is introduced.
+% representing sequential time steps, $D_{i}$ and $D_{j}$, in a series of datasets from our erosion simulation. This procedure is limited to this situation because of the limited nature of the metrics presented in section \ref{section:DescriptionOfMetrics}. Because they apply best when two terrains should match closely with only minute differences, comparing two sequential datasets is an ideal situation.
+% This algorithm works best when the extracted channel networks are similar to one another, such as when testing the accuracy of a compression scheme.
+
+Despite the fact that $T_{i}$ and $T_{j}$ are assumed to be similar, the extracted channel networks are very sensitive to small changes in the chosen threshold value. Given this, the same threshold cannot necessarily be applied to $T_{i}$ and $T_{j}$, as there is no guarantee that the result channel networks will resemble one another.
+%  (ADD IMAGE)
+Additionally, when measuring the dissimilarity between a decompressed terrain and its baseline, small elevation errors may result in the same threshold resulting in significantly different channel networks. Therefore, a method for choosing threshold values for each terrain is important. 
+% For the time being, I restrict its use to a series of temporally adjacent terrains in a series of time steps.
+
+A moving window algorithm that can use any of the metrics introduced in section \ref{section:DescriptionOfMetrics} to determine the threshold that minimizes the distance between $T_{i}$ and $T_{j}$ is shown in algorithm \ref{algorithm:idealThreshold}.
+
+\begin{algorithm}[t]
+\begin{algorithmic}
+  \STATE $avg \gets 0$
+  \STATE $nComparisons \gets 0$
+    \FOR{$w_{cur} = t - \mbox{\em WINDOW} \to t + \mbox{\em WINDOW}$}
+      \FOR{$\tau = \tau_{min} \to \tau_{max}$}
+	  \STATE $dist \gets d\left( N^{t}_{\tau}, N^{w_{cur}}_{\tau} \right)$
+	  \STATE $avg \gets avg + \tau * c\left( dist \right)$
+	  \STATE $nComparisons \gets nComparisons + 1$
+     \ENDFOR
+  \ENDFOR
+  \STATE $avg \gets avg / nComparisons$
+  \STATE return $avg$
+\end{algorithmic}
+\caption[The moving window algorithm for finding the ideal threshold.]{\label{algorithm:idealThreshold} The moving window algorithm for finding the ideal threshold between two terrains by comparing its channel network with those of its neighbors. {\em WINDOW} is a constant window size, $d\left(N^{t}_{\tau}, N^{w_{cur}}_{\tau} \right)$ is the distance between channel networks $N^{t}_{\tau}$ and $N^{w_{cur}}_{\tau}$, $[ \tau_{min}$, $\tau_{max} ]$ is the range of threshold values we wish to test, and $c\left( dist \right)$ is a weight applied to the distance between networks. A window size of 2 worked well for a 10-terrain sequence, and for $c$, a weight of 1 is often sufficient.}
+\end{algorithm}
+
+This method is limited by the nature of the windowing algorithm. Possible thresholds are tested across neighbors, but the sequential coherence may be adversely affected by the neighbors' choice for its threshold. 
+% This windowing algorithm was used to determine the optimal thresholds to use 

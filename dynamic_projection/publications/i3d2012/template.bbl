@@ -1,0 +1,17 @@
+\begin{thebibliography}{\protect\citename{Raskar et~al\mbox{.} }2001}
+
+\bibitem[\protect\citename{Raskar et~al\mbox{.} }2001]{Raskar:2001:SLA}
+{\sc Raskar, R., Welch, G., Low, K.-L., and Bandyopadhyay, D.}
+\newblock 2001.
+\newblock Shader lamps: Animating real objects with image-based illumination.
+\newblock In {\em Rendering Techniques 2001: 12th Eurographics Workshop on
+  Rendering}, 89--102.
+
+\bibitem[\protect\citename{Sheng et~al\mbox{.} }2009]{ShengYYC09}
+{\sc Sheng, Y., Yapo, T.~C., Young, C., and Cutler, B.}
+\newblock 2009.
+\newblock Virtual heliodon: Spatially augmented reality for architectural
+  daylighting design.
+\newblock In {\em VR}, IEEE, 63--70.
+
+\end{thebibliography}

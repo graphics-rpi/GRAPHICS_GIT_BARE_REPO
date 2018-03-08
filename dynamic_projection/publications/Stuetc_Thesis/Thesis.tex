@@ -1,0 +1,103 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%                                                                 %
+%                            ROOT FILE                            %
+%                                                                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%
+%  Run LaTeX or pdfLaTeX on this file to produce your thesis.
+%  To produce the abstract title page followed by the abstract,
+%  see the file abstitle-phd.tex or abstitle-mas.tex.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[chap]{thesis}
+
+% Use the first command below if you want captions over 1 line indented. A side
+% effect of this is to remove the use of bold for captions (thesis default).
+% To restore bold, also include the second line below.
+
+
+
+% \usepackage[hang]{caption}      % to indent subsequent lines of captions
+
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{url}
+\urlstyle{rm}
+
+% For algorithms
+\usepackage{algorithmic}
+\usepackage[chapter]{algorithm}
+
+% For equations
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% For rotating in the tables
+\usepackage{rotating} 
+\usepackage[T1]{fontenc} 
+
+% To make the text tighter
+% \usepackage{microtype}
+
+
+% % For hyperreffing
+\usepackage{hyperref}
+% \usepackage[backref]{hyperref}
+\hypersetup{
+    unicode=false,          % non-Latin characters in Acrobats bookmarks
+    pdftoolbar=true,        % show Acrobats toolbar?
+    pdfmenubar=true,        % show Acrobats menu?
+    pdffitwindow=true,      % page fit to window when opened
+    pdftitle={My title},    % title
+    pdfauthor={Author},     % author
+    pdfsubject={Subject},   % subject of the document
+    pdfnewwindow=true,      % links in new window
+    pdfkeywords={keywords}, % list of keywords
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links
+    citecolor=black,        % color of links to bibliography
+    filecolor=black,      % color of file links
+    urlcolor=black          % zcolor of external links
+}
+
+
+% \usepackage[american]{babel}
+% \usepackage{csquotes}
+% \usepackage{biblatex}
+% \bibliography{Thesis}
+
+%  \renewcommand{\captionfont}{\bfseries} % bold caption (needed with caption 
+                                       % package to restore boldface.)
+% \includeonly{1-Introduction, 2-PriorArt}  % use \includeonly to process only
+                         % the file(s) listed inside the braces                       
+\begin{document}
+
+\include{TitlePageText}   % titlepage material for PhD thesis 
+\include{Acknowledgement}
+\include{Abstract}
+\include{Introduction}
+\include{ExistingRepresentationsOfTerrain}
+\include{TheDrillOperator}
+% \include{TerrainDistances}
+% \include{TerrainGenerationWithDrillOperator}
+\include{TerrainStatistics}
+\include{TerrainGenerationLiterature}
+\include{ErosionModeling}
+% \include{GroupProblemSolvingLiterature}
+\include{TerrainDataExploration}
+\include{Conclusion}
+
+% \bibliographystyle{abbrv}
+% \bibliographystyle{chicago}
+% \bibliographystyle{plainnat}
+\bibliographystyle{ieeetr}
+\bibliography{Thesis}
+% \printbibliography
+
+% \include{Appendices}
+
+\end{document}

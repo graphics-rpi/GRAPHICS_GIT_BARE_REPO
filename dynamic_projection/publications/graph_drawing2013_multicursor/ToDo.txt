@@ -1,0 +1,130 @@
+To do list for General Cursor:
+(B)     - See Calibration below
+        - Extension to more cursor types (LEAP motion, touch screens)
+        - Multiple screens/same image (iPad collaboration)
+(B+C)   - Sort out IDs for lasers/mice (one set of IDs)
+*(C)      - Code review of current code
+	        - Do applications need cursor IDs nearly as often?
+          - Maybe we can call as many functions as possible with an unknown ID/actionID (why do nodes need to know what cursor expanded them?)
+		        - actionID (to be renamed) is when an action is assigned an ID and mapped to a laser when it's determined which one performed the action, unknown otherwise
+*(C+B)    - ANSWER: Pass around actionID for each gesture/action...All applications require updates
+        - Investigation of gestures
+(C)       - Gesture user study
+		        - User study on intuitiveness of gestures we currently have
+		        - Implement new gestures
+		        - Rinse and repeat
+(C)       - Language of gestures in known applications
+		        - Archeology of gestures
+		        - Any literature?
+	        - How can an application customize our gestures?
+	        - How can a user customize the gestures?
+        - User study
+(C)       - Get IRB approval/training
+(C)       - Survey on popular/intuitive mouse gestures
+		        - Survey with demonstration videos 
+			        - ALlow users to match mouse/laser/cursor gestures with actions
+			        - Match gestures with existing applications and interfaces (how do you do this on your iPad?)
+(C)       - User study with multiMouse setup
+		        - Goal oriented with one user, focus on intuitiveness of gestures
+		        - Goal oriented with multiple users and single goal, focus on collaborative problem solving
+(C+B)     - User study with lasers
+		        - Goal oriented with one user, focus on intuitiveness of gestures
+		        - Goal oriented with multiple users and single goal, focus on correct identification of lasers
+(C+B)     - Cursor system user study
+		        - How effective/friendly is a multimouse vs. a laser?
+			        - Do they work well together?
+			        - How much better are mice than lasers?
+          - Can PI make a Java front-end for Interface class?
+(C+Bry) - Can we get data from remote sources (networked computers) for Interaction class
+	        - Bryan's Directed Study
+	        - How bad is the time delay?
+		        - Ask Andrew if he were willing to collaborate with co.llide 
+
+
+To do list for Laser Personality:
+
+*(C)       - Research safety/confidence in user study
+*(B)       - Finish personality "uncertainty" implementation
+*(C)       - Collect dataset for remote testing/processing
+(C)        - Discretized radial histogram for the laser personality
+(C)	        - Distance from screen correction
+(C)	        - Skew correction
+(B)        - Continual calibration/forgoing initial calibration step
+   	        - Part of every application (all cursors)
+  	        - Can we use it to learn about user habits beyond just calibrating lasers? (e.g., mouse motion speed)
+(B)         - Remove dormant cursors from the system, wipe history, etc.
+
+
+
+-----------------------------
+Hypotheses
+
+* the grouping gesture is effective at increasing productivity?
+  (boring)  individual only, hopefully already been done
+
+
+* gestures we have chose and they key presses is intuitive
+  (individual only)
+
+   - multiple gesture collections (programs A, B & C)
+
+       - try all, which do you prefer
+
+       - train on one, then measure the performance efficiency on that one
+
+       - given one with no instruction at all -- can you figure out
+         how to do these tasks (how many failed attempts, what exactly
+         were those failed attempts)
+
+
+* auto - camera (crop & zoom) is effective, clear, not distracting,
+  increases productivity, ...  (group!)
+
+    - compare to no camera control (crop & zoom)
+
+    - compare to everyone have control of global camera (crop & zoom)
+
+  NOTE: need good clear group activity & "productivity" measurement 
+
+
+* mutliple people can simutaneously group/ungroup, expand/collapse
+  without interfering with each other
+
+    - more efficient to have many users working together to move object
+
+  NOTE: need group activity to work together (e.g. put the giraffe &
+    hippo back in their separate zoo houses -- otherwise they fight)
+
+
+
+* overall time to solve is reduced, but number of clicks, number of
+  unnecessary clicks goes up for a group
+
+   - run this on puzzle, individual & group
+
+
+  NOTE: new app!  untangle a graph (turn off all springs completely) 
+     - individually?  as a group?
+     - do they use group/ungroup, expand/collapse effectively?
+
+
+* w/ & w/o communication: overall # time of clicks & time to solve
+  decrease when talking is allowed
+
+
+* how effective is the non verbal communication with the interface  [ less priority ]
+   - are you aware of the other people
+      (which color cursor was the most helpful/productive?, did you
+      notice anyone being disruptive?)
+   - do you learn from the other people
+   - do you work with the other people
+
+   - what if there was an adversary in the group
+
+
+
+
+
+
+
+

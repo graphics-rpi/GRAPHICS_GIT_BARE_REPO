@@ -1,0 +1,12 @@
+COMMAND LINE ARGS======================================
+======================================================
+
+sudo pd-extended -nosound -audiobuf 5 -sleepgrain 1 -rt
+(must run as (sudo) root user)
+
+MIDI==================================================
+=====================================================
+
+-use Alsa midi
+-use AlsaConnect (aconnect) to connect MIDI controller
+

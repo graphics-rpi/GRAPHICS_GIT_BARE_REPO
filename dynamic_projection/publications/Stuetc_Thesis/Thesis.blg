@@ -1,0 +1,179 @@
+This is BibTeX, Version 0.99d (TeX Live 2011)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Thesis.aux
+A level-1 auxiliary file: TitlePageText.aux
+A level-1 auxiliary file: Acknowledgement.aux
+A level-1 auxiliary file: Abstract.aux
+A level-1 auxiliary file: Introduction.aux
+A level-1 auxiliary file: ExistingRepresentationsOfTerrain.aux
+A level-1 auxiliary file: TheDrillOperator.aux
+A level-1 auxiliary file: TerrainStatistics.aux
+A level-1 auxiliary file: TerrainGenerationLiterature.aux
+A level-1 auxiliary file: ErosionModeling.aux
+A level-1 auxiliary file: TerrainDataExploration.aux
+A level-1 auxiliary file: Conclusion.aux
+The style file: ieeetr.bst
+Database file #1: Thesis.bib
+I was expecting a `,' or a `}'---line 16 of file Thesis.bib
+ :  
+ :  pages = {211-220},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 774 of file Thesis.bib
+ :   
+ :   %address =  {Dallas, Texas, US}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 789 of file Thesis.bib
+ :  
+ :  %publisher = {ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 812 of file Thesis.bib
+ :   
+ :   %address = { Oakland, CA },
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 822 of file Thesis.bib
+ : 
+ : % address = {San Fransisco, CA},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 833 of file Thesis.bib
+ : 
+ : % publisher = "Gulf Publishing Co.",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 930 of file Thesis.bib
+ : 
+ : % pages = {59--},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 949 of file Thesis.bib
+ : 
+ : %  URL = {http://www.tandfonline.com/doi/abs/10.1080/136588198241536},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 965 of file Thesis.bib
+ : 
+ : % url = {http://doi.acm.org/10.1145/225294.225297},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1106 of file Thesis.bib
+ :    
+ :    %publisher = {Eurographics Association},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1135 of file Thesis.bib
+ :    
+ :    %publisher = {IEEE Computer Society},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 1364 of file Thesis.bib
+ : @article{OCALLAGHAN-Extraction
+ :                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 1372 of file Thesis.bib
+ : @article{hess-15-667-2011
+ :                          ,
+I'm skipping whatever remains of this entry
+Warning--string name "september" is undefined
+--line 1405 of file Thesis.bib
+You're missing a field name---line 1575 of file Thesis.bib
+ :    
+ :    %publisher = {ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I'm ignoring olsen2001's extra "booktitle" field
+--line 1637 of file Thesis.bib
+Warning--I'm ignoring olsen2001's extra "pages" field
+--line 1639 of file Thesis.bib
+You're missing a field name---line 1667 of file Thesis.bib
+ :   
+ :   %publisher = {Australian Computer Society, Inc.},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1693 of file Thesis.bib
+ : 
+ : %   publisher = {IEEE Computer Society},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1720 of file Thesis.bib
+ :     
+ :     %publisher = {ACM Press},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1739 of file Thesis.bib
+ :    
+ :    %publisher = {ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1758 of file Thesis.bib
+ :    
+ :    %publisher = {ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 1774 of file Thesis.bib
+ : @article{hess-15-667-2011
+ :                          ,
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1855 of file Thesis.bib
+ : 
+ : %   publisher = {ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1874 of file Thesis.bib
+ :    
+ :    %publisher = {ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You're missing a field name---line 1892 of file Thesis.bib
+ :    
+ :    %publisher = {ACM},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--can't use both volume and number fields in Lau-CAGIS
+Warning--empty journal in Tarboton-OnExtraction
+Warning--empty title in BiUpen
+You've used 124 entries,
+            1876 wiz_defined-function locations,
+            1284 strings with 29980 characters,
+and the built_in function-call counts, 36726 in all, are:
+= -- 3684
+> -- 1303
+< -- 0
++ -- 486
+- -- 362
+* -- 2550
+:= -- 4944
+add.period$ -- 137
+call.type$ -- 124
+change.case$ -- 115
+chr.to.int$ -- 0
+cite$ -- 127
+duplicate$ -- 1963
+empty$ -- 3563
+format.name$ -- 362
+if$ -- 9028
+int.to.chr$ -- 0
+int.to.str$ -- 124
+missing$ -- 122
+newline$ -- 389
+num.names$ -- 128
+pop$ -- 507
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 1405
+stack$ -- 0
+substring$ -- 2759
+swap$ -- 831
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 389
+width$ -- 127
+write$ -- 1193
+(There were 23 error messages)

@@ -1,0 +1,135 @@
+# alligator alligator 0 0 true info 0 -1
+# animals animals 0 0 true info 0 0
+# vertebrates vertebrates 0 0 true info 0 2
+# reptiles reptiles 0 0 true info 0 3
+# bear bear 0 0 true info 0 3
+# mammals mammals 0 0 true info 0 3
+# carnivores carnivores 0 0 true info 0 4
+# cow cow 0 0 true info 0 4
+# ungulates ungulates 0 0 true info 0 4
+# dolphin dolphin 0 0 true info 0 4
+# cetaceans cetaceans 0 0 true info 0 4
+# elephant elephant 0 0 true info 0 4
+# proboscids proboscids 0 0 true info 0 4
+# frog frog 0 0 true info 0 4
+# amphibians amphibians 0 0 true info 0 3
+# goat goat 0 0 true info 0 3
+# horse horse 0 0 true info 0 4
+# iguana iguana 0 0 true info 0 4
+# jaguar jaguar 0 0 true info 0 3
+# kangaroo kangaroo 0 0 true info 0 4
+# marsupials marsupials 0 0 true info 0 4
+# lobster lobster 0 0 true info 0 4
+# invertebrates invertebrates 0 0 true info 0 1
+# crustaceans crustaceans 0 0 true info 0 3
+# monkey monkey 0 0 true info 0 3
+# primates primates 0 0 true info 0 4
+# nuthatch nuthatch 0 0 true info 0 4
+# birds birds 0 0 true info 0 3
+# ostrich ostrich 0 0 true info 0 3
+# penguin penguin 0 0 true info 0 3
+# quail quail 0 0 true info 0 3
+# raccoon raccoon 0 0 true info 0 3
+# snake snake 0 0 true info 0 4
+# tiger tiger 0 0 true info 0 3
+# unicorn unicorn 0 0 true info 0 4
+# vulture vulture 0 0 true info 0 4
+# walrus walrus 0 0 true info 0 3
+# pinnipeds pinnipeds 0 0 true info 0 4
+# x-ray_fish x-ray_fish 0 0 true info 0 4
+# fish fish 0 0 true info 0 3
+# yorkie yorkie 0 0 true info 0 3
+# zebra zebra 0 0 true info 0 4
++ 0 3 derp
++ 3 2 derp
++ 2 1 derp
++ 4 6 derp
++ 6 5 derp
++ 5 2 derp
++ 2 1 derp
++ 7 8 derp
++ 8 5 derp
++ 5 2 derp
++ 2 1 derp
++ 9 10 derp
++ 10 5 derp
++ 5 2 derp
++ 2 1 derp
++ 11 12 derp
++ 12 5 derp
++ 5 2 derp
++ 2 1 derp
++ 13 14 derp
++ 14 2 derp
++ 2 1 derp
++ 15 8 derp
++ 8 5 derp
++ 5 2 derp
++ 2 1 derp
++ 16 8 derp
++ 8 5 derp
++ 5 2 derp
++ 2 1 derp
++ 17 3 derp
++ 3 2 derp
++ 2 1 derp
++ 18 6 derp
++ 6 5 derp
++ 5 2 derp
++ 2 1 derp
++ 19 20 derp
++ 20 5 derp
++ 5 2 derp
++ 2 1 derp
++ 21 23 derp
++ 23 22 derp
++ 22 1 derp
++ 24 25 derp
++ 25 5 derp
++ 5 2 derp
++ 2 1 derp
++ 26 27 derp
++ 27 2 derp
++ 2 1 derp
++ 28 27 derp
++ 27 2 derp
++ 2 1 derp
++ 29 27 derp
++ 27 2 derp
++ 2 1 derp
++ 30 27 derp
++ 27 2 derp
++ 2 1 derp
++ 31 6 derp
++ 6 5 derp
++ 5 2 derp
++ 2 1 derp
++ 32 3 derp
++ 3 2 derp
++ 2 1 derp
++ 33 6 derp
++ 6 5 derp
++ 5 2 derp
++ 2 1 derp
++ 34 8 derp
++ 8 5 derp
++ 5 2 derp
++ 2 1 derp
++ 35 27 derp
++ 27 2 derp
++ 2 1 derp
++ 36 37 derp
++ 37 5 derp
++ 5 2 derp
++ 2 1 derp
++ 38 39 derp
++ 39 2 derp
++ 2 1 derp
++ 40 6 derp
++ 6 5 derp
++ 5 2 derp
++ 2 1 derp
++ 41 8 derp
++ 8 5 derp
++ 5 2 derp
++ 2 1 derp

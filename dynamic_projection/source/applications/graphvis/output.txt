@@ -1,0 +1,129 @@
+init int data
+-55.7393 251.255
+1635.16 944.859
+unable to open image: ./original_images/animals.ppm
+-26.0768 456.981
+unable to open image: ./original_images/invertebrates.ppm
+327.774 835.31
+unable to open image: ./original_images/porifera.ppm
+1065.44 636.971
+380.202 451.767
+unable to open image: ./original_images/cnidaria.ppm
+876.004 791.013
+1232.13 -60.9482
+799.129 578.703
+unable to open image: ./original_images/platyhelminthes.ppm
+1568.98 251.36
+1189.72 237.372
+unable to open image: ./original_images/nematodes.ppm
+1400.73 664.561
+940.797 694.374
+unable to open image: ./original_images/annelids.ppm
+805.673 360.136
+812.896 313.753
+unable to open image: ./original_images/echinoderms.ppm
+1554.37 463.38
+1355.8 946.477
+158.153 408.535
+989.323 770.935
+unable to open image: ./original_images/molluscs.ppm
+367.09 828.63
+780.664 835.695
+600.94 819.366
+1079.52 95.5432
+unable to open image: ./original_images/lobster.ppm
+1325.02 -63.9684
+unable to open image: ./original_images/arthropods.ppm
+1299.19 528.518
+unable to open image: ./original_images/crustaceans.ppm
+1260.16 66.5088
+1364.09 923.085
+739.876 107.081
+1511.85 659.439
+204.281 50.7456
+unable to open image: ./original_images/arachnids.ppm
+1106.55 791.782
+1146.37 274.418
+-3.2009 389.095
+unable to open image: ./original_images/chilopods.ppm
+512.047 -22.9064
+1220.1 899.907
+unable to open image: ./original_images/diplopods.ppm
+623.505 780.192
+1520.07 683.5
+unable to open image: ./original_images/insects.ppm
+544.417 866.934
+740.733 386.348
+533.248 803.16
+98.7759 835.322
+1024.03 47.2798
+914.779 519.488
+779.158 858.974
+1324.19 184.993
+unable to open image: ./original_images/vertebrates.ppm
+1211.92 353.572
+unable to open image: ./original_images/fish.ppm
+555.198 26.1486
+unable to open image: ./original_images/agnatha.ppm
+279.161 645.42
+-109.645 18.6082
+unable to open image: ./original_images/chondrichthyes.ppm
+-62 173.526
+720.693 646.15
+unable to open image: ./original_images/x-ray_fish.ppm
+1122.99 933.973
+unable to open image: ./original_images/osteichthyes.ppm
+376.772 333.738
+1132.98 202.404
+1397.54 179.702
+732.361 113.016
+unable to open image: ./original_images/amphibians.ppm
+790.034 42.2232
+264.891 898.647
+1018.57 370.553
+67.6262 158.63
+unable to open image: ./original_images/reptiles.ppm
+799.801 460.541
+408.139 284.364
+938.818 633.64
+545.752 264.009
+1506.5 810.474
+-64.6593 -6.59194
+291.999 322.249
+unable to open image: ./original_images/birds.ppm
+174.508 33.3146
+1677.72 73.5271
+1098.01 861.013
+1337.54 150.359
+947.344 669.116
+1476.02 -121.746
+-241.077 271.464
+740.493 884.256
+-116.817 763.163
+1205.29 777.647
+unable to open image: ./original_images/mammals.ppm
+1113.74 5.65634
+unable to open image: ./original_images/monotremes.ppm
+-182.923 782.452
+1574.48 744.375
+unable to open image: ./original_images/marsupials.ppm
+304.131 649.499
+12.5305 -65.3139
+1478.06 546.936
+unable to open image: ./original_images/chiroptera.ppm
+1666.73 -97.4328
+467.974 747.312
+unable to open image: ./original_images/insectivores.ppm
+885.222 744.895
+385.55 217.955
+1652.53 461.624
+unable to open image: ./original_images/edentates.ppm
+1337 606.375
+1302.46 426.252
+158.355 550.171
+1622.48 780.248
+unable to open image: ./original_images/lagamorphs.ppm
+1666.69 80.4666
+471.884 254.561
+-56.4232 748.912
+unable to open image: ./original_images/rodents.ppm

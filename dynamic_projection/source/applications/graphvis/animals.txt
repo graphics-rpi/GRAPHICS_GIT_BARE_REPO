@@ -1,0 +1,26 @@
+alligator     0 animals   2 vertebrates   3 reptiles 
+bear          0 animals   2 vertebrates   3 mammals     4 carnivores
+cow           0 animals   2 vertebrates   3 mammals     4 ungulates
+dolphin       0 animals   2 vertebrates   3 mammals     4 cetaceans
+elephant      0 animals   2 vertebrates   3 mammals     4 proboscids
+frog          0 animals   2 vertebrates   3 amphibians 
+goat          0 animals   2 vertebrates   3 mammals     4 ungulates
+horse         0 animals   2 vertebrates   3 mammals     4 ungulates
+iguana        0 animals   2 vertebrates   3 reptiles 
+jaguar        0 animals   2 vertebrates   3 mammals     4 carnivores
+kangaroo      0 animals   2 vertebrates   3 mammals     4 marsupials
+lobster       0 animals   1 invertebrates 3 crustaceans
+monkey        0 animals   2 vertebrates   3 mammals     4 primates
+nuthatch      0 animals   2 vertebrates   3 birds
+ostrich       0 animals   2 vertebrates   3 birds
+penguin       0 animals   2 vertebrates   3 birds
+quail         0 animals   2 vertebrates   3 birds
+raccoon       0 animals   2 vertebrates   3 mammals     4 carnivores
+snake         0 animals   2 vertebrates   3 reptiles 
+tiger         0 animals   2 vertebrates   3 mammals     4 carnivores
+unicorn       0 animals   2 vertebrates   3 mammals     4 ungulates
+vulture       0 animals   2 vertebrates   3 birds
+walrus        0 animals   2 vertebrates   3 mammals     4 pinnipeds
+x-ray_fish    0 animals   2 vertebrates   3 fish
+yorkie        0 animals   2 vertebrates   3 mammals     4 carnivores
+zebra         0 animals   2 vertebrates   3 mammals     4 ungulates

@@ -1,0 +1,5 @@
+cp convention_montage_1.ppm left_l_wall_1_texture.ppm
+cp convention_montage_2.ppm canvas_wall_0_texture.ppm
+cp convention_montage_3.ppm big_l_wall_1_texture.ppm
+cp convention_montage_4.ppm luan_wall_0_texture.ppm
+cp convention_montage_5.ppm right_l_wall_0_texture.ppm
