@@ -184,8 +184,8 @@ RT_PROGRAM void eyePassClosestHit() {
       optix::Ray transmissionRay(hitPoint, direction, quickRayType, sceneEpsilon, sceneMaxDim);
       rtTrace(topObject, transmissionRay, eyePayload);
 //        eyePayload.centroidNumber=centroidNumber;
-        
-      
+
+
     }
   }
 }

@@ -4,7 +4,8 @@
 #define HACK
 //#define OMITPATCHES
 #include "MeshLoader.hpp"
-
+#include <iostream>
+using namespace std;
 // Constructor junk
 MeshLoader::MeshLoader(
   optix::Context context,
@@ -49,15 +50,12 @@ MeshLoader::load(  optix::Material&       material) {
   mMaterial=material;
   //Load from mesh here"
   loadVertexData(mesh);
-
   //Specifies the mesh and the triangle intersection programs to be used
-  std::string path("triangleMesh.cu.ptx");
+  std::string path = "triangleMesh.cu.ptx";
   Program meshIntersect = mContext->createProgramFromPTXFile( path, "meshIntersect" );
   Program meshBbox      = mContext->createProgramFromPTXFile( path, "meshBounds" );
-
   // Create a GeometryInstance and Geometry for each obj group
   createGeometryInstances(mesh, meshIntersect, meshBbox);
-  
   printf("size:CGI %d size:lVD %d \n", size_in_createGeometryInstances, size_in_loadVertexData);
   assert(size_in_createGeometryInstances==size_in_loadVertexData);
 
@@ -120,7 +118,7 @@ MeshLoader::loadVertexData(const Mesh* mesh) {
 
   const std::set<std::string> mm=mesh->getSimpleMaterialNames();
   std::set<std::string>::const_iterator mmIt=mm.begin();
-  
+
   //Populate the material Names array which we use later to add geometry groups based on the material they are
   while(mmIt!=mm.end())
   {
@@ -170,7 +168,7 @@ MeshLoader::loadVertexData(const Mesh* mesh) {
           it!=elementsInPatch.end();
           it++)
       {
-        
+
         assert(triNum<numTriangles);
 
         Element* el=Element::GetElement(*it);
@@ -181,7 +179,7 @@ MeshLoader::loadVertexData(const Mesh* mesh) {
           if(! patch_activated)
           {
             patch_activated=true;
-            
+
             mPatchStartIndexes[patchNum]=elIndex;
             mPatchSizes[patchNum]=elInPatch;
 
@@ -195,11 +193,11 @@ MeshLoader::loadVertexData(const Mesh* mesh) {
           int vertIndex3  = (*el)[2];
           int ID=el->getID();
           assert(ID>=0);
-          
+
           //Make sure that the element hasn't already been used
           std::map<int, int>::iterator it = remesh_to_optix_translation.find(ID);
           assert(it==remesh_to_optix_translation.end());
-          
+
           remesh_to_optix_translation[ID]=elIndex;
           assert(elIndex>=0);
           optix_to_remesh_translation.push_back(ID);
@@ -389,7 +387,7 @@ MeshLoader::createGeometryInstances(
   {
     std::string materialName=matNames[i];
     const MeshMaterial curMat = inputMesh->getMaterialFromSimpleName(materialName);
-     
+
     for(int patchNum=0; patchNum<numPatches;patchNum++)
     {
 
@@ -416,7 +414,7 @@ MeshLoader::createGeometryInstances(
         }
       }
     }
-     
+
 #ifdef OMITEXTRA
 
      if(curMat.isExtra())
@@ -427,7 +425,7 @@ MeshLoader::createGeometryInstances(
        matCounts[i]=0;
 #endif
      totalCount+=matCounts[i];
-   
+
   }
 
     //unsigned int numVertices= 3*elements.size();
@@ -454,7 +452,7 @@ MeshLoader::createGeometryInstances(
     if(curMat.isSensor())
        continue;
 #endif
-   
+
     //Notice this size changes for each group
     int sizeOfTriBuf=matCounts[mat];
 
@@ -556,7 +554,7 @@ MeshLoader::createGeometryInstances(
 
     int elementsWritten=0;
 
- 
+
     for(int patchNum=0; patchNum<numPatches;patchNum++)
     {
 
@@ -731,5 +729,3 @@ MeshLoader::loadMaterialParams(
   std::cerr << "WARNING -- MeshLoader::loadMaterialParams given index out of range: "
             << index << std::endl;
  }*/
-
-

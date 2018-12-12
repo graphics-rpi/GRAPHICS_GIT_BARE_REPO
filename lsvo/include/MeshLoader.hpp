@@ -7,7 +7,7 @@
 #include <optix_world.h>
 #include <optixu/optixu_aabb.h>
 #include <sstream>
-#include <vector> 
+#include <vector>
 #include "mesh.h"
 #include "vertex.h"
 #include "vectors.h"
@@ -25,14 +25,14 @@
 using namespace optix;
 class MeshLoader {
 public:
-  MeshLoader(  
-      optix::Context, 
-      optix::GeometryGroup, vector<float3>&, 
-      vector<float3>&,  
+  MeshLoader(
+      optix::Context,
+      optix::GeometryGroup, vector<float3>&,
+      vector<float3>&,
       vector<float>&,vector<int>&,
       vector<int>&,vector<float>&,
       vector<int>&,vector<float>&,
-      const Mesh* meshIn, 
+      const Mesh* meshIn,
       double& northParam,
       double& longitude,
       double& latitude

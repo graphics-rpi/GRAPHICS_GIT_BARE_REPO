@@ -91,7 +91,7 @@ RT_PROGRAM void preRegatherPass() {
 
   rtTrace(topObject, ray, prd);
   int cent=prd.centroidNumber;
-    
+
 
 
 }
@@ -121,7 +121,7 @@ RT_PROGRAM void regatherPass() {
     float3 rayDirection;
     float near, far;
     if(useOrthoCamera==1)
-        rayOrtho(launchIndex, launchDim, 
+        rayOrtho(launchIndex, launchDim,
             sceneCenter, sceneEpsilon, sceneMaxDim,
             cameraDir,
             nearPoint1, nearPoint2, nearPoint3, nearPoint4,
@@ -130,14 +130,14 @@ RT_PROGRAM void regatherPass() {
     {
       if(cameraType==1)
       rayFisheye(
-            launchIndex, launchDim, 
-            eye, U, V, W, 
+            launchIndex, launchDim,
+            eye, U, V, W,
             sceneCenter, sceneEpsilon, sceneMaxDim,
             rayOrigin, rayDirection, near, far);
       else
       rayStandard(
-            launchIndex, launchDim, 
-            eye, U, V, W, 
+            launchIndex, launchDim,
+            eye, U, V, W,
             sceneCenter, sceneEpsilon, sceneMaxDim,
             rayOrigin, rayDirection, near, far);
     }
@@ -162,7 +162,7 @@ RT_PROGRAM void regatherPass() {
         if(outputVal.x<toodim)
           dark=true;
         if(bright||dark)
-        { 
+        {
           PackedHitRecord hit = eyeHitBuffer[launchIndex];
           float3 hitPosition  = prd.hitPoint+make_float3(500);//make_float3(hit.a);
           //float hit_sum=(hitPosition.x+hitPosition.y+hitPosition.z)*50;
@@ -187,7 +187,7 @@ RT_PROGRAM void regatherPass() {
                                     outputVal.y*0.6666,
                                     outputVal.z*1.5,
                                     outputVal.w);
-            
+
           }//end ifcount
           //else
           //  outputBuffer[launchIndex]=make_float4(0,1,0,1);
@@ -197,7 +197,7 @@ RT_PROGRAM void regatherPass() {
   }
   else
   {
-  
+
     if (res==0)
     {
       //outputBuffer[launchIndex] =  intermediateBuffer[launchIndex];
@@ -209,10 +209,10 @@ RT_PROGRAM void regatherPass() {
         int triNum=patchStartIndexesBuffer[prd.patch];
         outputBuffer[launchIndex] =  patchValueBuffer[prd.patch];
     }
- 
+
     else
     {
-    
+
        if(res==3)//hybrid
        {
             PackedHitRecord hit = eyeHitBuffer[launchIndex];
@@ -226,7 +226,7 @@ RT_PROGRAM void regatherPass() {
             float3       hitFlux      = make_float3(hit.d);
             const float3 hitDirect    = make_float3(hit.e);
             const uint   hitFlags     = __float_as_int(hit.e.w);
-            //if(!(hitFlags & HitRecord::HIT)) 
+            //if(!(hitFlags & HitRecord::HIT))
             {
               outputBuffer[launchIndex] = make_float4(.5*directBuffer[launchIndex], 1);
             }
@@ -255,7 +255,7 @@ RT_PROGRAM void regatherPass() {
           num_neighbors=1;
           beta=gamma=1.f/3.f;
         }
-        
+
         //Triangle interpolation
         for(int i =0; i< num_neighbors; i++)
         {
@@ -277,11 +277,11 @@ RT_PROGRAM void regatherPass() {
                 val1 += intermediateBuffer[neighborsBuffer[index1]] * neighborWeight1;
                 val2 += intermediateBuffer[neighborsBuffer[index2]] * neighborWeight2;
             }
-            
+
         }//endfor
         float4 outputVal=outputBuffer[launchIndex]
-                                     + (1.0f - beta - gamma) *  val0/ neighborWeightSum0 
-                                     +  gamma              *  val2 / neighborWeightSum2 
+                                     + (1.0f - beta - gamma) *  val0/ neighborWeightSum0
+                                     +  gamma              *  val2 / neighborWeightSum2
                                      +  beta               * val1 / neighborWeightSum1 ;
         if(greyscale==1)
         {
@@ -299,7 +299,7 @@ RT_PROGRAM void regatherPass() {
         if(outputVal.x<toodim)
           dark=true;
         if(bright||dark)
-        { 
+        {
           PackedHitRecord hit = eyeHitBuffer[launchIndex];
           float3 hitPosition  = prd.hitPoint+make_float3(500);//make_float3(hit.a);
           //float hit_sum=(hitPosition.x+hitPosition.y+hitPosition.z)*50;
@@ -324,7 +324,7 @@ RT_PROGRAM void regatherPass() {
                                     outputVal.y*0.6666,
                                     outputVal.z*1.5,
                                     outputVal.w);
-            
+
           }//end ifcount
           //else
         }//end if bright||dark
@@ -372,10 +372,10 @@ RT_PROGRAM void momentGatherPass() {
           if (temp>max)
             max=temp;
         }
-       
+
         outputBuffer[launchIndex] =  make_float4(max);
 
-      
+
     }
 
 

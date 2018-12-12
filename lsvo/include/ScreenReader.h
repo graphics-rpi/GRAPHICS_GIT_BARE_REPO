@@ -7,7 +7,8 @@
 using std::cout;
 using std::endl;
 using std::string;
- 
+
+
 class ScreenReader
 {
     public:
@@ -15,6 +16,7 @@ class ScreenReader
     {
         printf("ScreenReader loading %s \n", image_loc_param.c_str());
         Image<Vector3<byte> > im = Image<Vector3<byte> >(image_loc_param.c_str());
+
         uchar3* data= (uchar3*)im.getData();
         width=im.getCols();
         height=im.getRows();
@@ -39,9 +41,9 @@ class ScreenReader
         image_if>>width>>height;
         image_buf=new char[width*height];
         printf("width %d height %d \n", width, height);
-    
+
         getline(image_if, line);
-  
+
         for(int i=0; i< height; i++)
         {
             getline(image_if, line);
@@ -56,18 +58,18 @@ class ScreenReader
         }
         image_if.close();*/
     }
-    
+
     ~ScreenReader()
     {
         //printf("deconstructor\n");
         delete image_buf;
     }
-    
+
     char* getImageBuf()
     {
         return image_buf;
     }
-    
+
     int getWidth()
     {
         return width;
@@ -76,9 +78,9 @@ class ScreenReader
     {
         return height;
     }
-    
-    
-    
+
+
+
     private:
         string image_loc;
         char* image_buf;

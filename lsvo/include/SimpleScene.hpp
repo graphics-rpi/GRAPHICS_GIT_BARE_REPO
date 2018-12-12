@@ -99,7 +99,7 @@ Buffer intermediateBuffer;
   unsigned int currentMoment;
   int numFramesPerMoment;
 
-  //optix::Context   _context;
+  // optix::Context   _context;
   optix::Buffer    mOutputBuffer;
   optix::Buffer    mSkyPhotons;
   optix::Buffer    mAreaLightPhotons;
@@ -140,7 +140,7 @@ Buffer intermediateBuffer;
   static const unsigned int HEIGHT = 256;
   static const unsigned int MAX_PHOTON_COUNT = 2;
   static const unsigned int PHOTONS_PER_PASS = 1000;
-  
+
 #else
   static const unsigned int WIDTH =1000;
   static const unsigned int HEIGHT = 1000;
@@ -183,7 +183,3 @@ Buffer intermediateBuffer;
 //const unsigned int SimpleScene::PHOTONS_PER_PASS = 32768;
 //const unsigned int SimpleScene::MAX_PHOTON_COUNT = 10;
 //const unsigned int SimpleScene::NUM_PHOTONS      = PHOTONS_PER_PASS * MAX_PHOTON_COUNT;
-
-
-
-

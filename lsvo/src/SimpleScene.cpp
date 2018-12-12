@@ -116,10 +116,14 @@ SimpleScene::SimpleScene(const Mesh* meshIn,State & stateParam, int inIndex,bool
     mClearWindowLaunchInfos.push_back(info);
   }
 
+	printf("lobj 6\n");
+
   //Copies emissive (area lights) triangles so OptiX can use them
   for(unsigned int i = 0; i < loader->mEmmissiveTriangles.size(); ++i) {
     // Get a normal
     // Get area of triangle
+
+		printf("lobj 7\n");
     std::vector<float3>& tri = loader->mEmmissiveTriangles[i];
     float3 a  = tri[0];
     float3 b  = tri[1];
@@ -127,6 +131,7 @@ SimpleScene::SimpleScene(const Mesh* meshIn,State & stateParam, int inIndex,bool
     float3 ab = b - a;
     float3 ac = c - a;
     float3 x  = cross(ab, ac);
+
     float  A  = length(x) / 2;
     float3 n  = -normalize(x);  // TODO: Flip this correctly.
 
@@ -138,7 +143,9 @@ SimpleScene::SimpleScene(const Mesh* meshIn,State & stateParam, int inIndex,bool
     mAreaLightInfos.push_back(nfo);
 
     AreaLightLaunchInfo info;
+
     info.area   = A;
+		cout<<"here2"<<endl;
     info.normal = n;
     info.eps    = eps;
     info.windowIndex = mAreaLightLaunchInfos.size();
@@ -146,11 +153,15 @@ SimpleScene::SimpleScene(const Mesh* meshIn,State & stateParam, int inIndex,bool
   }
 }
 
+//debug
+// #include <unistd.h>
+#include <iostream>
+// #define GetCurrentDir getcwd
+
  void SimpleScene::initRayPrograms()
 {
 
   // Ray types
-
   //Declares all the types of rays used
   _context->setRayTypeCount(9);
   _context[ "importonType"      ]->setUint(0);
@@ -162,7 +173,6 @@ SimpleScene::SimpleScene(const Mesh* meshIn,State & stateParam, int inIndex,bool
   _context[ "quickRayType"      ]->setUint(6);
   _context[ "quickShadowRayType"]->setUint(7);
   _context[ "eyeRayType"        ]->setUint(8);
-
 
   // Pass types (ray generation programs)
   _context->setEntryPointCount(13);
@@ -190,8 +200,16 @@ SimpleScene::SimpleScene(const Mesh* meshIn,State & stateParam, int inIndex,bool
   std::string regatherPath       = "regatherPass.cu.ptx";
   std::string momentTransferPath = "momentTransferPass.cu.ptx";
 
+
+	// // debug
+  // char buff[FILENAME_MAX];
+  // GetCurrentDir( buff, FILENAME_MAX );
+  // std::string current_working_dir(buff);
+  // cout<<current_working_dir<<endl;
+
+
   // Ray generation program
-  Program importonGenProgram      = _context->createProgramFromPTXFile(importonPassPath, "importonPassCamera");
+  Program importonGenProgram      = _context->createProgramFromPTXFile("importonPass.cu.ptx", "importonPassCamera");
   Program importonGen1DProgram    = _context->createProgramFromPTXFile(importonPassPath, "importonPassCamera1D");
   Program eyeRayGenProgram        = _context->createProgramFromPTXFile(eyeRayPassPath, "eyePassCamera");
   Program eyeRayGen1DProgram      = _context->createProgramFromPTXFile(eyeRayPassPath, "eyePassCamera1D");
@@ -230,13 +248,11 @@ SimpleScene::SimpleScene(const Mesh* meshIn,State & stateParam, int inIndex,bool
   _context->setMissProgram(_context["quickRayType"   ]->getUint(), normalMiss);
     _context->setMissProgram(_context["eyeRayType"   ]->getUint(), eyeRayMiss);
 
- // Exception program
- //  _context->setExceptionProgram( 0, exceptionProgram) ;
- //
+ // // Exception program
+ // //  _context->setExceptionProgram( 0, exceptionProgram) ;
+ // //
 
 }
-
-
 
 void SimpleScene::momentInit()
 {
@@ -296,6 +312,7 @@ bool SimpleScene::momentIterator()
 
 void SimpleScene::setOrtho(string filename)
 {
+	printf("hajksdf\n");
     _context[ "useOrthoCamera"   ]->setUint(1);
     printf("forcing to hybrid rendering for ortho mode\n");
     state.renderRes=HYBRID;
@@ -312,13 +329,13 @@ void SimpleScene::setOrtho(string filename)
 }
 
 //View number is for the 6 views of a cube map.  0 is the default, 1 is right/left, 2 is reversed
-//                                               3 is left/right , 4 is up, 5 is down, 
+//                                               3 is left/right , 4 is up, 5 is down,
 void SimpleScene::setPersonCamera(Person person, int viewNumber)
 {
     _context[ "useOrthoCamera"   ]->setUint(0);
     printf("forcing to hybrid rendering for people mode\n");
     state.renderRes=HYBRID;
-    
+
     float3 camera_position=make_float3(person.a1,person.b2, person.a2);
     float3 standard_camera_dir=normalize(make_float3(-cos(person.b1), 0, -sin(person.b1)));
     float3 standard_camera_lookat=camera_position+standard_camera_dir;
@@ -359,14 +376,14 @@ void SimpleScene::setPersonCamera(Person person, int viewNumber)
             up,//up
             state.viewAngle,state.viewAngle,
             PinholeCamera::KeepVertical );
-            
-    float3 eye, U, V,W;        
+
+    float3 eye, U, V,W;
     //Get the camera parameters for optix from pinhole camera class
-    pc.getEyeUVW(eye,  U,  V, W);            
+    pc.getEyeUVW(eye,  U,  V, W);
     U=normalize(U);
     V=normalize(V);
-    W=normalize(W);  
-  
+    W=normalize(W);
+
     printf("eye %f %f %f \n", eye.x, eye.y, eye.z);
     printf("U   %f %f %f \n", U.x, U.y, U.z);
     printf("V   %f %f %f \n", V.x, V.y, V.z);
@@ -514,19 +531,21 @@ void SimpleScene::initScene(InitialCameraData& cameraData) {
   _context[ "windowCorrection"  ]->setFloat(1);
   // Load model
   loadObj(cameraData);
+
   _context[ "numTriangles"  ]->setUint(loader->getNumberOfTriangles());
-  if(state.useOrthoCamera)
+  if(state.useOrthoCamera && state.orthoFiles.size()>0)
   {
+		printf("%s\n", state.orthoFiles[0]);
     setOrtho(state.orthoFiles[0]);
   }
   else
   {
-    _context[ "cameraDir"             ]->setFloat(0.0);
+    _context[ "cameraDir"             ]->setFloat(make_float3( 0.f, 0.f, 0.f ));
     _context[ "useOrthoCamera"   ]->setUint(0);
-    _context[ "nearPoint1"         ]->setFloat(0.0);
-    _context[ "nearPoint2"         ]->setFloat(0.0);
-    _context[ "nearPoint3"         ]->setFloat(0.0);
-    _context[ "nearPoint4"         ]->setFloat(0.0);
+    _context[ "nearPoint1"         ]->setFloat(make_float3( 0.f, 0.f, 0.f ));
+    _context[ "nearPoint2"         ]->setFloat(make_float3( 0.f, 0.f, 0.f ));
+    _context[ "nearPoint3"         ]->setFloat(make_float3( 0.f, 0.f, 0.f ));
+    _context[ "nearPoint4"         ]->setFloat(make_float3( 0.f, 0.f, 0.f ));
   }
   MomentBuffer = _context->createBuffer(RT_BUFFER_OUTPUT,RT_FORMAT_FLOAT,0);
   _context[ "MomentBuffer"    ]->set(MomentBuffer);
@@ -541,6 +560,8 @@ void SimpleScene::initScene(InitialCameraData& cameraData) {
 
   }
 
+
+
   if(state.dumpPatches)
   {
     state.renderRes=PATCHES;
@@ -550,6 +571,8 @@ void SimpleScene::initScene(InitialCameraData& cameraData) {
     state.renderRes=TRIANGLES;
   }
   copyBuffersToGPU();
+
+
   _context->validate();
   _context->compile();
   //gettimeofday(&start, NULL);
@@ -724,7 +747,7 @@ if(state.skyType==CLEAR)
 
   //phi ( PI/2)
   phiZ = 1 + a * exp(b / 1);//cos(skyPayload.angles.x));
-  
+
   //float fChi = 1 + c * (exp(d * chi) - exp(d * M_PI / 2)) + e * cos(chi) * cos(chi);
   // float fSun = 1 + c * (exp(d * sunAngles.x) - exp(d * M_PI / 2)) + e * powf(cos(sunAngles.x), 2);
   fSun = .91 + c * exp(d * sunAngles.x) + e * powf(cos(sunAngles.x), 2);
@@ -753,14 +776,14 @@ else
   fSun=1.;
   factor=zenithBrightness/(fSun*phiZ);
 }
-  
+
   //skyPayload.energy = make_float3(fChi * phiZ);
   //}
 
   // Lights
   DirectionalLight dirLights[] = {
 
-    { sunDirection, make_float3(sunBrightness), 1 },
+    { sunDirection, make_float3(sunBrightness), 10 },
   };
 
   memcpy(dirLightBuffer->map(), dirLights, sizeof(dirLights));
@@ -981,6 +1004,8 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
 
 
 
+
+
     //If rendering for standard camera
     if(state.renderRes==TRIANGLE_MOMENTS)
     {
@@ -1002,7 +1027,7 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
     else //rendering for triangles or patches
     {
       //Need to gather for triangles on both patches and triangles
-      //if(state.renderRes==TRIANGLES)
+      if(state.renderRes==TRIANGLES)
       {
         printf("gather for triangles\n");
         _context->launch(_context["gatherPass"]->getUint(), loader->getNumberOfTriangles(),1 );
@@ -1015,12 +1040,14 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
       printf("regathering\n");
       _context->launch(_context["regatherPass"]->getUint(), static_cast<unsigned int>(bufferWidth),
           static_cast<unsigned int>(bufferHeight));
+
     }
 
   }
 
   if(state.moment)
   {
+		printf("still allive\n" );
     //done=momentIterator();
     momentIterator();
   }
@@ -1038,7 +1065,7 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
   }
   else if(state.dumpPatches)
   {
-
+		printf("still alliv2e\n" );
     //If we are just dumping an image file (for contraption)
     if(mFrameCount==30) {
        printf("before dumping patches\n");
@@ -1054,7 +1081,7 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
   }
   else if(state.useOrthoCamera==true&&mFrameCount>=30)
   {
-
+		printf("still alliv3e\n" );
       string cameraLoc=state.orthoFiles[currentOrthoCamera];
 
       //Strips the directory off of cameraLoc and adds .ppm extension to create ppmLoc
@@ -1065,6 +1092,7 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
       string ppmLoc=cameraLoc.substr(0,cameraLoc.size()-(6))+"_texture.ppm";
       printf("saving to %s \n", ppmLoc.c_str());
       sutilDisplayFilePPM(ppmLoc.c_str(), getOutputBuffer()->get());
+			// cout<<getOutputBuffer()->getSize()<<endl;
       //If we just finished the last ortho camera
       if(++currentOrthoCamera==state.orthoFiles.size())
       {
@@ -1089,7 +1117,7 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
   }
   else if(state.dumpTris)
   {
-
+		printf("still al2live\n" );
     //If we are just dumping an image file (for contraption)
     if(mFrameCount==30) {
        printf("before dumping tris\n");
@@ -1103,6 +1131,7 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
   }
   else if(state.dumpPeople==true&&state.useOrthoCamera==false&&mFrameCount>=30)
   {
+		printf("still allive7\n" );
     static int personCameraCounter=0;
 
     //Dump image
@@ -1116,21 +1145,21 @@ void SimpleScene::trace(const RayGenCameraData& cameraData) {
       sprintf(filename,"surface_camera_VIEW_person%d_alternate%d.ppm",state.currentPerson, personCameraCounter);
     sutilDisplayFilePPM(filename,getOutputBuffer()->get());
     //6 Views for each person, if we have done all 5, go to the next person
-    {  
+    {
       personCameraCounter=0;
       //if we've already done all views for all people we are done
       if(++state.currentPerson==state.people.size())
         done=true;
     }
     //else set it to the next one
-    if(!done) 
+    if(!done)
     {
       setPersonCamera(state.people[state.currentPerson], personCameraCounter);
       //Reset camera stuff
       _eye_pass_init=0;
     }
-   
-   
+
+
   }
   printf("frame count %d \n", mFrameCount++);
   if(state.dumpPeople==true&&state.useOrthoCamera==false)
@@ -1432,9 +1461,4 @@ void SimpleScene::createMaterial()
   mMaterial->setAnyHitProgram(    _context["quickRayType"   ]->getUint(), quickAnyHit2Program);
   mMaterial->setClosestHitProgram(    _context["quickRayType"   ]->getUint(), quickClosestHitProgram);
   mMaterial->setAnyHitProgram(    _context["quickShadowRayType"   ]->getUint(), quickAnyHitProgram);
-
-
 }
-
-
-

@@ -55,14 +55,14 @@ rtDeclareVariable(optix::Ray, ray, rtCurrentRay,                             );
 RT_PROGRAM void meshIntersect(int primIdx) {
   //rtPrintf("intersected with %i \n", primIdx);
   int3 v_idx = vertexIndexBuffer[primIdx];
-  
+
   float3 p0 = vertexBuffer[v_idx.x];
   float3 p1 = vertexBuffer[v_idx.y];
   float3 p2 = vertexBuffer[v_idx.z];
-  centroid= (p0+p1+p2)/3.;
-  centroidNumber=centroidIndexBuffer[primIdx];
-  patch=patchIndexBuffer[primIdx];
-  triNumber=primIdx;
+	// centroid= (p0+p1+p2)/3.;
+	// centroidNumber=centroidIndexBuffer[primIdx];
+	// patch=patchIndexBuffer[primIdx];
+	// triNumber=primIdx;
   //centroid=centroid/3.;
   // Intersect ray with triangle
   float3 e0 = p1 - p0;
@@ -70,7 +70,7 @@ RT_PROGRAM void meshIntersect(int primIdx) {
   float3 n  = cross(e0, e1);
 
   float v   = dot(n, ray.direction);
-  rayDirection=ray.direction;
+
   float r   = 1.0f / v;
 
   float3 e2 = p0 - ray.origin;
@@ -86,6 +86,12 @@ RT_PROGRAM void meshIntersect(int primIdx) {
       float gamma = r * v2;
       if((v1 + v2) * v <= v * v && gamma >= 0.0f) {
         if(rtPotentialIntersection(t)) {
+					rayDirection=ray.direction;
+					centroid= (p0+p1+p2)/3.;
+					centroidNumber=centroidIndexBuffer[primIdx];
+					patch=patchIndexBuffer[primIdx];
+					triNumber=primIdx;
+
           int3 n_idx = normalIndexBuffer[primIdx];
 
           if(normalBuffer.size() == 0 || n_idx.x < 0 || n_idx.y < 0 || n_idx.z < 0) {

@@ -15,7 +15,7 @@
 #else
 #include <GL/glui.h>
 #endif
-#else 
+#else
 #include "mpifake.h"
 #endif
 #include "state.hpp"
@@ -32,7 +32,7 @@ public:
     DefaultValues();
     bool remeshDone=false;
 
-    for (int i = 0; i < argc; i++) 
+    for (int i = 0; i < argc; i++)
     {
       if(!remeshDone)
       {
@@ -43,7 +43,7 @@ public:
             remeshparams.push_back(std::string(argv[i]));
             printf("remesh param %s \n", argv[i++]);
             remeshparams.push_back(std::string(argv[i]));
-            state.inputfile=std::string(argv[i]);            
+            state.inputfile=std::string(argv[i]);
          }
          else
          {
@@ -55,14 +55,14 @@ public:
       {
         printf("non-remesh param %s \n", argv[i]);
         if (!strcmp(argv[i],"-t")) {
-        i++; 
+        i++;
         state.hour=atoi(argv[i++]);
         state.minute=atoi(argv[i]);
 //        materials_file = std::string(argv[i]);
        printf("time %d:%d\n", state.hour, state.minute);
        }
         if (!strcmp(argv[i],"-date")) {
-        i++; 
+        i++;
         state.month=atoi(argv[i++]);
         state.day=atoi(argv[i]);
 //        materials_file = std::string(argv[i]);
@@ -77,19 +77,18 @@ public:
           state.orthoFiles.push_back(std::string(argv[i]));
        }
        else if (!strcmp(argv[i],"-dumpOrthos")) {
-        i++; 
+        i++;
         state.useOrthoCamera=true;
         int numImages=atoi(argv[i]);
         for(int j=0; j< numImages; j++)
         {
-          printf("ortho %d \n");
           state.orthoFiles.push_back(std::string(argv[++i]));
           //sleep(1000);
         }
 
        }
       else if (!strcmp(argv[i],"-dumpPeople")) {
-        i++; 
+        i++;
 //        state.dumpPeople=true;
         WallfileParser wp;
         state.people=wp.getPersonVector(argv[i]);
@@ -98,36 +97,36 @@ public:
         assert(state.useOrthoCamera&&"Must be using ortho cameras to dump people");
        }
        else if (!strcmp(argv[i],"-exp")) {
-        i++; 
+        i++;
         state.exposurePercent=atoi(argv[i]);
         printf("Exposure %d \n", state.exposurePercent);
        }
        else if (!strcmp(argv[i],"-viewAngle")) {
-        i++; 
+        i++;
         state.viewAngle=atoi(argv[i]);
         printf("View angle %d \n", state.viewAngle);
        }
         else if (!strcmp(argv[i],"-o")) {
-        i++; 
+        i++;
         state.outputfile_specified=true;
         state.outputfile=std::string(argv[i]);
         printf("output file %s \n", state.outputfile.c_str());
        }
        else if (!strcmp(argv[i],"-dumpImage")) {
-        i++; 
+        i++;
         state.dumpImage=true;
-        
+
         state.imageFile=std::string(argv[i]);
 
        }
         else if (!strcmp(argv[i],"-dumpPatches")) {
-        i++; 
+        i++;
         state.dumpPatches=true;
         state.patchesFile=std::string(argv[i]);
 
        }
         else if (!strcmp(argv[i],"-dumpTris")) {
-        i++; 
+        i++;
         state.dumpTris=true;
         state.trisFile=std::string(argv[i]);
 
@@ -137,7 +136,7 @@ public:
 
        }
        else if (!strcmp(argv[i],"-screen")) {
-        i++; 
+        i++;
         state.screen=1;
         state.screenSpecified=true;
         state.screenFile=std::string(argv[i]);
@@ -189,18 +188,18 @@ public:
       }
       // filenames
 //      if (!strcmp(argv[i],"-input")) {
-//	i++; assert_stackdump (i < argc); 
+//	i++; assert_stackdump (i < argc);
 //	load_file = std::string(argv[i]);
 //      } else if (!strcmp(argv[i],"-materials")) {
-//        i++; assert_stackdump (i < argc); 
+//        i++; assert_stackdump (i < argc);
 //        materials_file = std::string(argv[i]);
 //      } else if (!strcmp(argv[i],"-output")) {
-//	i++; assert_stackdump (i < argc); 
+//	i++; assert_stackdump (i < argc);
 //	save_file = std::string(argv[i]);
     }
 
   }
-  
+
 
   void DefaultValues() {
 
@@ -209,7 +208,7 @@ public:
 
 
 
-  
+
 
 };
 

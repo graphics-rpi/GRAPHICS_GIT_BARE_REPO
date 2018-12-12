@@ -41,7 +41,7 @@ rtDeclareVariable(EyePayload,    eyePayload,      rtPayload,                  );
 rtDeclareVariable(ShadowPayload, shadowPayload,   rtPayload,                  );
 rtDeclareVariable(uint2,         launchIndex,     rtLaunchIndex,              );
 rtDeclareVariable(uint2,         launchDim,       rtLaunchDim,                );
-rtDeclareVariable(float3,        shadingNormal,   attribute shading_normal,   ); 
+rtDeclareVariable(float3,        shadingNormal,   attribute shading_normal,   );
 rtDeclareVariable(float3,        geometricNormal, attribute geometric_normal, );
 
 rtDeclareVariable(uint,          importonType,    ,                           );
@@ -81,20 +81,20 @@ rtDeclareVariable(int,          cameraType,                ,                   )
 
 //If we're shooting importons per triangle or patch
 RT_PROGRAM void importonPassCamera1D() {
- 
+
   float3 centroid=centroidBuffer[launchIndex.x];
   float3 normal=normalBuffer[launchIndex.x];
- 
+
   float3 rayDirection;
   float3 rayOrigin;
- 
+
   //If we're using the normal approach to finding the light on a patch
   if(viewpoint==0)
   {
       rayOrigin =centroid+.1*normalize(normal);
       rayDirection = -1*normalize(normal);
   }
- 
+
   //if we're instead using rays shot from the eye to the centroid
   else
   {
@@ -126,9 +126,9 @@ RT_PROGRAM void importonPassCamera() {
     float3 rayDirection;
     float near;
     float far;
-    
+
     if(useOrthoCamera==1)
-        rayOrtho(launchIndex, launchDim, 
+        rayOrtho(launchIndex, launchDim,
             sceneCenter, sceneEpsilon, sceneMaxDim,
             cameraDir,
             nearPoint1, nearPoint2, nearPoint3, nearPoint4,
@@ -136,13 +136,13 @@ RT_PROGRAM void importonPassCamera() {
     else
     {
       if(cameraType==1)
-        rayFisheye(launchIndex, launchDim, 
-            eye, U, V, W, 
+        rayFisheye(launchIndex, launchDim,
+            eye, U, V, W,
             sceneCenter, sceneEpsilon, sceneMaxDim,
             rayOrigin, rayDirection, near, far);
       else
-        rayStandard(launchIndex, launchDim, 
-            eye, U, V, W, 
+        rayStandard(launchIndex, launchDim,
+            eye, U, V, W,
             sceneCenter, sceneEpsilon, sceneMaxDim,
             rayOrigin, rayDirection, near, far);
     }
@@ -168,7 +168,7 @@ RT_PROGRAM void importonPassMiss() {
   hit.flux  = make_float3(0);
   eyeHitBuffer[launchIndex] = hit;
   float3 normal=normalBuffer[launchIndex.x];
-  
+
 }
 
 // We ignore backfacing polygons
@@ -208,7 +208,7 @@ RT_PROGRAM void importonPassClosestHit() {
     hit.radiusSquared = powf(sceneMaxDim/4., 2);
 
     // TODO: Look for  reason for this number
-    hit.minRdsSquared = powf(distanceToEye * tan(0.000136353848), 2); 
+    hit.minRdsSquared = powf(distanceToEye * tan(0.000136353848), 2);
     hit.photonCount   = 0;
     hit.flux          = make_float3(0);
     hit.direct        = directIllumination;
@@ -218,9 +218,9 @@ RT_PROGRAM void importonPassClosestHit() {
     // eyePayload.attenuation = hit.Kd;
     //eyePayload.direct = directIllumination;
   } // end if kd >0
-  else 
+  else
   {
-    if(fmaxf(Ts) > 0) 
+    if(fmaxf(Ts) > 0)
     {
 
       eyePayload.attenuation=make_float3(0);
@@ -230,9 +230,7 @@ RT_PROGRAM void importonPassClosestHit() {
       optix::Ray transmissionRay(hitPoint, direction, importonType, sceneEpsilon, sceneMaxDim);
       rtTrace(topObject, transmissionRay, eyePayload);
 
-      
+
     } //end if fmaxf(Ts) > 0
   } //end else if kd >0
 }
-
-

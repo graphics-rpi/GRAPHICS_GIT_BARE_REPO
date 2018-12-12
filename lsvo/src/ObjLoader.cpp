@@ -35,12 +35,12 @@
 using namespace optix;
 
 //------------------------------------------------------------------------------
-// 
+//
 //  Helper functions
 //
 //------------------------------------------------------------------------------
 
-namespace 
+namespace
 {
   std::string getExtension( const std::string& filename )
   {
@@ -53,8 +53,8 @@ namespace
 }
 
 //------------------------------------------------------------------------------
-// 
-//  ObjLoader class definition 
+//
+//  ObjLoader class definition
 //
 //------------------------------------------------------------------------------
 
@@ -136,22 +136,22 @@ void ObjLoader::load( const optix::Matrix4x4& transform )
   }
 
   // Create a single material to be shared by all GeometryInstances
-  createMaterial(); 
-  
+  createMaterial();
+
   // Create vertex data buffers to be shared by all Geometries
   loadVertexData( model, transform );
 
   // Create a GeometryInstance and Geometry for each obj group
   createMaterialParams( model );
   createGeometryInstances( model );
-  
+
   // Create a data for sampling light sources
   createLightBuffer( model );
 
   glmDelete( model );
 }
 
-void ObjLoader::createMaterial() 
+void ObjLoader::createMaterial()
 {
   if ( _have_default_material ) return;
 
@@ -183,7 +183,7 @@ void ObjLoader::loadVertexData( GLMmodel* model, const optix::Matrix4x4& transfo
   _tbuffer = _context->createBuffer( RT_BUFFER_INPUT, RT_FORMAT_FLOAT2, num_texcoords );
   float2* tbuffer_data = static_cast<float2*>( _tbuffer->map() );
 
-  // Transform and copy vertices.  
+  // Transform and copy vertices.
   for ( unsigned int i = 0; i < num_vertices; ++i )
   {
     const float3 v3 = *((float3*)&model->vertices[(i+1)*3]);
@@ -203,7 +203,7 @@ void ObjLoader::loadVertexData( GLMmodel* model, const optix::Matrix4x4& transfo
   // Copy texture coordinates.
   memcpy( static_cast<void*>( tbuffer_data ),
           static_cast<void*>( &(model->texcoords[2]) ),
-          sizeof( float )*num_texcoords*2 );   
+          sizeof( float )*num_texcoords*2 );
 
   // Calculate bbox of model
   for( unsigned int i = 0; i < num_vertices; ++i )
@@ -239,7 +239,7 @@ void ObjLoader::createGeometryInstances( GLMmodel* model )
         obj_group = obj_group->next, group_count++ ) {
 
     unsigned int num_triangles = obj_group->numtriangles;
-    if ( num_triangles == 0 ) continue; 
+    if ( num_triangles == 0 ) continue;
 
     // Create vertex index buffers
     Buffer vindex_buffer = _context->createBuffer( RT_BUFFER_INPUT, RT_FORMAT_INT3, num_triangles );
@@ -260,27 +260,27 @@ void ObjLoader::createGeometryInstances( GLMmodel* model )
 
       unsigned int tindex = obj_group->triangles[i];
       int3 vindices;
-      vindices.x = model->triangles[ tindex ].vindices[0] - 1; 
-      vindices.y = model->triangles[ tindex ].vindices[1] - 1; 
-      vindices.z = model->triangles[ tindex ].vindices[2] - 1; 
+      vindices.x = model->triangles[ tindex ].vindices[0] - 1;
+      vindices.y = model->triangles[ tindex ].vindices[1] - 1;
+      vindices.z = model->triangles[ tindex ].vindices[2] - 1;
       assert( vindices.x <= static_cast<int>(model->numvertices) );
       assert( vindices.y <= static_cast<int>(model->numvertices) );
       assert( vindices.z <= static_cast<int>(model->numvertices) );
-      
+
       vindex_buffer_data[ i ] = vindices;
 
       int3 nindices;
-      nindices.x = model->triangles[ tindex ].nindices[0] - 1; 
-      nindices.y = model->triangles[ tindex ].nindices[1] - 1; 
-      nindices.z = model->triangles[ tindex ].nindices[2] - 1; 
+      nindices.x = model->triangles[ tindex ].nindices[0] - 1;
+      nindices.y = model->triangles[ tindex ].nindices[1] - 1;
+      nindices.z = model->triangles[ tindex ].nindices[2] - 1;
       assert( nindices.x <= static_cast<int>(model->numnormals) );
       assert( nindices.y <= static_cast<int>(model->numnormals) );
       assert( nindices.z <= static_cast<int>(model->numnormals) );
 
       int3 tindices;
-      tindices.x = model->triangles[ tindex ].tindices[0] - 1; 
-      tindices.y = model->triangles[ tindex ].tindices[1] - 1; 
-      tindices.z = model->triangles[ tindex ].tindices[2] - 1; 
+      tindices.x = model->triangles[ tindex ].tindices[0] - 1;
+      tindices.y = model->triangles[ tindex ].tindices[1] - 1;
+      tindices.z = model->triangles[ tindex ].tindices[2] - 1;
       assert( tindices.x <= static_cast<int>(model->numtexcoords) );
       assert( tindices.y <= static_cast<int>(model->numtexcoords) );
       assert( tindices.z <= static_cast<int>(model->numtexcoords) );
@@ -311,13 +311,13 @@ void ObjLoader::createGeometryInstances( GLMmodel* model )
       RTgeometry geometry;
 
       unsigned int usePTX32InHost64 = 0;
-      rtuCreateClusteredMeshExt( _context->get(), usePTX32InHost64, &geometry, 
-                                (unsigned int)nverts, vertex_buffer_data, 
+      rtuCreateClusteredMeshExt( _context->get(), usePTX32InHost64, &geometry,
+                                (unsigned int)nverts, vertex_buffer_data,
                                  num_triangles, (const unsigned int*)vindex_buffer_data,
                                  mbuffer_data,
-                                 _nbuffer->get(), 
+                                 _nbuffer->get(),
                                 (const unsigned int*)nindex_buffer_data,
-                                _tbuffer->get(), 
+                                _tbuffer->get(),
                                 (const unsigned int*)tindex_buffer_data);
       mesh = optix::Geometry::take(geometry);
 
@@ -345,8 +345,8 @@ void ObjLoader::createGeometryInstances( GLMmodel* model )
   }
 
   assert( triangle_count == model->numtriangles );
-  
-  // Set up group 
+
+  // Set up group
   _geometrygroup->setChildCount( static_cast<unsigned int>(instances.size()) );
   optix::Acceleration acceleration = _context->createAcceleration(_ASBuilder, _ASTraverser);
   if (_large_geom) {
@@ -395,7 +395,7 @@ void ObjLoader::loadMaterialParams( GeometryInstance gi, unsigned int index )
     return;
   }
 
-  // Load params from this material into the GI 
+  // Load params from this material into the GI
   if ( index < _material_params.size() ) {
     MatParams& mp = _material_params[index];
     gi[ "emissive"     ]->setFloat( mp.emissive );
@@ -424,7 +424,7 @@ void ObjLoader::createMaterialParams( GLMmodel* model )
 
     params.emissive     = make_float3( mat.emissive[0], mat.emissive[1], mat.emissive[2] );
     params.reflectivity = make_float3( mat.specular[0], mat.specular[1], mat.specular[2] );
-    params.phong_exp    = mat.shininess; 
+    params.phong_exp    = mat.shininess;
     params.illum        = ( (mat.shader > 3) ? 2 : mat.shader ); // use 2 as default if out-of-range
 
     float3 Kd = make_float3( mat.diffuse[0],
@@ -464,23 +464,23 @@ void ObjLoader::createLightBuffer( GLMmodel* model )
 
   if (model->nummaterials > 0)
   {
-    for ( GLMgroup* obj_group = model->groups; obj_group != 0; obj_group = obj_group->next, group_count++ ) 
+    for ( GLMgroup* obj_group = model->groups; obj_group != 0; obj_group = obj_group->next, group_count++ )
     {
       unsigned int num_triangles = obj_group->numtriangles;
-      if ( num_triangles == 0 ) continue; 
+      if ( num_triangles == 0 ) continue;
       GLMmaterial& mat = model->materials[obj_group->material];
 
-      if ( (mat.emissive[0] + mat.emissive[1] + mat.emissive[2]) > 0.0f ) 
+      if ( (mat.emissive[0] + mat.emissive[1] + mat.emissive[2]) > 0.0f )
       {
         // extract necessary data
-        for ( unsigned int i = 0; i < obj_group->numtriangles; ++i ) 
+        for ( unsigned int i = 0; i < obj_group->numtriangles; ++i )
         {
           // indices for vertex data
           unsigned int tindex = obj_group->triangles[i];
           int3 vindices;
-          vindices.x = model->triangles[ tindex ].vindices[0]; 
-          vindices.y = model->triangles[ tindex ].vindices[1]; 
-          vindices.z = model->triangles[ tindex ].vindices[2]; 
+          vindices.x = model->triangles[ tindex ].vindices[0];
+          vindices.y = model->triangles[ tindex ].vindices[1];
+          vindices.z = model->triangles[ tindex ].vindices[2];
 
           TriangleLight light;
           light.v1 = *((float3*)&model->vertices[vindices.x * 3]);
@@ -493,7 +493,7 @@ void ObjLoader::createLightBuffer( GLMmodel* model )
           light.emission = make_float3( mat.emissive[0], mat.emissive[1], mat.emissive[2] );
 
           lights.push_back(light);
-          
+
           num_light++;
         }
       }

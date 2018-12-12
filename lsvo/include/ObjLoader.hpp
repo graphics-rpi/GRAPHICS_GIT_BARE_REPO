@@ -7,7 +7,7 @@
 #include <optix_world.h>
 #include <optixu/optixu_aabb.h>
 #include <sstream>
-#include <vector> 
+#include <vector>
 #include "GLM.hpp"
   using std::vector;
 using namespace optix;
@@ -69,7 +69,7 @@ AwesomeObjLoader::AwesomeObjLoader(
   optix::GeometryGroup geomGroup,
   vector<float3>& centroids
 )
-  :     
+  :
     numberOfTriangles(0),
     mFilename(filename),
     mContext(context),
@@ -142,7 +142,7 @@ AwesomeObjLoader::loadVertexData(GLMmodel* model) {
   mTexcoordBuffer = mContext->createBuffer(RT_BUFFER_INPUT, RT_FORMAT_FLOAT2, numTexcoords);
   float2* texcoordBufferData = static_cast<float2*>(mTexcoordBuffer->map());
 
-  // Copy vertex, normal and texcoord arrays into buffers 
+  // Copy vertex, normal and texcoord arrays into buffers
   memcpy(
     static_cast<void*>(vertexBufferData),
     static_cast<void*>(&(model->vertices[3])),
@@ -152,7 +152,7 @@ AwesomeObjLoader::loadVertexData(GLMmodel* model) {
     static_cast<void*>(normalBufferData),
     static_cast<void*>(&(model->normals[3])),
     sizeof(float) * numNormals * 3
-  ); 
+  );
   memcpy(
     static_cast<void*>(texcoordBufferData),
     static_cast<void*>(&(model->texcoords[2])),
@@ -190,7 +190,7 @@ AwesomeObjLoader::createGeometryInstances(
   for(GLMgroup* obj_group = model->groups;
       obj_group != 0;
       obj_group = obj_group->next, groupCount++
-  ) 
+  )
   {
     unsigned int numTriangles = obj_group->numtriangles;
     if(numTriangles == 0) { continue; }
@@ -241,7 +241,7 @@ AwesomeObjLoader::createGeometryInstances(
     }
     instances.push_back(instance);
 
-    for(unsigned int i = 0; i < obj_group->numtriangles; ++i, ++triangleCount) 
+    for(unsigned int i = 0; i < obj_group->numtriangles; ++i, ++triangleCount)
     {
       unsigned int tindex = obj_group->triangles[i];
       int3 vindices;
@@ -289,17 +289,17 @@ AwesomeObjLoader::createGeometryInstances(
         mEmmissiveTriangles.push_back(tri);
       }
       //printf("pushing back\n");
-      mCentroids.push_back(make_float3( 
+      mCentroids.push_back(make_float3(
           model->vertices[3 * (vindices.x + 1) + 0]
           +model->vertices[3 * (vindices.y + 1) + 0]
           +model->vertices[3 * (vindices.z + 1) + 0]
           /3,
-          
+
           model->vertices[3 * (vindices.x + 1) + 1]
           +model->vertices[3 * (vindices.y + 1) + 1]
           + model->vertices[3 * (vindices.z + 1) + 1]
           /3,
-          
+
           model->vertices[3 * (vindices.x + 1) + 2]
           +model->vertices[3 * (vindices.y + 1) + 2]
           + model->vertices[3 * (vindices.z + 1) + 2]
@@ -333,7 +333,7 @@ AwesomeObjLoader::createGeometryInstances(
 
   assert(triangleCount == model->numtriangles);
 
-  // Set up group 
+  // Set up group
   mGeometryGroup->setChildCount(static_cast<unsigned int>(instances.size()));
   Acceleration acceleration = mContext->createAcceleration("Sbvh","Bvh");
   acceleration->setProperty("vertex_buffer_name", "vertexBuffer");
@@ -359,7 +359,7 @@ AwesomeObjLoader::loadMaterialParams(
     return;
   }
 
-  // Load params from this material into the GI 
+  // Load params from this material into the GI
   if(index < mMaterialParams.size()) {
     MatParams& mp = mMaterialParams[index];
     gi[ "Kd" ]->setFloat(mp.Kd);

@@ -299,7 +299,7 @@ else()
     "GL"
     "GLU"
     "pthread"
-    "/usr/local/cuda-5.5/lib64/libcudart.so"
+    "/usr/local/cuda-8.0/lib64/libcudart.so"
     )
 endif()
 

@@ -57,8 +57,8 @@
 //using namespace optix;
 
 //-----------------------------------------------------------------------------
-// 
-// GLUTDisplay class implementation 
+//
+// GLUTDisplay class implementation
 //-----------------------------------------------------------------------------
 
 Mouse*         GLUTDisplay::_mouse                = 0;
@@ -116,7 +116,7 @@ int            GLUTDisplay::_num_devices          = 0;
 
 bool           GLUTDisplay::_supress_display      = false;
 
-inline void removeArg( int& i, int& argc, char** argv ) 
+inline void removeArg( int& i, int& argc, char** argv )
 {
   char* disappearing_arg = argv[i];
   for(int j = i; j < argc-1; ++j) {
@@ -180,7 +180,7 @@ void GLUTDisplay::init( int& argc, char** argv )
       removeArg( i, argc, argv );
     } else if ( arg == "-N" || arg == "--no-display" ) {
       _display_frames = false;
-      
+
       removeArg( i, argc, argv );
     } else if ( arg == "-M" || arg == "--mem-usage" ) {
       _print_mem_usage = true;
@@ -390,7 +390,7 @@ void loadViewFile(std::string filename, float3& point, float3& direction, float3
     //}
   } // end while
 
-  
+
 }
 
 void GLUTDisplay::run( const std::string& title, SimpleScene* scene, contDraw_E continuous_mode )
@@ -449,12 +449,13 @@ void GLUTDisplay::run( const std::string& title, SimpleScene* scene, contDraw_E 
   int buffer_height;
   try {
     // Set up scene
-    float3 point, dir, up;
-    float horview,vertview;
-    loadViewFile("/home/nasmaj/user_study_3_v2/068/geometry/out_2_chris.vf", 
-                 point,  dir,up,  horview, vertview );
-    printf("point %f %f %f dir %f %f %f \n", point.x,point.y, point.z, dir.x, dir.y, dir.z);
+    // float3 point, dir, up;
+    // float horview,vertview;
+    // loadViewFile("/home/nasmaj/user_study_3_v2/068/geometry/out_2_chris.vf",
+    //              point,  dir,up,  horview, vertview );
+    // printf("point %f %f %f dir %f %f %f \n", point.x,point.y, point.z, dir.x, dir.y, dir.z);
     //sleep(10);
+
     SimpleScene::InitialCameraData camera_data;
     _scene->initScene( camera_data );
 
@@ -471,7 +472,7 @@ void GLUTDisplay::run( const std::string& title, SimpleScene* scene, contDraw_E 
 //                                 -1.0f, // hfov is ignored when using keep vertical
 //                                 vertview,//camera_data.vfov,
 //                                 PinholeCamera::KeepVertical );
-                                
+
     _camera = new PinholeCamera( camera_data.eye,
                                  camera_data.lookat,
                                  camera_data.up,
@@ -540,10 +541,10 @@ void GLUTDisplay::setCamera(SimpleScene::InitialCameraData& camera_data)
   _camera->setParameters(camera_data.eye,
                          camera_data.lookat,
                          camera_data.up,
-                         camera_data.vfov, 
+                         camera_data.vfov,
                          camera_data.vfov,
                          PinholeCamera::KeepVertical );
-  glutPostRedisplay();  
+  glutPostRedisplay();
 }
 
 // This is an internal function that does the actual work.
@@ -785,7 +786,7 @@ void GLUTDisplay::displayFrame()
   }
 
   // Draw the resulting image
-  Buffer buffer = _scene->getOutputBuffer(); 
+  Buffer buffer = _scene->getOutputBuffer();
   RTsize buffer_width_rts, buffer_height_rts;
   buffer->getSize( buffer_width_rts, buffer_height_rts );
   int buffer_width  = static_cast<int>(buffer_width_rts);
@@ -928,7 +929,7 @@ void GLUTDisplay::display()
     // render the scene
     float3 eye, U, V, W;
     _camera->getEyeUVW( eye, U, V, W );
-    // Don't be tempted to just start filling in the values outside of a constructor, 
+    // Don't be tempted to just start filling in the values outside of a constructor,
     // because if you add a parameter it's easy to forget to add it here.
     SimpleScene::RayGenCameraData camera_data( eye, U, V, W );
 
@@ -959,10 +960,10 @@ void GLUTDisplay::display()
   if(_scene->isDone()==true)
     quit();
 
-  // Do not draw text on 1st frame -- issue on linux causes problems with 
+  // Do not draw text on 1st frame -- issue on linux causes problems with
   // glDrawPixels call if drawText glutBitmapCharacter is called on first frame.
   if ( _display_fps && _cur_continuous_mode != CDNone && _frame_count > 1 && will_display==true) {
-    // Output fps 
+    // Output fps
     double current_time;
     sutilCurrentTime( &current_time );
     double dt = current_time - _last_frame_time;
@@ -1034,7 +1035,7 @@ void GLUTDisplay::display()
         _benchmark_frame_time = current_time;
       }
     }
-    
+
   }
 
   // Swap buffers
@@ -1073,7 +1074,7 @@ void GLUTDisplay::runBenchmarkNoDisplay( )
     if ( !_camera_pose.empty() )
     initial_camera_data = SimpleScene::InitialCameraData( _camera_pose );
   printf("bnp1.5\n");
-  
+
   _scene->initScene( initial_camera_data );
   printf("bnp2\n");
   if( _initial_window_width > 0 && _initial_window_height > 0)
@@ -1140,7 +1141,7 @@ void GLUTDisplay::runBenchmarkNoDisplay( )
 
   // Save image if necessary
   if( _save_frames_to_file ) {
-    std::string filename = _save_frames_basename.empty() ?  _title + ".ppm" : _save_frames_basename+ ".ppm"; 
+    std::string filename = _save_frames_basename.empty() ?  _title + ".ppm" : _save_frames_basename+ ".ppm";
     Buffer buffer = _scene->getOutputBuffer();
     sutilDisplayFilePPM( filename.c_str(), buffer->get() );
   }

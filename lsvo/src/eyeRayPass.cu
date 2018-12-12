@@ -7,7 +7,7 @@
 #include "camera_rays.h"
 
 struct EyePayload {
-    int    centroidNumber;
+  int    centroidNumber;
   float3 attenuation;
   float3 direct;
   uint   depth;
@@ -141,7 +141,7 @@ RT_PROGRAM void eyePassCamera() {
 
     rtTrace(topObject, ray, prd);
 
-}*/ 
+}*/
 
 RT_PROGRAM void eyePassCamera1D() {
 
@@ -188,9 +188,9 @@ RT_PROGRAM void shadowAnyHit() {
       //else
       //  rtPrintf("no  screen\n");
       shadowPayload.attenuation *= Ts;
-      
+
       rtIgnoreIntersection();
-      
+
 
   }
   // TODO: Fix logic
@@ -257,16 +257,16 @@ RT_PROGRAM void eyeRayPassClosestHit() {
     if(fmaxf(Ts) > 0)
     {
 
-            
+
 
       eyePayload.attenuation=make_float3(0);
       eyePayload.attenuation *= Ts;
-      
+
       //BEGIN HACK
       eyePayload.attenuation=make_float3(1);
       eyePayload.direct =make_float3(1);
       directBuffer[launchIndex]=make_float3(1);
-      
+
       //++eyePayload.depth;
 
       //optix::Ray transmissionRay(hitPoint, direction, eyeRayType, sceneEpsilon, sceneMaxDim);

@@ -20,7 +20,7 @@ void *qtThread(void* ptr)
 #endif
 {
  State& state= *((State*)ptr);
- 
+
   QTApp app(state.argc,state.argv, state);
   return 0;
 
@@ -41,7 +41,6 @@ int main(int argc, char** argv) {
 
 
   const Mesh* tmp_mesh = remesher_main(command_line_args,true);
-  
   cout<<"Num vertices: "<< tmp_mesh->numVertices() << endl;
   cout<<"Num tris: "<< tmp_mesh->numTriangles() << endl;
   if(state.screenSpecified)
@@ -56,14 +55,13 @@ int main(int argc, char** argv) {
       int pthreadReturn;
       pthreadReturn=pthread_create(&thread1, NULL, qtThread, &state);
 #endif
-
-
   //QTApp app(argc, argv, state);
     while(state.changed==1)
     {
         sleep(.1);
     }
   }
+
 
   GLUTDisplay::init(argc, argv);
 
@@ -75,6 +73,7 @@ int main(int argc, char** argv) {
     GLUTDisplay::run("Window Title", &scene, GLUTDisplay::CDAnimated);
   } catch(Exception& e) {
     sutilReportError(e.getErrorString().c_str());
+		printf("error1\n");
     return 1;
   }
 
